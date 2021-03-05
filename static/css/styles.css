@@ -1,0 +1,61 @@
+body{
+    background-color: #281E5Ds;
+}
+@media only screen and (min-width: 1000px) {
+  #home{
+    margin: 0px 250px 50px 250px;
+    background-color: white;
+  }
+  #home-title{
+      margin: 50px 250px 10px;
+      color: white;
+  }
+}
+@media only screen and (max-width: 1000px) {
+  #home{
+    margin: 0px;
+    background-color: white;
+  }
+  #home-title{
+      margin: 50px 50px 10px;
+      color: white;
+  }
+}
+#page-content{
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+nav{
+    background-color: #9C9496;
+    font-size: 18px;
+}
+.navbar-brand{
+    font-size: 24px;
+}
+.navbar-text li{
+    text-align: center;
+}
+.contribution-card:hover{
+    text-decoration: none;
+}
+#edit-button:hover{
+    text-decoration: none;
+}
+.contribution-card .card:hover{
+    background-color: #EBEBEC;
+}
+.user-name{
+    font-size:18px;
+    font-weight: bold;
+}
+.comment{
+    padding: 20px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+}
+.error_message{
+    color: red;
+}
+textarea{
+    padding-left: 5px;
+}
