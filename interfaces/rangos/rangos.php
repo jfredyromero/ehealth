@@ -78,7 +78,7 @@
                   <tr>
                       <td valign="top" align=center width=80& colspan=6 bgcolor="#281E5D">
                             <h1>
-                                <font color=white>Consulta y modifica datos MAXIMOS, INVERNADERO AUTOMATIZADO # 1</font>
+                                <font color=white>Fiebre Amarilla</font>
                             </h1>
                         </td>
                     </tr>
@@ -149,6 +149,13 @@
                             </td>
                             <td bgcolor="#EEEEEE" align=center>
                                 <input type="number" name="hum_max" value="<?php echo $hum_max; ?>" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td valign="top" align=center width=80& colspan=6 bgcolor="#281E5D">
+                                <h1>
+                                    <font color=white>Dengue</font>
+                                </h1>
                             </td>
                         </tr>
                         <tr>
