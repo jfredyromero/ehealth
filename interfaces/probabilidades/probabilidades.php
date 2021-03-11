@@ -71,14 +71,14 @@
             <div id="page-content">
                 <table width="80%" align=center cellpadding=5 border=1>
                     <tr>
-                        <td valign="top" align=center width=80% colspan=8>
+                        <td valign="top" align=center width=80% colspan=9>
                             <img src="/eHealth/static/img/logo.png" width=800 height=250>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top" align=center width=80% colspan=8 bgcolor="#281E5D">
+                        <td valign="top" align=center width=80% colspan=9 bgcolor="#281E5D">
                             <h1>
-                                <font color=white>Ultimos datos medidos del Invernadero Automatizado # 1</font>
+                                <font color=white>Fiebre Amarilla</font>
                             </h1>
                         </td>
                     </tr>
@@ -107,6 +107,9 @@
                         <td valign="top" align=center bgcolor="#E1E1E1">
                             <b>Alerta Humedad</b>
                         </td>
+                        <td valign="top" align=center bgcolor="#E1E1E1">
+                            <b>Alerta Lluvia</b>
+                        </td>
                     </tr>
 
                     <?php
@@ -124,7 +127,7 @@
                         $result3 = $mysqli->query($sql3);
                         $row3 = $result3->fetch_array(MYSQLI_NUM);
                         $hum_max = $row3[3];
-                        $sql1 = "SELECT * from datos_medidos order by id DESC LIMIT 12"; // Aqu� se ingresa el valor recibido a la base de datos.
+                        $sql1 = "SELECT * from datos_medidos order by id DESC LIMIT 3"; // Aqu� se ingresa el valor recibido a la base de datos.
                         // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
                         $result1 = $mysqli->query($sql1);
                         // la siguiente linea es el inicio de un ciclo while, que se ejecuta siempre que la respuesta a la consulta de la base de datos
@@ -204,6 +207,44 @@
                     <?php
                         }
                     ?>
+
+                    <tr>
+                        <td valign="top" align=center width=80% colspan=9 bgcolor="#281E5D">
+                            <h1>
+                                <font color=white>Dengue</font>
+                            </h1>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" align=center bgcolor="#E1E1E1">
+                            <b>#</b>
+                        </td>
+                        <td valign="top" align=center bgcolor="#E1E1E1">
+                            <b>Id de la Tarjeta</b>
+                        </td>
+                        <td valign="top" align=center bgcolor="#E1E1E1">
+                            <b>Fecha</b>
+                        </td>
+                        <td valign="top" align=center bgcolor="#E1E1E1">
+                            <b>Hora</b>
+                        </td>
+                        <td valign="top" align=center bgcolor="#E1E1E1">
+                            <b>Temperatura</b>
+                        </td>
+                        <td valign="top" align=center bgcolor="#E1E1E1">
+                            <b>Humedad</b>
+                        </td>
+                        <td valign="top" align=center bgcolor="#E1E1E1">
+                            <b>Alerta Temperatura</b>
+                        </td>
+                        <td valign="top" align=center bgcolor="#E1E1E1">
+                            <b>Alerta Humedad</b>
+                        </td>
+                        <td valign="top" align=center bgcolor="#E1E1E1">
+                            <b>Alerta Lluvia</b>
+                        </td>
+                    </tr>
+
 
                 </table>
             </div>
