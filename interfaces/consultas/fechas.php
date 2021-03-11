@@ -70,12 +70,12 @@
             <div id="page-content">
                 <table width="80%" align=center cellpadding=5 border=1>
                     <tr>
-                        <td valign="top" align=center width=80& colspan=7>
+                        <td valign="top" align=center width=80& colspan=6>
                             <img src="/eHealth/static/img/logo.png" width=800 height=250>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top" align=center width=80& colspan=7 bgcolor="#281E5D">
+                        <td valign="top" align=center width=80& colspan=6 bgcolor="#281E5D">
                             <h1>
                                 <font color=white>Consulta datos medidos dispositivo eHealth, por rango de fechas</font>
                             </h1>
@@ -92,7 +92,7 @@
                     ?>
 
                     <tr>
-                        <td valign="top" align=center bgcolor="#E1E1E1" colspan=7>
+                        <td valign="top" align=center bgcolor="#E1E1E1" colspan=6>
                             <b>Rango de fechas consultado: desde <?php echo $fecha_ini; ?> hasta <?php echo $fecha_fin; ?></b>
                         </td>
                     </tr>
@@ -114,9 +114,6 @@
                         </td>
                         <td valign="top" align=center bgcolor="#E1E1E1">
                             <b>Humedad</b>
-                        </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
-                            <b>Lluvia</b>
                         </td>
                     </tr>
                     <?php
@@ -162,7 +159,7 @@
                         echo '
                         <tr>
                             <form method=POST action="fechas.php">
-                                <td bgcolor="#EEEEEE" align=center colspan=7>
+                                <td bgcolor="#EEEEEE" align=center colspan=6>
                                     <input type="submit" value="Volver" name="Volver">
                                 </td>
                             </form>

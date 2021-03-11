@@ -71,12 +71,12 @@
             <div id="page-content">
                 <table width="80%" align=center cellpadding=5 border=1>
                     <tr>
-                        <td valign="top" align=center width=80& colspan=6>
+                        <td valign="top" align=center width=80& colspan=7>
                             <img src="/eHealth/static/img/logo.png" width=800 height=250>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top" align=center width=80& colspan=6 bgcolor="#281E5D">
+                        <td valign="top" align=center width=80& colspan=7 bgcolor="#281E5D">
                             <h1>
                                 <font color=white>Ultimos datos medidos del Invernadero Automatizado # 1</font>
                             </h1>
@@ -101,6 +101,9 @@
                         <td valign="top" align=center bgcolor="#E1E1E1">
                             <b>Humedad</b>
                         </td>
+                        <td valign="top" align=center bgcolor="#E1E1E1">
+                            <b>Presencia de lluvia</b>
+                        </td>
                     </tr>
 
                     <?php
@@ -118,6 +121,11 @@
                         $hum = $row1[3];
                         $fecha = $row1[4];
                         $hora = $row1[5];
+                        if($row1[6] == 1){
+                            $lluvia='Si';
+                        }else{
+                            $lluvia='No';
+                        }
                         $contador++;
                     ?>
 
@@ -139,6 +147,9 @@
                         </td>
                         <td valign="top" align=center>
                             <?php echo $hum." %"; ?>
+                        </td>
+                        <td valign="top" align=center>
+                            <?php echo $lluvia; ?>
                         </td>
                     </tr>
 

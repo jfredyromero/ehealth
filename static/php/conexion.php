@@ -7,6 +7,6 @@ $user = "root";
 
 $pw = "";
 
-$db = "practica1";
+$db = "proyecto_final";
 
 ?>
