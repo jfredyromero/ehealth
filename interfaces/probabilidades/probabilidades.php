@@ -168,7 +168,7 @@
                                 if ($temp > $temp_max){
                             ?>
 
-                            <img src="/eHealth/static/img/cancelar.png" width=80 height=80>
+                            <img src="/eHealth/static/img/warning_y.png" width=80 height=80>
 
                             <?php
                                 }
@@ -188,7 +188,7 @@
                                 if ($hum > $hum_max){
                             ?>
 
-                            <img src="/eHealth/static/img/cancelar.png" width=80 height=80>
+                            <img src="/eHealth/static/img/warning_r.png" width=80 height=80>
 
                             <?php
                                 }
