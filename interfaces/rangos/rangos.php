@@ -10,7 +10,6 @@
         <title>eHealth</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="/eHealth/static/css/styles.css" rel="stylesheet">
-        <meta http-equiv="refresh" content="15"/>
     </head>
     <body background="/eHealth/static/img/background.jpg">
         <h1 id="home-title">eHealth: Dispositivo IoT</h1>
@@ -199,7 +198,7 @@
                             <td bgcolor="#EEEEEE" align=center>
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label  class="btn btn-secondary Active">
-                                        <input type="radio" name="option_fiebre" value= "si" id="option1" checked> Si
+                                        <input type="radio" name="option_fiebre" value= "si" id="option1" required> Si
                                     </label>
                                     <label class="btn btn-secondary">
                                         <input type="radio" name="option_fiebre" value= "no" id="option2"> No
@@ -242,7 +241,7 @@
                             <td bgcolor="#EEEEEE" align=center>
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label  class="btn btn-secondary">
-                                        <input type="radio" name="option_dengue" value="si" id="option3" checked> Si
+                                        <input type="radio" name="option_dengue" value="si" id="option3" required> Si
                                     </label>
                                     <label class="btn btn-secondary">
                                         <input type="radio" name="option_dengue" value="no" id="option4"> No

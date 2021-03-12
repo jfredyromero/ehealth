@@ -116,18 +116,27 @@
                         // la siguiente linea almacena en una variable denominada sql1, la consulta en lenguaje SQL que quiero realizar a la base de datos. Se consultan los datos de la tarjeta 1, porque en la tabla puede haber datos de diferentes tarjetas.
                         // CONSULTA TEMPERATURA MAXIMA
                         $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
-                        $sql1 = "SELECT * from datos_maximos where id=1";
+                        $sql1 = "SELECT max_temp from datos_maximos where id=1";
                         // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
                         $result2 = $mysqli->query($sql1);
                         $row2 = $result2->fetch_array(MYSQLI_NUM);
-                        $temp_max = $row2[3];
+                        $temp_max = $row2[0];
+
                         // CONSULTA HUMEDAD MAXIMA
-                        $sql3 = "SELECT * from datos_maximos where id=2";
+                        $sql3 = "SELECT max_hum from datos_maximos where id=1";
                         // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
                         $result3 = $mysqli->query($sql3);
                         $row3 = $result3->fetch_array(MYSQLI_NUM);
-                        $hum_max = $row3[3];
-                        $sql1 = "SELECT * from datos_medidos order by id DESC LIMIT 3"; // Aqu� se ingresa el valor recibido a la base de datos.
+                        $hum_max = $row3[0];
+
+                        // CONSULTA PRESENCIA DE LLUVIA OJO: no es necesario en este caso pero para la probabilidad SI
+                        $sql4 = "SELECT pre_lluvia from datos_maximos where id=1";
+                        // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
+                        $result4 = $mysqli->query($sql4);
+                        $row4 = $result4->fetch_array(MYSQLI_NUM);
+                        $pre_lluv = $row4[0];
+
+                        $sql1 = "SELECT * from datos_medidos order by id DESC LIMIT 5"; // Aqu� se ingresa el valor recibido a la base de datos.
                         // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
                         $result1 = $mysqli->query($sql1);
                         // la siguiente linea es el inicio de un ciclo while, que se ejecuta siempre que la respuesta a la consulta de la base de datos
@@ -140,6 +149,7 @@
                         $hum = $row1[3];
                         $fecha = $row1[4];
                         $hora = $row1[5];
+                        $lluvia=$row1[6];
                         $contador++;
                     ?>
 
@@ -202,6 +212,27 @@
                             ?>
 
                         </td>
+                        </td>
+                        <td valign="top" align=center>
+
+                            <?php
+                                if ($lluvia == 0){
+                            ?>
+
+                            <img src="/eHealth/static/img/dry.png" width=80 height=80>
+
+                            <?php
+                                }
+                                else{
+                            ?>
+
+                            <img src="/eHealth/static/img/wet.png" width=80 height=80>
+
+                            <?php
+                                }
+                            ?>
+
+                        </td>
                     </tr>
 
                     <?php
@@ -244,7 +275,130 @@
                             <b>Alerta Lluvia</b>
                         </td>
                     </tr>
+                    <?php
+                        // la siguiente linea almacena en una variable denominada sql1, la consulta en lenguaje SQL que quiero realizar a la base de datos. Se consultan los datos de la tarjeta 1, porque en la tabla puede haber datos de diferentes tarjetas.
+                        // CONSULTA TEMPERATURA MAXIMA
+                        $mysqli1 = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
+                        $sql11 = "SELECT max_temp from datos_maximos where id=2";
+                        // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
+                        $result12 = $mysqli1->query($sql11);
+                        $row12 = $result12->fetch_array(MYSQLI_NUM);
+                        $temp_max1 = $row12;
 
+                        // CONSULTA HUMEDAD MAXIMA
+                        $sql13 = "SELECT max_hum from datos_maximos where id=2";
+                        // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
+                        $result13 = $mysqli->query($sql13);
+                        $row13 = $result13->fetch_array(MYSQLI_NUM);
+                        $hum_max1 = $row13[0];
+                        // CONSULTA PRESENCIA DE LLUVIA
+                        $sql11 = "SELECT max_temp from datos_maximos where id=2";
+                        // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
+                        $result12 = $mysqli1->query($sql11);
+                        $row12 = $result12->fetch_array(MYSQLI_NUM);
+                        $temp_max1 = $row12[0];
+
+                        $sql11 = "SELECT * from datos_medidos order by id DESC LIMIT 5"; // Aqu� se ingresa el valor recibido a la base de datos.
+                        // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
+                        $result11 = $mysqli->query($sql11);
+                        // la siguiente linea es el inicio de un ciclo while, que se ejecuta siempre que la respuesta a la consulta de la base de datos
+                        // tenga alg�n registro resultante. Como la consulta arroja 5 resultados, los �ltimos que tenga la tabla, se ejecutar� 5 veces el siguiente ciclo while.
+                        // el resultado de cada registro de la tabla, se almacena en el arreglo row, row[0] tiene el dato del 1er campo de la tabla, row[1] tiene el dato del 2o campo de la tabla, as� sucesivamente
+                        $contador1 = 0;
+                        while($row11 = $result11->fetch_array(MYSQLI_NUM)){
+                        $ID_TARJ1 = $row11[1];
+                        $temp1 = $row11[2];
+                        $hum1 = $row11[3];
+                        $fecha1 = $row11[4];
+                        $hora1 = $row11[5];
+                        $lluvia1=$row11[6];
+                        $contador1++;
+                    ?>
+
+                    <tr>
+                        <td valign="top" align=center>
+                            <?php echo $contador1; ?>
+                        </td>
+                        <td valign="top" align=center>
+                            <?php echo $ID_TARJ1; ?>
+                        </td>
+                        <td valign="top" align=center>
+                            <?php echo $fecha1; ?>
+                        </td>
+                        <td valign="top" align=center>
+                            <?php echo $hora1; ?>
+                        </td>
+                        <td valign="top" align=center>
+                            <?php echo $temp1." *C"; ?>
+                        </td>
+                        <td valign="top" align=center>
+                            <?php echo $hum1." %"; ?>
+                        </td>
+                        <td valign="top" align=center>
+
+                            <?php
+                                if ($temp1 > $temp_max1){
+                            ?>
+
+                            <img src="/eHealth/static/img/warning_y.png" width=80 height=80>
+
+                            <?php
+                                }
+                                else{
+                            ?>
+
+                            <img src="/eHealth/static/img/comprobado.png" width=80 height=80>
+
+                            <?php
+                                }
+                            ?>
+
+                        </td>
+                        <td valign="top" align=center>
+
+                            <?php
+                                if ($hum1 > $hum_max1){
+                            ?>
+
+                            <img src="/eHealth/static/img/warning_r.png" width=80 height=80>
+
+                            <?php
+                                }
+                                else{
+                            ?>
+
+                            <img src="/eHealth/static/img/comprobado.png" width=80 height=80>
+
+                            <?php
+                                }
+                            ?>
+
+                        </td>
+                        <td valign="top" align=center>
+
+                            <?php
+                                if ($lluvia1 == 0){
+                            ?>
+
+                            <img src="/eHealth/static/img/dry.png" width=80 height=80>
+
+                            <?php
+                                }
+                                else{
+                            ?>
+
+                            <img src="/eHealth/static/img/wet.png" width=80 height=80>
+
+                            <?php
+                                }
+                            ?>
+
+                        </td>
+                    </tr>
+
+                    <?php
+                        }
+                    ?>
 
                 </table>
             </div>
