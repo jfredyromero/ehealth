@@ -34,7 +34,8 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/eHealth/interfaces/consultas/ultimos.php">Últimos</a>
-                                <a class="dropdown-item" href="/eHealth/interfaces/consultas/fechas.php">Fecha</a>
+                                <a class="dropdown-item" href="/eHealth/interfaces/consultas/fechas.php">Fechas</a>
+                                <a class="dropdown-item" href="/eHealth/interfaces/consultas/dispositivos.php">Dispositivos</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -45,40 +46,26 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav">
-                        <!--
-                        {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><strong>Username</strong></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Moderar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Salir</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Aporta</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Ingresa</a>
-                            </li>
-                        {% endif %}
-                        -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><strong>Username</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Salir</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
             <div id="page-content">
                 <table width="80%" align=center cellpadding=5 border=1>
                     <tr>
-                        <td valign="top" align=center width=80& colspan=7>
+                        <td valign="top" align=center width=80% colspan=7>
                             <img src="/eHealth/static/img/logo.png" width=800 height=250>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top" align=center width=80& colspan=7 bgcolor="#281E5D">
+                        <td valign="top" align=center width=80% colspan=7 bgcolor="#281E5D">
                             <h1>
-                                <font color=white>Ultimos datos medidos del Invernadero Automatizado # 1</font>
+                                <font color=white>Ultimos datos medidos del dispositivo eHealth</font>
                             </h1>
                         </td>
                     </tr>
@@ -87,7 +74,7 @@
                             <b>#</b>
                         </td>
                         <td valign="top" align=center bgcolor="#E1E1E1">
-                            <b>Id de la Tarjeta</b>
+                            <b>ID</b>
                         </td>
                         <td valign="top" align=center bgcolor="#E1E1E1">
                             <b>Fecha</b>
@@ -108,7 +95,7 @@
 
                     <?php
                     // la siguiente linea almacena en una variable denominada sql1, la consulta en lenguaje SQL que quiero realizar a la base de datos. Se consultan los datos de la tarjeta 1, porque en la tabla puede haber datos de diferentes tarjetas.
-                    $sql1 = "SELECT * from datos_medidos order by id DESC LIMIT 12"; // Aqu� se ingresa el valor recibido a la base de datos.
+                    $sql1 = "SELECT * from datos_medidos order by id DESC LIMIT 30"; // Aqu� se ingresa el valor recibido a la base de datos.
                     // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
                     $result1 = $mysqli->query($sql1);
                     // la siguiente linea es el inicio de un ciclo while, que se ejecuta siempre que la respuesta a la consulta de la base de datos

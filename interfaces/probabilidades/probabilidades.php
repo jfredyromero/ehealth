@@ -34,7 +34,8 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/eHealth/interfaces/consultas/ultimos.php">Últimos</a>
-                                <a class="dropdown-item" href="/eHealth/interfaces/consultas/fechas.php">Fecha</a>
+                                <a class="dropdown-item" href="/eHealth/interfaces/consultas/fechas.php">Fechas</a>
+                                <a class="dropdown-item" href="/eHealth/interfaces/consultas/dispositivos.php">Dispositivos</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -45,69 +46,55 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav">
-                        <!--
-                        {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><strong>Username</strong></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Moderar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Salir</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Aporta</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Ingresa</a>
-                            </li>
-                        {% endif %}
-                        -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><strong>Username</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Salir</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
             <div id="page-content">
                 <table width="80%" align=center cellpadding=5 border=1>
                     <tr>
-                        <td valign="top" align=center width=80% colspan=9>
+                        <td valign="center" align=center width=80% colspan=9>
                             <img src="/eHealth/static/img/logo.png" width=800 height=250>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top" align=center width=80% colspan=9 bgcolor="#281E5D">
+                        <td valign="center" align=center width=80% colspan=9 bgcolor="#281E5D">
                             <h1>
                                 <font color=white>Fiebre Amarilla</font>
                             </h1>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1" width=40>
                             <b>#</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
-                            <b>Id de la Tarjeta</b>
+                        <td valign="center" align=center bgcolor="#E1E1E1" width=40>
+                            <b>ID</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Fecha</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Hora</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Temperatura</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Humedad</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1" width=120>
                             <b>Alerta Temperatura</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1" width=120>
                             <b>Alerta Humedad</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1" width=120>
                             <b>Alerta Lluvia</b>
                         </td>
                     </tr>
@@ -154,58 +141,58 @@
                     ?>
 
                     <tr>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $contador; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $ID_TARJ; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $fecha; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $hora; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $temp." *C"; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $hum." %"; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
 
                             <?php
                                 if ($temp > $temp_max){
                             ?>
 
-                            <img src="/eHealth/static/img/warning_y.png" width=80 height=80>
+                            <img src="/eHealth/static/img/warning_y.png" width=64 height=64>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/eHealth/static/img/comprobado.png" width=80 height=80>
+                            <img src="/eHealth/static/img/comprobado.png" width=64 height=64>
 
                             <?php
                                 }
                             ?>
 
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
 
                             <?php
                                 if ($hum > $hum_max){
                             ?>
 
-                            <img src="/eHealth/static/img/warning_r.png" width=80 height=80>
+                            <img src="/eHealth/static/img/warning_r.png" width=64 height=64>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/eHealth/static/img/comprobado.png" width=80 height=80>
+                            <img src="/eHealth/static/img/comprobado.png" width=64 height=64>
 
                             <?php
                                 }
@@ -213,20 +200,20 @@
 
                         </td>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
 
                             <?php
                                 if ($lluvia == 0){
                             ?>
 
-                            <img src="/eHealth/static/img/dry.png" width=80 height=80>
+                            <img src="/eHealth/static/img/dry.png" width=64 height=64>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/eHealth/static/img/wet.png" width=80 height=80>
+                            <img src="/eHealth/static/img/wet.png" width=64 height=64>
 
                             <?php
                                 }
@@ -240,38 +227,38 @@
                     ?>
 
                     <tr>
-                        <td valign="top" align=center width=80% colspan=9 bgcolor="#281E5D">
+                        <td valign="center" align=center width=80% colspan=9 bgcolor="#281E5D">
                             <h1>
                                 <font color=white>Dengue</font>
                             </h1>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>#</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
-                            <b>Id de la Tarjeta</b>
+                        <td valign="center" align=center bgcolor="#E1E1E1">
+                            <b>ID</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Fecha</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Hora</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Temperatura</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Humedad</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Alerta Temperatura</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Alerta Humedad</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Alerta Lluvia</b>
                         </td>
                     </tr>
@@ -316,78 +303,78 @@
                     ?>
 
                     <tr>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $contador1; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $ID_TARJ1; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $fecha1; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $hora1; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $temp1." *C"; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $hum1." %"; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
 
                             <?php
                                 if ($temp1 > $temp_max1){
                             ?>
 
-                            <img src="/eHealth/static/img/warning_y.png" width=80 height=80>
+                            <img src="/eHealth/static/img/warning_y.png" width=64 height=64>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/eHealth/static/img/comprobado.png" width=80 height=80>
+                            <img src="/eHealth/static/img/comprobado.png" width=64 height=64>
 
                             <?php
                                 }
                             ?>
 
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
 
                             <?php
                                 if ($hum1 > $hum_max1){
                             ?>
 
-                            <img src="/eHealth/static/img/warning_r.png" width=80 height=80>
+                            <img src="/eHealth/static/img/warning_r.png" width=64 height=64>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/eHealth/static/img/comprobado.png" width=80 height=80>
+                            <img src="/eHealth/static/img/comprobado.png" width=64 height=64>
 
                             <?php
                                 }
                             ?>
 
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
 
                             <?php
                                 if ($lluvia1 == 0){
                             ?>
 
-                            <img src="/eHealth/static/img/dry.png" width=80 height=80>
+                            <img src="/eHealth/static/img/dry.png" width=64 height=64>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/eHealth/static/img/wet.png" width=80 height=80>
+                            <img src="/eHealth/static/img/wet.png" width=64 height=64>
 
                             <?php
                                 }

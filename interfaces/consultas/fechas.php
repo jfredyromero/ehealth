@@ -33,7 +33,8 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/eHealth/interfaces/consultas/ultimos.php">Últimos</a>
-                                <a class="dropdown-item" href="/eHealth/interfaces/consultas/fechas.php">Fecha</a>
+                                <a class="dropdown-item" href="/eHealth/interfaces/consultas/fechas.php">Fechas</a>
+                                <a class="dropdown-item" href="/eHealth/interfaces/consultas/dispositivos.php">Dispositivos</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -44,26 +45,12 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav">
-                        <!--
-                        {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><strong>Username</strong></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Moderar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Salir</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Aporta</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Ingresa</a>
-                            </li>
-                        {% endif %}
-                        -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><strong>Username</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Salir</a>
+                        </li>
                     </ul>
                 </div>
             </nav>

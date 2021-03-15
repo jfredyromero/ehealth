@@ -10,6 +10,7 @@
         <title>eHealth</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="/eHealth/static/css/styles.css" rel="stylesheet">
+        <meta http-equiv="refresh" content="15"/>
     </head>
     <body background="/eHealth/static/img/background.jpg">
         <h1 id="home-title">eHealth: Dispositivo IoT</h1>
@@ -33,7 +34,8 @@
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/eHealth/interfaces/consultas/ultimos.php">Últimos</a>
-                                <a class="dropdown-item" href="/eHealth/interfaces/consultas/fechas.php">Fecha</a>
+                                <a class="dropdown-item" href="/eHealth/interfaces/consultas/fechas.php">Fechas</a>
+                                <a class="dropdown-item" href="/eHealth/interfaces/consultas/dispositivos.php">Dispositivos</a>
                             </div>
                         </li>
                         <li class="nav-item">
@@ -44,26 +46,12 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav">
-                        <!--
-                        {% if user.is_authenticated %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#"><strong>Username</strong></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Moderar</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Salir</a>
-                            </li>
-                        {% else %}
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Aporta</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Ingresa</a>
-                            </li>
-                        {% endif %}
-                        -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"><strong>Username</strong></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Salir</a>
+                        </li>
                     </ul>
                 </div>
             </nav>
@@ -77,7 +65,7 @@
                   <tr>
                       <td valign="top" align=center width=80& colspan=6 bgcolor="#281E5D">
                             <h1>
-                                <font color=white><b>Fiebre Amarilla</b></font>
+                                <font color=white>Fiebre Amarilla</font>
                             </h1>
                         </td>
                     </tr>
@@ -198,7 +186,7 @@
                             <td bgcolor="#EEEEEE" align=center>
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label  class="btn btn-secondary Active">
-                                        <input type="radio" name="option_fiebre" value= "si" id="option1" required> Si
+                                        <input type="radio" name="option_fiebre" value= "si" id="option1" checked> Si
                                     </label>
                                     <label class="btn btn-secondary">
                                         <input type="radio" name="option_fiebre" value= "no" id="option2"> No
@@ -209,7 +197,7 @@
                         <tr>
                             <td valign="top" align=center width=80& colspan=6 bgcolor="#281E5D">
                                 <h1>
-                                    <font color=white><b>Dengue</b></font>
+                                    <font color=white>Dengue</font>
                                 </h1>
                             </td>
                         </tr><tr>
@@ -241,7 +229,7 @@
                             <td bgcolor="#EEEEEE" align=center>
                                 <div class="btn-group btn-group-toggle" data-toggle="buttons">
                                     <label  class="btn btn-secondary">
-                                        <input type="radio" name="option_dengue" value="si" id="option3" required> Si
+                                        <input type="radio" name="option_dengue" value="si" id="option3" checked> Si
                                     </label>
                                     <label class="btn btn-secondary">
                                         <input type="radio" name="option_dengue" value="no" id="option4"> No
