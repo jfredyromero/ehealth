@@ -1,5 +1,23 @@
 body{
-    background-color: #281E5Ds;
+    background-color: #281E5D;
+}
+table td {
+	border: 1px solid #000;
+}
+table tr:first-child th { /* primera fila */
+	border-top: none;
+  background-color: #281E5D;
+}
+table tr:last-child td { /* ultima fila */
+	border-bottom: none;
+}
+table th:first-child,
+table td:first-child { /* primera columna */
+	border-left: none;
+}
+table th:last-child,
+table td:last-child { /* ultima columna */
+	border-right: none;
 }
 @media only screen and (min-width: 1000px) {
   #home{
@@ -34,28 +52,4 @@ nav{
 }
 .navbar-text li{
     text-align: center;
-}
-.contribution-card:hover{
-    text-decoration: none;
-}
-#edit-button:hover{
-    text-decoration: none;
-}
-.contribution-card .card:hover{
-    background-color: #EBEBEC;
-}
-.user-name{
-    font-size:18px;
-    font-weight: bold;
-}
-.comment{
-    padding: 20px;
-    margin-bottom: 5px;
-    border: 1px solid #ccc;
-}
-.error_message{
-    color: red;
-}
-textarea{
-    padding-left: 5px;
 }
