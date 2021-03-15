@@ -103,117 +103,117 @@
                         // la siguiente linea almacena en una variable denominada sql1, la consulta en lenguaje SQL que quiero realizar a la base de datos. Se consultan los datos de la tarjeta 1, porque en la tabla puede haber datos de diferentes tarjetas.
                         // CONSULTA TEMPERATURA MAXIMA
                         $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
-                        $sql1 = "SELECT max_temp from datos_maximos where id=1";
+                        $sql1_fiebre = "SELECT max_temp from datos_maximos where id=1";
                         // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
-                        $result2 = $mysqli->query($sql1);
-                        $row2 = $result2->fetch_array(MYSQLI_NUM);
-                        $temp_max = $row2[0];
+                        $result2_fiebre = $mysqli->query($sql1_fiebre);
+                        $row2_fiebre = $result2_fiebre->fetch_array(MYSQLI_NUM);
+                        $temp_max_fiebre = $row2_fiebre[0];
 
                         // CONSULTA HUMEDAD MAXIMA
-                        $sql3 = "SELECT max_hum from datos_maximos where id=1";
+                        $sql3_fiebre = "SELECT max_hum from datos_maximos where id=1";
                         // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
-                        $result3 = $mysqli->query($sql3);
-                        $row3 = $result3->fetch_array(MYSQLI_NUM);
-                        $hum_max = $row3[0];
+                        $result3_fiebre = $mysqli->query($sql3_fiebre);
+                        $row3_fiebre = $result3_fiebre->fetch_array(MYSQLI_NUM);
+                        $hum_max_fiebre = $row3_fiebre[0];
 
                         // CONSULTA PRESENCIA DE LLUVIA OJO: no es necesario en este caso pero para la probabilidad SI
-                        $sql4 = "SELECT pre_lluvia from datos_maximos where id=1";
+                        $sql4_fiebre = "SELECT pre_lluvia from datos_maximos where id=1";
                         // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
-                        $result4 = $mysqli->query($sql4);
-                        $row4 = $result4->fetch_array(MYSQLI_NUM);
-                        $pre_lluv = $row4[0];
+                        $result4_fiebre = $mysqli->query($sql4_fiebre);
+                        $row4_fiebre = $result4_fiebre->fetch_array(MYSQLI_NUM);
+                        $pre_lluv_fiebre = $row4_fiebre[0];
 
-                        $sql1 = "SELECT * from datos_medidos order by id DESC LIMIT 5"; // Aqu� se ingresa el valor recibido a la base de datos.
+                        $sql1_fiebre = "SELECT * from datos_medidos order by id DESC LIMIT 5"; // Aqu� se ingresa el valor recibido a la base de datos.
                         // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
-                        $result1 = $mysqli->query($sql1);
+                        $result1_fiebre = $mysqli->query($sql1_fiebre);
                         // la siguiente linea es el inicio de un ciclo while, que se ejecuta siempre que la respuesta a la consulta de la base de datos
                         // tenga alg�n registro resultante. Como la consulta arroja 5 resultados, los �ltimos que tenga la tabla, se ejecutar� 5 veces el siguiente ciclo while.
                         // el resultado de cada registro de la tabla, se almacena en el arreglo row, row[0] tiene el dato del 1er campo de la tabla, row[1] tiene el dato del 2o campo de la tabla, as� sucesivamente
                         $contador = 0;
-                        while($row1 = $result1->fetch_array(MYSQLI_NUM)){
-                        $ID_TARJ = $row1[1];
-                        $temp = $row1[2];
-                        $hum = $row1[3];
-                        $fecha = $row1[4];
-                        $hora = $row1[5];
-                        $lluvia=$row1[6];
+                        while($row1 = $result1_fiebre->fetch_array(MYSQLI_NUM)){
+                        $ID_TARJ_fiebre = $row1[1];
+                        $temp_fiebre = $row1[2];
+                        $hum_fiebre = $row1[3];
+                        $fecha_fiebre = $row1[4];
+                        $hora_fiebre = $row1[5];
+                        $lluvia_fiebre=$row1[6];
                         $contador++;
                     ?>
 
                     <tr>
-                        <td valign="center" align=center>
+                        <td valign="top" align=center>
                             <?php echo $contador; ?>
                         </td>
-                        <td valign="center" align=center>
-                            <?php echo $ID_TARJ; ?>
+                        <td valign="top" align=center>
+                            <?php echo $ID_TARJ_fiebre; ?>
                         </td>
-                        <td valign="center" align=center>
-                            <?php echo $fecha; ?>
+                        <td valign="top" align=center>
+                            <?php echo $fecha_fiebre; ?>
                         </td>
-                        <td valign="center" align=center>
-                            <?php echo $hora; ?>
+                        <td valign="top" align=center>
+                            <?php echo $hora_fiebre; ?>
                         </td>
-                        <td valign="center" align=center>
-                            <?php echo $temp." *C"; ?>
+                        <td valign="top" align=center>
+                            <?php echo $temp_fiebre." *C"; ?>
                         </td>
-                        <td valign="center" align=center>
-                            <?php echo $hum." %"; ?>
+                        <td valign="top" align=center>
+                            <?php echo $hum_fiebre." %"; ?>
                         </td>
-                        <td valign="center" align=center>
+                        <td valign="top" align=center>
 
                             <?php
-                                if ($temp > $temp_max){
+                                if ($temp_fiebre > $temp_max_fiebre){
                             ?>
 
-                            <img src="/eHealth/static/img/warning_y.png" width=64 height=64>
-
-                            <?php
-                                }
-                                else{
-                            ?>
-
-                            <img src="/eHealth/static/img/comprobado.png" width=64 height=64>
-
-                            <?php
-                                }
-                            ?>
-
-                        </td>
-                        <td valign="center" align=center>
-
-                            <?php
-                                if ($hum > $hum_max){
-                            ?>
-
-                            <img src="/eHealth/static/img/warning_r.png" width=64 height=64>
+                            <img src="/eHealth/static/img/warning_y.png" width=80 height=80>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/eHealth/static/img/comprobado.png" width=64 height=64>
+                            <img src="/eHealth/static/img/comprobado.png" width=80 height=80>
 
                             <?php
                                 }
                             ?>
 
                         </td>
-                        </td>
-                        <td valign="center" align=center>
+                        <td valign="top" align=center>
 
                             <?php
-                                if ($lluvia == 0){
+                                if ($hum_fiebre > $hum_max_fiebre){
                             ?>
 
-                            <img src="/eHealth/static/img/dry.png" width=64 height=64>
+                            <img src="/eHealth/static/img/warning_r.png" width=80 height=80>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/eHealth/static/img/wet.png" width=64 height=64>
+                            <img src="/eHealth/static/img/comprobado.png" width=80 height=80>
+
+                            <?php
+                                }
+                            ?>
+
+                        </td>
+                        </td>
+                        <td valign="top" align=center>
+
+                            <?php
+                                if ($lluvia_fiebre == $pre_lluv_fiebre){
+                            ?>
+
+                            <img src="/eHealth/static/img/comprobado.png" width=80 height=80>
+
+                            <?php
+                                }
+                                else{
+                            ?>
+
+                            <img src="/eHealth/static/img/cancelar.png" width=80 height=80>
 
                             <?php
                                 }
@@ -227,38 +227,38 @@
                     ?>
 
                     <tr>
-                        <td valign="center" align=center width=80% colspan=9 bgcolor="#281E5D">
+                        <td valign="top" align=center width=80% colspan=9 bgcolor="#281E5D">
                             <h1>
                                 <font color=white>Dengue</font>
                             </h1>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="center" align=center bgcolor="#E1E1E1">
+                        <td valign="top" align=center bgcolor="#E1E1E1">
                             <b>#</b>
                         </td>
-                        <td valign="center" align=center bgcolor="#E1E1E1">
-                            <b>ID</b>
+                        <td valign="top" align=center bgcolor="#E1E1E1">
+                            <b>Id de la Tarjeta</b>
                         </td>
-                        <td valign="center" align=center bgcolor="#E1E1E1">
+                        <td valign="top" align=center bgcolor="#E1E1E1">
                             <b>Fecha</b>
                         </td>
-                        <td valign="center" align=center bgcolor="#E1E1E1">
+                        <td valign="top" align=center bgcolor="#E1E1E1">
                             <b>Hora</b>
                         </td>
-                        <td valign="center" align=center bgcolor="#E1E1E1">
+                        <td valign="top" align=center bgcolor="#E1E1E1">
                             <b>Temperatura</b>
                         </td>
-                        <td valign="center" align=center bgcolor="#E1E1E1">
+                        <td valign="top" align=center bgcolor="#E1E1E1">
                             <b>Humedad</b>
                         </td>
-                        <td valign="center" align=center bgcolor="#E1E1E1">
+                        <td valign="top" align=center bgcolor="#E1E1E1">
                             <b>Alerta Temperatura</b>
                         </td>
-                        <td valign="center" align=center bgcolor="#E1E1E1">
+                        <td valign="top" align=center bgcolor="#E1E1E1">
                             <b>Alerta Humedad</b>
                         </td>
-                        <td valign="center" align=center bgcolor="#E1E1E1">
+                        <td valign="top" align=center bgcolor="#E1E1E1">
                             <b>Alerta Lluvia</b>
                         </td>
                     </tr>
@@ -266,115 +266,116 @@
                         // la siguiente linea almacena en una variable denominada sql1, la consulta en lenguaje SQL que quiero realizar a la base de datos. Se consultan los datos de la tarjeta 1, porque en la tabla puede haber datos de diferentes tarjetas.
                         // CONSULTA TEMPERATURA MAXIMA
                         $mysqli1 = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
-                        $sql11 = "SELECT max_temp from datos_maximos where id=2";
+                        $sql1_dengue = "SELECT max_temp from datos_maximos where id=2";
                         // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
-                        $result12 = $mysqli1->query($sql11);
-                        $row12 = $result12->fetch_array(MYSQLI_NUM);
-                        $temp_max1 = $row12;
+                        $result2_dengue = $mysqli1->query($sql1_dengue);
+                        $row2_dengue = $result2_dengue->fetch_array(MYSQLI_NUM);
+                        $temp_max_dengue = $row2_dengue[0];
 
                         // CONSULTA HUMEDAD MAXIMA
-                        $sql13 = "SELECT max_hum from datos_maximos where id=2";
+                        $sql3_dengue = "SELECT max_hum from datos_maximos where id=2";
                         // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
-                        $result13 = $mysqli->query($sql13);
-                        $row13 = $result13->fetch_array(MYSQLI_NUM);
-                        $hum_max1 = $row13[0];
-                        // CONSULTA PRESENCIA DE LLUVIA
-                        $sql11 = "SELECT max_temp from datos_maximos where id=2";
-                        // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
-                        $result12 = $mysqli1->query($sql11);
-                        $row12 = $result12->fetch_array(MYSQLI_NUM);
-                        $temp_max1 = $row12[0];
+                        $result3_dengue = $mysqli1->query($sql3_dengue);
+                        $row3_dengue = $result3_dengue->fetch_array(MYSQLI_NUM);
+                        $hum_max_dengue = $row3_dengue[0];
 
-                        $sql11 = "SELECT * from datos_medidos order by id DESC LIMIT 5"; // Aqu� se ingresa el valor recibido a la base de datos.
+                       // CONSULTA PRESENCIA DE LLUVIA OJO: no es necesario en este caso pero para la probabilidad SI
+                       $sql4_dengue = "SELECT pre_lluvia from datos_maximos where id=2";
+                       // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
+                       $result4_dengue = $mysqli1->query($sql4_dengue);
+                       $row4_dengue = $result4_dengue->fetch_array(MYSQLI_NUM);
+                       $pre_lluv_dengue = $row4_dengue[0];
+
+                        $sql1_dengue = "SELECT * from datos_medidos order by id DESC LIMIT 5"; // Aqu� se ingresa el valor recibido a la base de datos.
                         // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
-                        $result11 = $mysqli->query($sql11);
+                        $result1_dengue = $mysqli1->query($sql1_dengue);
                         // la siguiente linea es el inicio de un ciclo while, que se ejecuta siempre que la respuesta a la consulta de la base de datos
                         // tenga alg�n registro resultante. Como la consulta arroja 5 resultados, los �ltimos que tenga la tabla, se ejecutar� 5 veces el siguiente ciclo while.
                         // el resultado de cada registro de la tabla, se almacena en el arreglo row, row[0] tiene el dato del 1er campo de la tabla, row[1] tiene el dato del 2o campo de la tabla, as� sucesivamente
                         $contador1 = 0;
-                        while($row11 = $result11->fetch_array(MYSQLI_NUM)){
-                        $ID_TARJ1 = $row11[1];
-                        $temp1 = $row11[2];
-                        $hum1 = $row11[3];
-                        $fecha1 = $row11[4];
-                        $hora1 = $row11[5];
-                        $lluvia1=$row11[6];
+                        while($row11 = $result1_dengue->fetch_array(MYSQLI_NUM)){
+                        $ID_TARJ_dengue = $row11[1];
+                        $temp_dengue = $row11[2];
+                        $hum_dengue = $row11[3];
+                        $fecha_dengue = $row11[4];
+                        $hora_dengue = $row11[5];
+                        $lluvia_dengue=$row11[6];
                         $contador1++;
                     ?>
 
                     <tr>
-                        <td valign="center" align=center>
+                        <td valign="top" align=center>
                             <?php echo $contador1; ?>
                         </td>
-                        <td valign="center" align=center>
-                            <?php echo $ID_TARJ1; ?>
+                        <td valign="top" align=center>
+                            <?php echo $ID_TARJ_dengue; ?>
                         </td>
-                        <td valign="center" align=center>
-                            <?php echo $fecha1; ?>
+                        <td valign="top" align=center>
+                            <?php echo $fecha_dengue; ?>
                         </td>
-                        <td valign="center" align=center>
-                            <?php echo $hora1; ?>
+                        <td valign="top" align=center>
+                            <?php echo $hora_dengue; ?>
                         </td>
-                        <td valign="center" align=center>
-                            <?php echo $temp1." *C"; ?>
+                        <td valign="top" align=center>
+                            <?php echo $temp_dengue." *C"; ?>
                         </td>
-                        <td valign="center" align=center>
-                            <?php echo $hum1." %"; ?>
+                        <td valign="top" align=center>
+                            <?php echo $hum_dengue." %"; ?>
                         </td>
-                        <td valign="center" align=center>
+                        <td valign="top" align=center>
 
                             <?php
-                                if ($temp1 > $temp_max1){
+                                if ($temp_dengue > $temp_max_dengue){
                             ?>
 
-                            <img src="/eHealth/static/img/warning_y.png" width=64 height=64>
+                            <img src="/eHealth/static/img/warning_y.png" width=80 height=80>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/eHealth/static/img/comprobado.png" width=64 height=64>
+                            <img src="/eHealth/static/img/comprobado.png" width=80 height=80>
 
                             <?php
                                 }
                             ?>
 
                         </td>
-                        <td valign="center" align=center>
+                        <td valign="top" align=center>
 
                             <?php
-                                if ($hum1 > $hum_max1){
+                                if ($hum_dengue > $hum_max_dengue){
                             ?>
 
-                            <img src="/eHealth/static/img/warning_r.png" width=64 height=64>
+                            <img src="/eHealth/static/img/warning_r.png" width=80 height=80>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/eHealth/static/img/comprobado.png" width=64 height=64>
+                            <img src="/eHealth/static/img/comprobado.png" width=80 height=80>
 
                             <?php
                                 }
                             ?>
 
                         </td>
-                        <td valign="center" align=center>
+                        <td valign="top" align=center>
 
                             <?php
-                                if ($lluvia1 == 0){
+                                if ($lluvia_dengue == $pre_lluv_dengue){
                             ?>
 
-                            <img src="/eHealth/static/img/dry.png" width=64 height=64>
+                            <img src="/eHealth/static/img/comprobado.png" width=80 height=80>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/eHealth/static/img/wet.png" width=64 height=64>
+                            <img src="/eHealth/static/img/cancelar.png" width=80 height=80>
 
                             <?php
                                 }
