@@ -89,11 +89,10 @@ $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a 
                         <td style="border: none;" valign="top" align=center colspan=3>
                         </td>
                         <td style="border: none;" valign="center" align=right colspan=1>
-                            <input type="number" name="id_tarjeta" placeholder="ID de la tarjeta..." required>
+                            <input type="number" class="form-control" name="id_tarjeta" placeholder="ID de la tarjeta..." required>
                         </td>
                         <td style="border: none;" valign="top" align=center colspan=2>
-                            <i class="fas fa-search"></i>
-                            <input style="background-color:#281E5D; color:white" type="submit" name="submit" value="Buscar">
+                            <button style="background-color:#281E5D; color:white" class="btn" type="submit"><i class="fas fa-search"></i><span class="pl-3" >Buscar</span></button>
                         </td>
                     </form>
                 </tr>
