@@ -237,7 +237,7 @@ $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a 
                     <td style="border: none;" valign="top" align=center colspan=4>
                     </td>
                     <td style="border: none;" valign="top" align=center colspan=2>
-                        <a href="#">
+                        <a href="/eHealth/interfaces/consultas/añadir.php">
                             <button style="background-color:#281E5D; color:white" class="btn btn-lg btn-block"><i class="fas fa-plus-circle"></i><span class="pl-3">Nuevo</span></button>
                         </a>
                     </td>
