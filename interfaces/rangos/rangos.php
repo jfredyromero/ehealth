@@ -10,7 +10,6 @@
         <title>eHealth</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="/eHealth/static/css/styles.css" rel="stylesheet">
-        <meta http-equiv="refresh" content="15"/>
     </head>
     <body background="/eHealth/static/img/background.jpg">
         <h1 id="home-title">eHealth: Dispositivo IoT</h1>
@@ -65,7 +64,7 @@
                   <tr>
                       <td valign="top" align=center width=80& colspan=6 bgcolor="#281E5D">
                             <h1>
-                                <font color=white>Fiebre Amarilla</font>
+                                <font color=white><b>Fiebre Amarilla</b></font>
                             </h1>
                         </td>
                     </tr>
@@ -78,24 +77,9 @@
                                 $hum_max_fiebre = $_POST["hum_max_fiebre"];
                                 $temp_max_dengue = $_POST["temp_max_dengue"];
                                 $hum_max_dengue = $_POST["hum_max_dengue"];
+                                $llu_fiebre=$_POST["opt_fiebre"];
+                                $llu_dengue=$_POST["opt_dengue"];
 
-                                if((isset($_POST["option_fiebre"]))||(isset($_POST["option_dengue"]))){
-                                    $op1=$_POST["option_fiebre"];
-                                    $op2=$_POST["option_dengue"];
-
-                                    if($op1=="si"){
-                                        $boton_fiebre='1';
-                                    }
-                                    else{
-                                        $boton_fiebre='0';
-                                    }
-                                    if($op2=="si"){
-                                        $boton_dengue='1';
-                                    }
-                                    else{
-                                        $boton_dengue='0';
-                                    }
-                                }
                                 $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
                                 // la siguiente linea almacena en una variable denominada sql1, la consulta en lenguaje SQL que quiero realizar a la base de datos.
                                 // se actualiza la tabla de valores m�ximos
@@ -107,7 +91,7 @@
                                 // la siguiente l�nea ejecuta la consulta guardada en la variable sql1, con ayuda del objeto de conexi�n a la base de datos mysqli
                                 $result2 = $mysqli->query($sql4);
 
-                                $sql7 = "UPDATE datos_maximos set pre_lluvia='$boton_fiebre' where id=1";
+                                $sql7 = "UPDATE datos_maximos set pre_lluvia='$llu_fiebre' where id=1";
                                 $result5 = $mysqli->query($sql7);
 
                                 $sql5 = "UPDATE datos_maximos set max_temp='$temp_max_dengue' where id=2";
@@ -116,7 +100,7 @@
                                 $sql6 = "UPDATE datos_maximos set max_hum='$hum_max_dengue' where id=2";
                                 $result4 = $mysqli->query($sql6);
 
-                                $sql8 = "UPDATE datos_maximos set pre_lluvia='$boton_dengue' where id=2";
+                                $sql8 = "UPDATE datos_maximos set pre_lluvia='$llu_dengue' where id=2";
                                 $result6 = $mysqli->query($sql8);
 
                                 if (($result1 == 1)&&($result2 == 1)&&($result3 == 1)&&($result4 == 1)&&($result5 == 1)&&($result6 == 1)){
@@ -138,6 +122,16 @@
                         $temp_max_fiebre = $row1[2];
                         $hum_max_fiebre = $row1[3];
                         $lluvia_fiebre = $row1[4];
+                        if ($lluvia_fiebre=='1') {
+                            $var_lluF_si='selected';
+                        }else{
+                            $var_lluF_si='';
+                        }
+                        if ($lluvia_fiebre=='0') {
+                            $var_lluF_no='selected';
+                        }else{
+                            $var_lluF_no='';
+                        }
                         // CONSULTA DENGUE
                         $sql2 = "SELECT * from datos_maximos where id=2";
                         // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
@@ -146,6 +140,16 @@
                         $temp_max_dengue = $row2[2];
                         $hum_max_dengue = $row2[3];
                         $lluvia_dengue = $row2[4];
+                        if ($lluvia_dengue=='1') {
+                            $var_lluD_si='selected';
+                        }else{
+                            $var_lluD_si='';
+                        }
+                        if ($lluvia_dengue=='0') {
+                            $var_lluD_no='selected';
+                        }else{
+                            $var_lluD_no='';
+                        }
                         if ((isset($_GET["mensaje"]))){
                             $mensaje = $_GET["mensaje"];
                             echo '<tr>
@@ -184,20 +188,18 @@
                                 </font>
                             </td>
                             <td bgcolor="#EEEEEE" align=center>
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label  class="btn btn-secondary Active">
-                                        <input type="radio" name="option_fiebre" value= "si" id="option1" checked> Si
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                        <input type="radio" name="option_fiebre" value= "no" id="option2"> No
-                                    </label>
+                                <div class="dropdown">
+                                    <select class="btn btn-secondary" name="opt_fiebre"> 
+                                        <option value="1" <?php echo $var_lluF_si;?>>Si</option>
+                                        <option value="0" <?php echo $var_lluF_no;?>>No</option>
+                                    </select>
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td valign="top" align=center width=80& colspan=6 bgcolor="#281E5D">
                                 <h1>
-                                    <font color=white>Dengue</font>
+                                    <font color=white><b>Dengue</b></font>
                                 </h1>
                             </td>
                         </tr><tr>
@@ -227,13 +229,11 @@
                                 </font>
                             </td>
                             <td bgcolor="#EEEEEE" align=center>
-                                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                                    <label  class="btn btn-secondary">
-                                        <input type="radio" name="option_dengue" value="si" id="option3" checked> Si
-                                    </label>
-                                    <label class="btn btn-secondary">
-                                        <input type="radio" name="option_dengue" value="no" id="option4"> No
-                                    </label>
+                                <div class="dropdown">
+                                    <select class="btn btn-secondary" name="opt_dengue"> 
+                                        <option value="1" <?php echo $var_lluD_si;?>>Si</option>
+                                        <option value="0" <?php echo $var_lluD_no;?>>No</option>
+                                    </select>
                                 </div>
                             </td>
                         </tr>
