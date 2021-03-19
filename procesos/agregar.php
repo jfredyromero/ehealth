@@ -14,9 +14,8 @@ date_default_timezone_set('America/Bogota'); // esta l�nea es importante cuand
 $fecha = date("Y-m-d");
 $hora = date("h:i:s");
 
-$sql1 = "INSERT into datos_medidos (ID_TARJ, temperatura, humedad, fecha, hora, lluvia) VALUES ('$ID_TARJ', '$temp', '$hum', '$fecha', '$hora', $rain)"; // Aqu� se ingresa el valor recibido a la base de datos.
+$sql1 = "INSERT into datos_medidos (id_tarjeta, temperatura, humedad, fecha, hora, lluvia) VALUES ('$ID_TARJ', '$temp', '$hum', '$fecha', '$hora', $rain)"; // Aqu� se ingresa el valor recibido a la base de datos.
 echo "sql1...".$sql1; // Se imprime la cadena sql enviada a la base de datos, se utiliza para depurar el programa php, en caso de alg�n error.
 $result1 = $mysqli->query($sql1);
 echo "result es...".$result1; // Si result es 1, quiere decir que el ingreso a la base de datos fue correcto.
-
 ?>

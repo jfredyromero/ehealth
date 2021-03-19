@@ -74,13 +74,14 @@
                         if ((isset($_POST["enviado"]))){  // Ingresa a este if si el formulario ha sido enviado..., al ingresar actualiza los datos ingresados en el formulario, en la base de datos.
                             $enviado = $_POST["enviado"];
                             if ($enviado == "S1"){
-                                $Id_Tarj = $_POST["Id"];  // en estas variables se almacenan los datos de fechas recibidos del formulario HTML inicial
+                                $ID = $_POST["ID"];
                                 $Estado_Tarj = $_POST["Estado"];
-
+                                $Propietario = $_POST["Propietario"];
+                                $Ubicacion = $_POST["Ubicacion"];
                                 $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
                                 // la siguiente linea almacena en una variable denominada sql1, la consulta en lenguaje SQL que quiero realizar a la base de datos.
                                 // se actualiza la tabla de valores m�ximos
-                                $sql1="INSERT into dispositivos (id,estado) VALUES ('$Id_Tarj', '$Estado_Tarj')";
+                                $sql1="INSERT into datos_dispositivos (id_tarjeta,estado,propietario,ubicacion) VALUES ('$ID','$Estado_Tarj','$Propietario','$Ubicacion')";
                                 // la siguiente l�nea ejecuta la consulta guardada en la variable sql1, con ayuda del objeto de conexi�n a la base de datos mysqli
                                 $result1 = $mysqli->query($sql1);
                                 if ($result1 == 1){
@@ -93,6 +94,15 @@
 
                             }   // FIN DEL IF, si ya se han recibido los datos del formulario
                         }   // FIN DEL IF, si la variable enviado existe, que es cuando ya se env�o el formulario
+                        else{
+                            $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
+                            // la siguiente linea almacena en una variable denominada sql1, la consulta en lenguaje SQL que quiero realizar a la base de datos.
+                            // se actualiza la tabla de valores m�ximos
+                            $sql2="SELECT MAX(id_tarjeta) from datos_dispositivos ";
+                            $result2 = $mysqli->query($sql2);
+                            $row2 = $result2->fetch_array(MYSQLI_NUM);
+                            $id_tarjeta_nueva = $row2[0]+1;
+                        }
                         if ((isset($_GET["mensaje"]))){
                             $mensaje = $_GET["mensaje"];
                             echo '<tr>
@@ -109,7 +119,24 @@
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>ID:</b></font>
                             </td>
                             <td bgcolor="#EEEEEE" align=center>
-                                <input type="number" name="Id" required>
+                                <input type="number" value="<?php echo $id_tarjeta_nueva; ?>" disabled required>
+                                <input type="hidden" name="ID" value="<?php echo $id_tarjeta_nueva; ?>" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#CCEECC" align=center>
+                                <font FACE="arial" SIZE=2 color="#000044"> <b>Propietario</b></font>
+                            </td>
+                            <td bgcolor="#EEEEEE" align=center>
+                                <input type="text" name="Propietario" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#CCEECC" align=center>
+                                <font FACE="arial" SIZE=2 color="#000044"> <b>Ubicación</b></font>
+                            </td>
+                            <td bgcolor="#EEEEEE" align=center>
+                                <input type="text" name="Ubicacion" value="Popayan" required>
                             </td>
                         </tr>
                         <tr>

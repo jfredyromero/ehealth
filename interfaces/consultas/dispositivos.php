@@ -77,7 +77,7 @@
                     if (isset($_GET["submit"]) && !empty($_GET["submit"])) {
                         $id = $_GET["id_tarjeta"];
 
-                        $sql5 = "SELECT estado from datos_dispositivos WHERE id= $id";
+                        $sql5 = "SELECT estado from datos_dispositivos WHERE id_tarjeta= $id";
                         $result5 = $mysqli->query($sql5);
                         $row5 = $result5->fetch_array(MYSQLI_NUM);
                         if ($row5 == NULL) {
@@ -123,7 +123,7 @@
 
                 $mysqli1 = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
                 // la siguiente linea almacena en una variable denominada sql1, la consulta en lenguaje SQL que quiero realizar a la base de datos. Se consultan los datos de la tarjeta 1, porque en la tabla puede haber datos de diferentes tarjetas.
-                $sql1 = "SELECT * from datos_dispositivos order by id"; // Aqu� se ingresa el valor recibido a la base de datos.
+                $sql1 = "SELECT * from datos_dispositivos order by id_tarjeta"; // Aqu� se ingresa el valor recibido a la base de datos.
                 //
                 // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
                 $result1 = $mysqli->query($sql1);
@@ -131,11 +131,11 @@
                 // tenga alg�n registro resultante. Como la consulta arroja 5 resultados, los �ltimos que tenga la tabla, se ejecutar� 5 veces el siguiente ciclo while.
                 // el resultado de cada registro de la tabla, se almacena en el arreglo row, row[0] tiene el dato del 1er campo de la tabla, row[1] tiene el dato del 2o campo de la tabla, as� sucesivamente
                 if (isset($_GET["submit"]) && !empty($_GET["submit"])) {
-                    $sql2 = "SELECT MAX(fecha) from datos_medidos WHERE ID_TARJ= $id";
+                    $sql2 = "SELECT MAX(fecha) from datos_medidos WHERE id_tarjeta= $id";
                     $result2 = $mysqli->query($sql2);
                     $row2 = $result2->fetch_array(MYSQLI_NUM);
                     $fecha = $row2[0];
-                    $sql3 = "SELECT estado from datos_dispositivos WHERE id= $id";
+                    $sql3 = "SELECT estado from datos_dispositivos WHERE id_tarjeta= $id";
                     $result3 = $mysqli->query($sql3);
                     $row3 = $result3->fetch_array(MYSQLI_NUM);
                     $estado = $row3[0];
@@ -184,7 +184,7 @@
                         $estado = $row1[1];
                         // $ubi = $row1[2];
                         $contador++;
-                        $sql2 = "SELECT MAX(fecha) from datos_medidos WHERE ID_TARJ= $contador";
+                        $sql2 = "SELECT MAX(fecha) from datos_medidos WHERE id_tarjeta= $contador";
                         $result2 = $mysqli->query($sql2);
                         $row2 = $result2->fetch_array(MYSQLI_NUM);
                         $fecha = $row2[0];
