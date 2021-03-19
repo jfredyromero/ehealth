@@ -92,7 +92,7 @@
                             <input type="number" class="form-control" name="id_tarjeta" placeholder="ID de la tarjeta..." required>
                         </td>
                         <td style="border: none;" valign="top" align=center colspan=2>
-                            <button style="background-color:#281E5D; color:white" class="btn" type="submit"><i class="fas fa-search"></i><span class="pl-3" >Buscar</span></button>
+                            <button style="background-color:#281E5D; color:white" value="Buscar" type="submit" class="btn btn-lg" name="submit"><i style="background-color:#281E5D; color:white" class="fas fa-search"></i><span class="pl-3">Buscar</span></button>
                         </td>
                     </form>
                 </tr>
@@ -103,19 +103,19 @@
                         <b>ID de la Tarjeta</b>
                     </td>
                     <td valign="center" align=center bgcolor="#E1E1E1">
+                        <b>Propietario</b>
+                    </td>
+                    <td valign="center" align=center bgcolor="#E1E1E1">
                         <b>Ubicación</b>
                     </td>
                     <td valign="center" align=center bgcolor="#E1E1E1">
                         <b>Estado</b>
                     </td>
                     <td valign="center" align=center bgcolor="#E1E1E1">
-                        <b>Fecha de último registro</b>
+                        <b>Último registro</b>
                     </td>
                     <td valign="center" align=center bgcolor="#E1E1E1" width=80px>
                         <b>Editar</b>
-                    </td>
-                    <td valign="center" align=center bgcolor="#E1E1E1" width=80px>
-                        <b>Eliminar</b>
                     </td>
                 </tr>
 
@@ -169,20 +169,15 @@
                                 <img src="/eHealth/static/img/dibujar.png" width=32 height=32>
                             </a>
                         </td>
-                        <td valign="center" align=center>
-                            <a href="#">
-                                <img src="/eHealth/static/img/basura.png" width=32 height=32>
-                                <a>
-                        </td>
-
                     </tr>
                     <?php
                 } else {
                     $contador = 0;
                     while ($row1 = $result1->fetch_array(MYSQLI_NUM)) {
                         $ID_TARJ = $row1[0];
+                        $propietario = $row1[3];
                         $estado = $row1[1];
-                        // $ubi = $row1[2];
+                        $ubicacion = $row1[2];
                         $contador++;
                         $sql2 = "SELECT MAX(fecha) from datos_medidos WHERE id_tarjeta= $contador";
                         $result2 = $mysqli->query($sql2);
@@ -194,7 +189,10 @@
                                 <?php echo $ID_TARJ; ?>
                             </td>
                             <td valign="center" align=center>
-                                <?php echo "1"; ?>
+                                <?php echo $propietario; ?>
+                            </td>
+                            <td valign="center" align=center>
+                                <?php echo $ubicacion; ?>
                             </td>
                             <td valign="top" align=center>
                                 <?php
@@ -205,7 +203,6 @@
                                 } else {
                                 ?>
                                     <img src="/eHealth/static/img/cancelar.png" width=32 height=32>
-
                                 <?php
                                 }
                                 ?>
@@ -216,10 +213,6 @@
                             <td valign="center" align=center>
                                 <input type="image" name="botondeenvio" src="/eHealth/static/img/dibujar.png" width=32 height=32>
                             </td>
-                            <td valign="center" align=center>
-                                <img src="/eHealth/static/img/basura.png" width=32 height=32>
-                            </td>
-
                         </tr>
 
                 <?php
@@ -232,8 +225,8 @@
                 <tr>
                     <td style="border: none;" valign="top" align=center colspan=4>
                     </td>
-                    <td style="border: none;" valign="top" align=center colspan=2>
-                        <a class="btn btn-lg btn-block" style="background-color:#281E5D; color:white" href="/eHealth/interfaces/consultas/añadir.php" role="button">
+                    <td style="border: none;" valign="top" align=right colspan=2>
+                        <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/eHealth/interfaces/consultas/añadir.php" role="button">
                             <i class="fas fa-plus-circle"></i>
                             <span class="pl-3">Nuevo</span>
                         </a>
