@@ -76,7 +76,7 @@
                             if ($enviado == "S1"){
                                 $Id_Tarj = $_POST["Id"];  // en estas variables se almacenan los datos de fechas recibidos del formulario HTML inicial
                                 $Estado_Tarj = $_POST["Estado"];
-                                
+
                                 $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
                                 // la siguiente linea almacena en una variable denominada sql1, la consulta en lenguaje SQL que quiero realizar a la base de datos.
                                 // se actualiza la tabla de valores m�ximos
@@ -90,18 +90,18 @@
                                     $mensaje = "¡ERROR! Dispositivo no se pudo agregar";
                                 }
                                 header('Location: añadir.php?mensaje='.$mensaje);
-                            
+
                             }   // FIN DEL IF, si ya se han recibido los datos del formulario
                         }   // FIN DEL IF, si la variable enviado existe, que es cuando ya se env�o el formulario
                         if ((isset($_GET["mensaje"]))){
                             $mensaje = $_GET["mensaje"];
-                            echo '<tr>	
-                                <td bgcolor="#EEEEFF" align=center colspan=2> 
-                                        <font FACE="arial" SIZE=2 color="#000048"> <b>'.$mensaje.'</b></font>  
-                                        </td>	
+                            echo '<tr>
+                                <td bgcolor="#EEEEFF" align=center colspan=2>
+                                        <font FACE="arial" SIZE=2 color="#000048"> <b>'.$mensaje.'</b></font>
+                                        </td>
                                 </tr>';
                         }
-                    ?>                       
+                    ?>
 
                     <form method=POST action="añadir.php">
                         <tr>
@@ -118,9 +118,9 @@
                             </td>
                             <td bgcolor="#EEEEEE" align=center>
                                 <div class="dropdown">
-                                    <select class="btn btn-secondary" name="Estado"> 
-                                        <option value="1" >Activar</option>
-                                        <option value="0" >Desactivar</option>
+                                    <select class="btn btn-secondary" name="Estado">
+                                        <option value="1" >Activo</option>
+                                        <option value="0" >Inactivo</option>
                                     </select>
                                 </div>
                             </td>
@@ -128,11 +128,11 @@
                         <tr>
                             <td bgcolor="#EEEEEE" align=center colspan=2>
                                 <input type="hidden" name="enviado" value="S1">
-                                <input type="submit" value="Añadir" name="Añadir">
+                                <input type="submit" value="añadir" name="Añadir">
                             </td>
                         </tr>
-                    </form>  
-                    
+                    </form>
+
                 </table>
             </div>
         </div>

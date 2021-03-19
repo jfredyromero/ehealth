@@ -1,7 +1,7 @@
 <?php
-$root = $_SERVER['DOCUMENT_ROOT'] . "/eHealth/static/php/conexion.php";
-include $root;  // Conexi�n tiene la informaci�n sobre la conexi�n de la base de datos.
-$mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
+    $root = $_SERVER['DOCUMENT_ROOT'] . "/eHealth/static/php/conexion.php";
+    include $root;  // Conexi�n tiene la informaci�n sobre la conexi�n de la base de datos.
+    $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
 ?>
 
 <!DOCTYPE html>
@@ -214,14 +214,10 @@ $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a 
                                 <?php echo $fecha; ?>
                             </td>
                             <td valign="center" align=center>
-                                <a href="#">
-                                    <img src="/eHealth/static/img/dibujar.png" width=32 height=32>
-                                </a>
+                                <input type="image" name="botondeenvio" src="/eHealth/static/img/dibujar.png" width=32 height=32>
                             </td>
                             <td valign="center" align=center>
-                                <a href="#">
-                                    <img src="/eHealth/static/img/basura.png" width=32 height=32>
-                                    <a>
+                                <img src="/eHealth/static/img/basura.png" width=32 height=32>
                             </td>
 
                         </tr>
@@ -237,8 +233,9 @@ $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a 
                     <td style="border: none;" valign="top" align=center colspan=4>
                     </td>
                     <td style="border: none;" valign="top" align=center colspan=2>
-                        <a href="/eHealth/interfaces/consultas/añadir.php">
-                            <button style="background-color:#281E5D; color:white" class="btn btn-lg btn-block"><i class="fas fa-plus-circle"></i><span class="pl-3">Nuevo</span></button>
+                        <a class="btn btn-lg btn-block" style="background-color:#281E5D; color:white" href="/eHealth/interfaces/consultas/añadir.php" role="button">
+                            <i class="fas fa-plus-circle"></i>
+                            <span class="pl-3">Nuevo</span>
                         </a>
                     </td>
                 </tr>

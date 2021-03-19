@@ -64,7 +64,7 @@
                   <tr>
                       <td valign="top" align=center width=80& colspan=6 bgcolor="#281E5D">
                             <h1>
-                                <font color=white><b>Fiebre Amarilla</b></font>
+                                <font color=white>Fiebre Amarilla</font>
                             </h1>
                         </td>
                     </tr>
@@ -189,7 +189,7 @@
                             </td>
                             <td bgcolor="#EEEEEE" align=center>
                                 <div class="dropdown">
-                                    <select class="btn btn-secondary" name="opt_fiebre"> 
+                                    <select class="btn btn-secondary" name="opt_fiebre">
                                         <option value="1" <?php echo $var_lluF_si;?>>Si</option>
                                         <option value="0" <?php echo $var_lluF_no;?>>No</option>
                                     </select>
@@ -199,7 +199,7 @@
                         <tr>
                             <td valign="top" align=center width=80& colspan=6 bgcolor="#281E5D">
                                 <h1>
-                                    <font color=white><b>Dengue</b></font>
+                                    <font color=white>Dengue</font>
                                 </h1>
                             </td>
                         </tr><tr>
@@ -230,7 +230,7 @@
                             </td>
                             <td bgcolor="#EEEEEE" align=center>
                                 <div class="dropdown">
-                                    <select class="btn btn-secondary" name="opt_dengue"> 
+                                    <select class="btn btn-secondary" name="opt_dengue">
                                         <option value="1" <?php echo $var_lluD_si;?>>Si</option>
                                         <option value="0" <?php echo $var_lluD_no;?>>No</option>
                                     </select>
