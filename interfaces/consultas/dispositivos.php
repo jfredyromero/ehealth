@@ -77,7 +77,7 @@
                     if (isset($_GET["submit"]) && !empty($_GET["submit"])) {
                         $id = $_GET["id_tarjeta"];
 
-                        $sql5 = "SELECT estado from dispositivos WHERE id= $id";
+                        $sql5 = "SELECT estado from datos_dispositivos WHERE id= $id";
                         $result5 = $mysqli->query($sql5);
                         $row5 = $result5->fetch_array(MYSQLI_NUM);
                         if ($row5 == NULL) {
@@ -123,7 +123,7 @@
 
                 $mysqli1 = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
                 // la siguiente linea almacena en una variable denominada sql1, la consulta en lenguaje SQL que quiero realizar a la base de datos. Se consultan los datos de la tarjeta 1, porque en la tabla puede haber datos de diferentes tarjetas.
-                $sql1 = "SELECT * from dispositivos order by id"; // Aqu� se ingresa el valor recibido a la base de datos.
+                $sql1 = "SELECT * from datos_dispositivos order by id"; // Aqu� se ingresa el valor recibido a la base de datos.
                 //
                 // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
                 $result1 = $mysqli->query($sql1);
@@ -135,7 +135,7 @@
                     $result2 = $mysqli->query($sql2);
                     $row2 = $result2->fetch_array(MYSQLI_NUM);
                     $fecha = $row2[0];
-                    $sql3 = "SELECT estado from dispositivos WHERE id= $id";
+                    $sql3 = "SELECT estado from datos_dispositivos WHERE id= $id";
                     $result3 = $mysqli->query($sql3);
                     $row3 = $result3->fetch_array(MYSQLI_NUM);
                     $estado = $row3[0];
