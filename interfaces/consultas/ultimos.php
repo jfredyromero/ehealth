@@ -58,37 +58,37 @@
             <div id="page-content">
                 <table width="80%" align=center cellpadding=5 border=1>
                     <tr>
-                        <td valign="top" align=center width=80% colspan=7>
+                        <td valign="center" align=center width=80% colspan=7>
                             <img src="/eHealth/static/img/logo.png" width=800 height=250>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top" align=center width=80% colspan=7 bgcolor="#281E5D">
+                        <td valign="center" align=center width=80% colspan=7 bgcolor="#281E5D">
                             <h1>
                                 <font color=white>Ultimos datos medidos del dispositivo eHealth</font>
                             </h1>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>#</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
-                            <b>ID</b>
+                        <td valign="center" align=center bgcolor="#E1E1E1">
+                            <b>ID Tarjeta</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Fecha</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Hora</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Temperatura</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Humedad</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Presencia de lluvia</b>
                         </td>
                     </tr>
@@ -108,35 +108,46 @@
                         $hum = $row1[3];
                         $fecha = $row1[4];
                         $hora = $row1[5];
-                        if($row1[6] == 1){
-                            $lluvia='Si';
-                        }else{
-                            $lluvia='No';
-                        }
+                        $lluvia = $row1[6];
                         $contador++;
                     ?>
 
                     <tr>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $contador; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $ID_TARJ; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $fecha; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                         <?php echo $hora; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $temp." *C"; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $hum." %"; ?>
                         </td>
-                        <td valign="top" align=center>
-                            <?php echo $lluvia; ?>
+                        <td valign="center" align=center>
+                            <?php
+                                if ($lluvia == 1){
+                            ?>
+
+                            <img src="/eHealth/static/img/wet.png" width=32 height=32>
+
+                            <?php
+                                }
+                                else{
+                            ?>
+
+                            <img src="/eHealth/static/img/dry.png" width=32 height=32>
+
+                            <?php
+                                }
+                            ?>
                         </td>
                     </tr>
 

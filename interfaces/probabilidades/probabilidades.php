@@ -141,25 +141,25 @@
                     ?>
 
                     <tr>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $contador; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $ID_TARJ_fiebre; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $fecha_fiebre; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $hora_fiebre; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $temp_fiebre." *C"; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $hum_fiebre." %"; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
 
                             <?php
                                 if ($temp_fiebre > $temp_max_fiebre){
@@ -179,7 +179,7 @@
                             ?>
 
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
 
                             <?php
                                 if ($hum_fiebre > $hum_max_fiebre){
@@ -200,24 +200,33 @@
 
                         </td>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
 
-                            <?php
-                                if ($lluvia_fiebre == $pre_lluv_fiebre){
-                            ?>
+                          <?php
+                              if ($pre_lluv_fiebre==1){
+                                  if ($lluvia_fiebre == 1){
+                          ?>
 
-                            <img src="/eHealth/static/img/comprobado.png" width=80 height=80>
+                          <img src="/eHealth/static/img/wet.png" width=80 height=80>
 
-                            <?php
-                                }
-                                else{
-                            ?>
+                          <?php
+                                  }
+                                  else{
+                          ?>
 
-                            <img src="/eHealth/static/img/cancelar.png" width=80 height=80>
+                          <img src="/eHealth/static/img/dry.png" width=80 height=80>
 
-                            <?php
-                                }
-                            ?>
+                          <?php
+                                  }
+                              }
+                              else{
+                          ?>
+
+                          <img src="/eHealth/static/img/cancelar.png" width=80 height=80>
+
+                          <?php
+                              }
+                          ?>
 
                         </td>
                     </tr>
@@ -227,38 +236,38 @@
                     ?>
 
                     <tr>
-                        <td valign="top" align=center width=80% colspan=9 bgcolor="#281E5D">
+                        <td valign="center" align=center width=80% colspan=9 bgcolor="#281E5D">
                             <h1>
                                 <font color=white>Dengue</font>
                             </h1>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>#</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
-                            <b>Id de la Tarjeta</b>
+                        <td valign="center" align=center bgcolor="#E1E1E1">
+                            <b>ID</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Fecha</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Hora</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Temperatura</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Humedad</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Alerta Temperatura</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Alerta Humedad</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Alerta Lluvia</b>
                         </td>
                     </tr>
@@ -304,25 +313,25 @@
                     ?>
 
                     <tr>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $contador1; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $ID_TARJ_dengue; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $fecha_dengue; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $hora_dengue; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $temp_dengue." *C"; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $hum_dengue." %"; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
 
                             <?php
                                 if ($temp_dengue > $temp_max_dengue){
@@ -342,7 +351,7 @@
                             ?>
 
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
 
                             <?php
                                 if ($hum_dengue > $hum_max_dengue){
@@ -362,15 +371,24 @@
                             ?>
 
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
 
                             <?php
-                                if ($lluvia_dengue == $pre_lluv_dengue){
+                                if ($pre_lluv_dengue==1){
+                                    if ($lluvia_dengue == 1){
                             ?>
 
-                            <img src="/eHealth/static/img/comprobado.png" width=80 height=80>
+                            <img src="/eHealth/static/img/wet.png" width=80 height=80>
 
                             <?php
+                                    }
+                                    else{
+                            ?>
+
+                            <img src="/eHealth/static/img/dry.png" width=80 height=80>
+
+                            <?php
+                                    }
                                 }
                                 else{
                             ?>

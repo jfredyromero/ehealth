@@ -57,12 +57,12 @@
             <div id="page-content">
                 <table width="80%" align=center cellpadding=5 border=1>
                     <tr>
-                        <td valign="top" align=center width=80& colspan=6>
+                        <td valign="center" align=center width=80& colspan=7>
                             <img src="/eHealth/static/img/logo.png" width=800 height=250>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top" align=center width=80& colspan=6 bgcolor="#281E5D">
+                        <td valign="center" align=center width=80& colspan=7 bgcolor="#281E5D">
                             <h1>
                                 <font color=white>Consulta datos medidos dispositivo eHealth, por rango de fechas</font>
                             </h1>
@@ -79,28 +79,31 @@
                     ?>
 
                     <tr>
-                        <td valign="top" align=center bgcolor="#E1E1E1" colspan=6>
+                        <td valign="center" align=center bgcolor="#E1E1E1" colspan=7>
                             <b>Rango de fechas consultado: desde <?php echo $fecha_ini; ?> hasta <?php echo $fecha_fin; ?></b>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>#</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
-                            <b>Id de la Tarjeta</b>
+                        <td valign="center" align=center bgcolor="#E1E1E1">
+                            <b>ID Tarjeta</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Fecha</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Hora</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Temperatura</b>
                         </td>
-                        <td valign="top" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Humedad</b>
+                        </td>
+                        <td valign="center" align=center bgcolor="#E1E1E1">
+                            <b>Presencia de lluvia</b>
                         </td>
                     </tr>
                     <?php
@@ -118,26 +121,45 @@
                             $hum = $row1[3];
                             $fecha = $row1[4];
                             $hora = $row1[5];
+                            $lluvia = $row1[6];
                             $contador++;
                     ?>
                     <tr>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $contador; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $ID_TARJ; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $fecha; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $hora; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $temp." *C"; ?>
                         </td>
-                        <td valign="top" align=center>
+                        <td valign="center" align=center>
                             <?php echo $hum." %"; ?>
+                        </td>
+                        <td valign="center" align=center>
+                            <?php
+                                if ($lluvia == 1){
+                            ?>
+
+                            <img src="/eHealth/static/img/wet.png" width=32 height=32>
+
+                            <?php
+                                }
+                                else{
+                            ?>
+
+                            <img src="/eHealth/static/img/dry.png" width=32 height=32>
+
+                            <?php
+                                }
+                            ?>
                         </td>
                     </tr>
 
@@ -146,7 +168,7 @@
                         echo '
                         <tr>
                             <form method=POST action="fechas.php">
-                                <td bgcolor="#EEEEEE" align=center colspan=6>
+                                <td bgcolor="#EEEEEE" align=center colspan=7>
                                     <input type="submit" value="Volver" name="Volver">
                                 </td>
                             </form>
@@ -159,23 +181,23 @@
 
                     <form method=POST action="fechas.php">
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Fecha Inicial:</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=5>
                                 <input type="date" name="fecha_ini" value="" required>
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Fecha Final:</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=5>
                                 <input type="date" name="fecha_fin" value="" required>
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#EEEEEE" align=center colspan=2>
+                            <td bgcolor="#EEEEEE" align=center colspan=7>
                                 <input type="hidden" name="enviado" value="S1">
                                 <input type="submit" value="Consultar" name="Consultar">
                             </td>
