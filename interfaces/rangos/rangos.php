@@ -1,5 +1,5 @@
 <?php
-    $root = $_SERVER['DOCUMENT_ROOT']."/eHealth/static/php/conexion.php";
+    $root = $_SERVER['DOCUMENT_ROOT']."/ehealth/static/php/conexion.php";
     include $root;  // Conexi�n tiene la informaci�n sobre la conexi�n de la base de datos.
     $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
 ?>
@@ -9,9 +9,9 @@
     <head>
         <title>eHealth</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link href="/eHealth/static/css/styles.css" rel="stylesheet">
+        <link href="/ehealth/static/css/styles.css" rel="stylesheet">
     </head>
-    <body background="/eHealth/static/img/background.jpg">
+    <body background="/ehealth/static/img/background.jpg">
         <h1 id="home-title">eHealth: Dispositivo IoT</h1>
         <div id="home">
             <nav class="navbar navbar-expand-xl navbar-dark" style="background-color: #281E5D;">
@@ -23,7 +23,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/eHealth/interfaces/consultas/ultimos.php">
+                            <a class="nav-link" href="/ehealth/interfaces/consultas/ultimos.php">
                                 Últimos
                             </a>
                         </li>
@@ -32,16 +32,16 @@
                                 Consultas
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="/eHealth/interfaces/consultas/ultimos.php">Últimos</a>
-                                <a class="dropdown-item" href="/eHealth/interfaces/consultas/fechas.php">Fechas</a>
-                                <a class="dropdown-item" href="/eHealth/interfaces/consultas/dispositivos.php">Dispositivos</a>
+                                <a class="dropdown-item" href="/ehealth/interfaces/consultas/ultimos.php">Últimos</a>
+                                <a class="dropdown-item" href="/ehealth/interfaces/consultas/fechas.php">Fechas</a>
+                                <a class="dropdown-item" href="/ehealth/interfaces/consultas/dispositivos.php">Dispositivos</a>
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/eHealth/interfaces/probabilidades/probabilidades.php">Probabilidades</a>
+                            <a class="nav-link" href="/ehealth/interfaces/probabilidades/probabilidades.php">Probabilidades</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/eHealth/interfaces/rangos/rangos.php">Rangos</a>
+                            <a class="nav-link" href="/ehealth/interfaces/rangos/rangos.php">Rangos</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
@@ -58,7 +58,7 @@
               <table width="80%" align=center cellpadding=5 border=1>
                   <tr>
                       <td valign="top" align=center width=80& colspan=6>
-                          <img src="/eHealth/static/img/logo.png" width=800 height=250>
+                          <img src="/ehealth/static/img/logo.png" width=800 height=250>
                       </td>
                   </tr>
                   <tr>

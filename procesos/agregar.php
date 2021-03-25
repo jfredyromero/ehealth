@@ -1,5 +1,5 @@
 <?php
-$root = $_SERVER['DOCUMENT_ROOT']."/eHealth/static/php/conexion.php";
+$root = $_SERVER['DOCUMENT_ROOT']."/ehealth/static/php/conexion.php";
 include $root;  // Conexi�n tiene la informaci�n sobre la conexi�n de la base de datos.
 
 $hum = $_GET["humedad"]; // el dato de humedad que se recibe aqu� con GET denominado humedad, es enviado como parametro en la solicitud que realiza la tarjeta microcontrolada
