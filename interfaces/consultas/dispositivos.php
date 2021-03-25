@@ -259,7 +259,9 @@
                                     <?php echo $fecha; ?>
                                 </td>
                                 <td valign="center" align=center>
-                                    <input type="image" name="botondeenvio" src="/ehealth/static/img/dibujar.png" width=32 height=32>
+                                    <a class="btn btn-lg btn-block" href="/ehealth/interfaces/consultas/editar.php?id_tarjeta=<?php echo $ID_TARJ; ?>" role="button">
+                                        <img src="/ehealth/static/img/dibujar.png" width=32 height=32>
+                                    </a>
                                 </td>
                             </tr>
 

@@ -65,58 +65,103 @@
                     <tr>
                         <td valign="top" align=center width=80& colspan=6 bgcolor="#281E5D">
                             <h1>
-                                <font color=white>Añadir Dispositivo</font>
+                                <font color=white>Editar Dispositivo</font>
                             </h1>
                         </td>
                     </tr>
 
                     <?php
-                        if ((isset($_POST["enviado"]))){  // Ingresa a este if si el formulario ha sido enviado..., al ingresar actualiza los datos ingresados en el formulario, en la base de datos.
-                            $enviado = $_POST["enviado"];
-                            if ($enviado == "S1"){
-                                $ID = $_POST["ID"];
-                                $Estado_Tarj = $_POST["Estado"];
-                                $Propietario = $_POST["Propietario"];
-                                $Ubicacion = $_POST["Ubicacion"];
-                                $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
-                                // la siguiente linea almacena en una variable denominada sql1, la consulta en lenguaje SQL que quiero realizar a la base de datos.
-                                // se actualiza la tabla de valores m�ximos
-                                $sql1="INSERT into datos_dispositivos (id_tarjeta,estado,propietario,ubicacion) VALUES ('$ID','$Estado_Tarj','$Propietario','$Ubicacion')";
-                                // la siguiente l�nea ejecuta la consulta guardada en la variable sql1, con ayuda del objeto de conexi�n a la base de datos mysqli
-                                $result1 = $mysqli->query($sql1);
-                                if ($result1 == 1){
-                                    $mensaje = "Dispositivo añadido correctamente";
-                                }
-                                else{
-                                    $mensaje = "¡ERROR! Dispositivo no se pudo agregar";
-                                }
+                    if ((isset($_POST["enviado"]))){
+                        $id_tarjeta = $_POST['id_tarjeta'];
+                        $propietario =$_POST['propietario'];
+                        $ubicacion =$_POST['ubicacion'];
+                        $estado = $_POST['estado'];
 
-                                echo '<tr>
-                                <td bgcolor="#EEEEFF" align=center colspan=2>
-                                        <font FACE="arial" SIZE=2 color="#000048"> <b>'.$mensaje.'</b></font>
-                                        </td>
-                                </tr>';
+                        $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
 
-                            }   // FIN DEL IF, si ya se han recibido los datos del formulario
-                        }   // FIN DEL IF, si la variable enviado existe, que es cuando ya se env�o el formulario
-                            $mysqli2 = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
-                            // la siguiente linea almacena en una variable denominada sql1, la consulta en lenguaje SQL que quiero realizar a la base de datos.
-                            // se actualiza la tabla de valores m�ximos
-                            $sql2="SELECT MAX(id_tarjeta) from datos_dispositivos ";
-                            $result2 = $mysqli2->query($sql2);
-                            $row2 = $result2->fetch_array(MYSQLI_NUM);
-                            $id_tarjeta_nueva = $row2[0]+1;
+                        $sql1 = "UPDATE datos_dispositivos set propietario='$propietario' where id_tarjeta='$id_tarjeta'";
+                        //echo "sql1".$sql1;
+                        // la siguiente l�nea ejecuta la consulta guardada en la variable sql1, con ayuda del objeto de conexi�n a la base de datos mysqli
+                        $result1 = $mysqli->query($sql1);
+
+                        $sql2 = "UPDATE datos_dispositivos set ubicacion='$ubicacion' where id_tarjeta='$id_tarjeta'";
+                        //echo "sql2".$sql2;
+                        $result2 = $mysqli->query($sql2);
+
+                        $sql3 = "UPDATE datos_dispositivos set estado='$estado' where id_tarjeta='$id_tarjeta'";
+                        //echo "sql3".$sql3;
+                        $result3 = $mysqli->query($sql3);
+
+                        if (($result1 == 1)&&($result2 == 1)&&($result3 == 1)){
+                            $mensaje = "Datos modificados correctamente";
+                        }else{
+                            $mensaje = "Inconveniente el editar los datos";
+                        }
+
+                        echo '<tr>
+                        <td bgcolor="#EEEEFF" align=center colspan=2>
+                                <font FACE="arial" SIZE=2 color="#000048"> <b>'.$mensaje.'</b></font>
+                                </td>
+                        </tr>';
+
+                        $mysqli = new mysqli($host, $user, $pw, $db);
+                        $id_tarj=$_POST["id_tarjeta"];
+                        $sql1="SELECT * from datos_dispositivos WHERE id_tarjeta= '$id_tarj'";
+                        $result1 = $mysqli->query($sql1);
+                        $row1 = $result1->fetch_array(MYSQLI_NUM);
+
+                        $id_ta = $row1[0];
+                        $estado = $row1[1];
+                        $ubicacion = $row1[2];
+                        $propietario= $row1[3];
+
+                        if ($estado=='1') {
+                            $estado_si='selected';
+                        }else{
+                            $estado_si='';
+                        }
+
+                        if ($estado=='0') {
+                            $estado_no='selected';
+                        }else{
+                            $estado_no='';
+                        }
+
+                    }else{
+                        $mysqli = new mysqli($host, $user, $pw, $db);
+                        $id_tarj=$_GET["id_tarjeta"];
+                        $sql1="SELECT * from datos_dispositivos WHERE id_tarjeta= '$id_tarj'";
+                        $result1 = $mysqli->query($sql1);
+                        $row1 = $result1->fetch_array(MYSQLI_NUM);
+
+                        $id_ta = $row1[0];
+                        $estado = $row1[1];
+                        $ubicacion = $row1[2];
+                        $propietario= $row1[3];
+
+                        if ($estado=='1') {
+                            $estado_si='selected';
+                        }else{
+                            $estado_si='';
+                        }
+
+                        if ($estado=='0') {
+                            $estado_no='selected';
+                        }else{
+                            $estado_no='';
+                        }
+                    }
 
                     ?>
 
-                    <form method=POST action="añadir.php">
+                    <form method=POST action="editar.php">
                         <tr>
                             <td bgcolor="#CCEECC" align=center>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>ID:</b></font>
                             </td>
                             <td bgcolor="#EEEEEE" align=center>
-                                <input type="number" value="<?php echo $id_tarjeta_nueva; ?>" disabled required>
-                                <input type="hidden" name="ID" value="<?php echo $id_tarjeta_nueva; ?>" required>
+                                 <input type="number"  value=<?php echo $id_ta; ?> disabled>
+                                 <input type="hidden" name="id_tarjeta" value=<?php echo $id_ta; ?> >
                             </td>
                         </tr>
                         <tr>
@@ -124,7 +169,8 @@
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Propietario</b></font>
                             </td>
                             <td bgcolor="#EEEEEE" align=center>
-                                <input type="text" name="Propietario" required>
+                                <input type="text" name="propietario" value= "<?php echo $propietario; ?>" required>
+
                             </td>
                         </tr>
                         <tr>
@@ -132,7 +178,8 @@
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Ubicación</b></font>
                             </td>
                             <td bgcolor="#EEEEEE" align=center>
-                                <input type="text" name="Ubicacion" value="Popayan" required>
+                                <input type="text" name="ubicacion" value= <?php echo $ubicacion; ?>  required>
+
                             </td>
                         </tr>
                         <tr>
@@ -141,9 +188,9 @@
                             </td>
                             <td bgcolor="#EEEEEE" align=center>
                                 <div class="dropdown">
-                                    <select class="btn btn-secondary" name="Estado">
-                                        <option value="1" >Activo</option>
-                                        <option value="0" >Inactivo</option>
+                                    <select class="btn btn-secondary" name="estado" >
+                                        <option value="1" <?php echo $estado_si;?> >Activo</option>
+                                        <option value="0" <?php echo $estado_no;?> >Inactivo</option>
                                     </select>
                                 </div>
                             </td>
@@ -151,7 +198,7 @@
                         <tr>
                             <td bgcolor="#EEEEEE" align=center colspan=2>
                                 <input type="hidden" name="enviado" value="S1">
-                                <button style="background-color:#281E5D; color:white" value="Añadir" type="submit" class="btn btn-lg" name="Añadir"><i style="background-color:#281E5D; color:white" class="fas fa-user-plus"></i><span class="pl-3">Añadir</span></button>
+                                <input type="submit" value="Editar" name="editar">
                             </td>
                         </tr>
                     </form>
@@ -162,6 +209,5 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
     </body>
 </html>
