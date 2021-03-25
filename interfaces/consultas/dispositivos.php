@@ -72,14 +72,30 @@
                     </tr>
                     <tr>
                         <?php
+
                         if (isset($_GET["submit"]) && !empty($_GET["submit"])) {
                             $id = $_GET["id_tarjeta"];
-
                             $sql5 = "SELECT estado from datos_dispositivos WHERE id_tarjeta= $id";
                             $result5 = $mysqli->query($sql5);
                             $row5 = $result5->fetch_array(MYSQLI_NUM);
                             if ($row5 == NULL) {
+                                ?>
+                                <tr>
+                                    <td valign="center" align=center bgcolor="#E1E1E1" colspan=7>
+                                        <b>El ID solicitado NO existe</b>
+                                    </td>
+                                </tr>
+                                <?php
                                 unset($_GET["submit"]);
+                            }
+                            else{
+                                ?>
+                                <tr>
+                                    <td valign="center" align=center bgcolor="#E1E1E1" colspan=7>
+                                        <b>Usted ha consultado el ID: <?php echo $id; ?></b>
+                                    </td>
+                                </tr>
+                                <?php
                             }
                         }
                         ?>
@@ -185,6 +201,23 @@
                                 </a>
                             </td>
                         </tr>
+                        <tr height=20>
+                        </tr>
+                        <tr>
+                            <td style="border: none;" valign="top" align=left colspan=4>
+                            <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/eHealth/interfaces/consultas/dispositivos.php" role="button">
+                                    <span class="pl-3">Atrás</span>
+                                </a>
+                            </td>
+                            <td style="border: none;" valign="top" align=right colspan=2>
+                                <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/eHealth/interfaces/consultas/añadir.php" role="button">
+                                    <i class="fas fa-plus-circle"></i>
+                                    <span class="pl-3">Nuevo</span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr height=20>
+                        </tr>
                         <?php
                     } else {
                         $contador = 0;
@@ -232,13 +265,12 @@
 
                     <?php
                         }
-                    }
                     ?>
 
                     <tr height=20>
                     </tr>
                     <tr>
-                        <td style="border: none;" valign="top" align=center colspan=4>
+                        <td style="border: none;" valign="top" colspan=4>
                         </td>
                         <td style="border: none;" valign="top" align=right colspan=2>
                             <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/eHealth/interfaces/consultas/añadir.php" role="button">
@@ -249,6 +281,12 @@
                     </tr>
                     <tr height=20>
                     </tr>
+
+                    <?php
+                    }
+                    ?>
+
+
                 </table>
             </div>
         </div>
