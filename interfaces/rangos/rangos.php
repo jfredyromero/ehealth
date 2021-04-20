@@ -10,6 +10,7 @@
         <title>eHealth</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="/ehealth/static/css/styles.css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/png" href="/ehealth/static/img/favicon.png">
     </head>
     <body background="/ehealth/static/img/background.jpg">
         <h1 id="home-title">eHealth: Dispositivo IoT</h1>
@@ -57,187 +58,197 @@
             <div id="page-content">
               <table width="80%" align=center cellpadding=5 border=1>
                   <tr>
-                      <td valign="top" align=center width=80& colspan=6>
+                      <td valign="top" align=center width=80% colspan=6>
                           <img src="/ehealth/static/img/logo.png" width=800 height=250>
                       </td>
                   </tr>
+                  <tr height=20>
+                  </tr>
                   <tr>
-                      <td valign="top" align=center width=80& colspan=6 bgcolor="#281E5D">
-                            <h1>
-                                <font color=white>Fiebre Amarilla</font>
-                            </h1>
-                        </td>
-                    </tr>
+                      <td valign="top" align=center width=80% colspan=6 bgcolor="#281E5D">
+                          <h3>
+                              <font color=white>¡Mueve el slider y selecciona el peso que cada variable tendrá sobre el cálculo de cada una de las enfermedades!</font>
+                          </h3>
+                      </td>
+                  </tr>
+                  <tr height=20>
+                  </tr>
+                  <tr>
+                      <td valign="top" align=center width=80% colspan=6 bgcolor="#281E5D">
+                          <h1>
+                              <font color=white>Fiebre Amarilla</font>
+                          </h1>
+                      </td>
+                  </tr>
 
                     <?php
                         if ((isset($_POST["enviado"]))){  // Ingresa a este if si el formulario ha sido enviado..., al ingresar actualiza los datos ingresados en el formulario, en la base de datos.
                             $enviado = $_POST["enviado"];
-                            if ($enviado == "S1"){
-                                $temp_max_fiebre = $_POST["temp_max_fiebre"];  // en estas variables se almacenan los datos de fechas recibidos del formulario HTML inicial
-                                $hum_max_fiebre = $_POST["hum_max_fiebre"];
-                                $temp_max_dengue = $_POST["temp_max_dengue"];
-                                $hum_max_dengue = $_POST["hum_max_dengue"];
-                                $llu_fiebre=$_POST["opt_fiebre"];
-                                $llu_dengue=$_POST["opt_dengue"];
+                            if ($enviado == "S_fiebre"){
+                                $prob_temp_fiebre = $_POST["prob_temp_fiebre"];
+                                $prob_hum_fiebre = $_POST["prob_hum_fiebre"];
+                                $prob_lluvia_fiebre = $_POST["prob_lluvia_fiebre"];
 
                                 $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
                                 // la siguiente linea almacena en una variable denominada sql1, la consulta en lenguaje SQL que quiero realizar a la base de datos.
                                 // se actualiza la tabla de valores m�ximos
-                                $sql3 = "UPDATE datos_maximos set max_temp='$temp_max_fiebre' where id=1";
-                                // la siguiente l�nea ejecuta la consulta guardada en la variable sql1, con ayuda del objeto de conexi�n a la base de datos mysqli
-                                $result1 = $mysqli->query($sql3);
+                                $sql1 = "UPDATE datos_ponderados set prob_temp='$prob_temp_fiebre', prob_hum='$prob_hum_fiebre', prob_lluvia='$prob_lluvia_fiebre' where id=1";
 
-                                $sql4 = "UPDATE datos_maximos set max_hum='$hum_max_fiebre' where id=1";
-                                // la siguiente l�nea ejecuta la consulta guardada en la variable sql1, con ayuda del objeto de conexi�n a la base de datos mysqli
-                                $result2 = $mysqli->query($sql4);
+                                $result1 = $mysqli->query($sql1);
 
-                                $sql7 = "UPDATE datos_maximos set pre_lluvia='$llu_fiebre' where id=1";
-                                $result5 = $mysqli->query($sql7);
-
-                                $sql5 = "UPDATE datos_maximos set max_temp='$temp_max_dengue' where id=2";
-                                $result3 = $mysqli->query($sql5);
-
-                                $sql6 = "UPDATE datos_maximos set max_hum='$hum_max_dengue' where id=2";
-                                $result4 = $mysqli->query($sql6);
-
-                                $sql8 = "UPDATE datos_maximos set pre_lluvia='$llu_dengue' where id=2";
-                                $result6 = $mysqli->query($sql8);
-
-                                if (($result1 == 1)&&($result2 == 1)&&($result3 == 1)&&($result4 == 1)&&($result5 == 1)&&($result6 == 1)){
+                                if ($result1 == 1){
                                     $mensaje = "Datos actualizados correctamente";
                                 }else{
                                     $mensaje = "Inconveniente actualizando datos";
                                 }
+                            }
+                            if ($enviado == "S_dengue"){
+                                $prob_temp_dengue = $_POST["prob_temp_dengue"];
+                                $prob_hum_dengue = $_POST["prob_hum_dengue"];
+                                $prob_lluvia_dengue = $_POST["prob_lluvia_dengue"];
 
-                                echo '<tr>
-                                    <td bgcolor="#EEEEFF" align=center colspan=2>
-                                    <font FACE="arial" SIZE=2 color="#000044"> <b>'.$mensaje.'</b></font>
-                                    </td>
-                                    </tr>';
+                                $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
+                                // la siguiente linea almacena en una variable denominada sql1, la consulta en lenguaje SQL que quiero realizar a la base de datos.
+                                // se actualiza la tabla de valores m�ximos
+                                $sql2 = "UPDATE datos_ponderados set prob_temp='$prob_temp_dengue', prob_hum='$prob_hum_dengue', prob_lluvia='$prob_lluvia_dengue' where id=2";
 
-                            }   // FIN DEL IF, si ya se han recibido los datos del formulario
+                                $result2 = $mysqli->query($sql2);
+
+                                if ($result2 == 1){
+                                    $mensaje = "Datos actualizados correctamente";
+                                }else{
+                                    $mensaje = "Inconveniente actualizando datos";
+                                }
+                            }
+                            echo '<tr>
+                                <td bgcolor="#EEEEFF" align=center colspan=6>
+                                <font FACE="arial" SIZE=2 color="#000044"> <b>'.$mensaje.'</b></font>
+                                </td>
+                                </tr>';
                         }   // FIN DEL IF, si la variable enviado existe, que es cuando ya se env�o el formulario
 
-                        // AQUI CONSULTA LOS VALORES ACTUALES DE HUMEDAD y TEMPERATURA, PARA PRESENTARLOS EN EL FORMULARIO
+                        // AQUI CONSULTA LAS PROBABILIDADES PARA PRESENTARLOS EN EL SLIDER
                         $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
-                        $sql1 = "SELECT * from datos_maximos where id=1";
-                        // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
                         // CONSULTA FIEBRE AMARILLA
-                        $result1 = $mysqli->query($sql1);
-                        $row1 = $result1->fetch_array(MYSQLI_NUM);
-                        $temp_max_fiebre = $row1[2];
-                        $hum_max_fiebre = $row1[3];
-                        $lluvia_fiebre = $row1[4];
-                        if ($lluvia_fiebre=='1') {
-                            $var_lluF_si='selected';
-                        }else{
-                            $var_lluF_si='';
-                        }
-                        if ($lluvia_fiebre=='0') {
-                            $var_lluF_no='selected';
-                        }else{
-                            $var_lluF_no='';
-                        }
+                        $sql3 = "SELECT * from datos_ponderados where id=1";
+                        $result3 = $mysqli->query($sql3);
+                        $row3 = $result3->fetch_array(MYSQLI_NUM);
+                        $prob_temp_fiebre = $row3[2];
+                        $prob_hum_fiebre = $row3[3];
+                        $prob_lluvia_fiebre = $row3[4];
                         // CONSULTA DENGUE
-                        $sql2 = "SELECT * from datos_maximos where id=2";
-                        // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
-                        $result2 = $mysqli->query($sql2);
-                        $row2 = $result2->fetch_array(MYSQLI_NUM);
-                        $temp_max_dengue = $row2[2];
-                        $hum_max_dengue = $row2[3];
-                        $lluvia_dengue = $row2[4];
-                        if ($lluvia_dengue=='1') {
-                            $var_lluD_si='selected';
-                        }else{
-                            $var_lluD_si='';
-                        }
-                        if ($lluvia_dengue=='0') {
-                            $var_lluD_no='selected';
-                        }else{
-                            $var_lluD_no='';
-                        }
+                        $sql4 = "SELECT * from datos_ponderados where id=2";
+                        $result4 = $mysqli->query($sql4);
+                        $row4 = $result4->fetch_array(MYSQLI_NUM);
+                        $prob_temp_dengue = $row4[2];
+                        $prob_hum_dengue = $row4[3];
+                        $prob_lluvia_dengue = $row4[4];
                     ?>
 
                     <form method=POST action="rangos.php">
                         <tr>
-                            <td bgcolor="#EEEEEE" align=center>
-                                <font FACE="arial" SIZE=2 color="#000044">
-                                    <b>Valor Maximo Temperatura:</b>
-                                </font>
-                            </td>
-                            <td bgcolor="#EEEEEE" align=center>
-                                <input type="number" name="temp_max_fiebre" value="<?php echo $temp_max_fiebre; ?>" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td bgcolor="#EEEEEE" align=center>
-                                <font FACE="arial" SIZE=2 color="#000044">
-                                    <b>Valor Maximo Humedad:</b>
-                                </font>
-                            </td>
-                            <td bgcolor="#EEEEEE" align=center>
-                                <input type="number" name="hum_max_fiebre" value="<?php echo $hum_max_fiebre; ?>" required>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td bgcolor="#EEEEEE" align=center>
-                                <font FACE="arial" SIZE=2 color="#000044">
-                                    <b>Presencia de lluvia:</b>
-                                </font>
-                            </td>
-                            <td bgcolor="#EEEEEE" align=center>
-                                <div class="dropdown">
-                                    <select class="btn btn-secondary" name="opt_fiebre">
-                                        <option value="1" <?php echo $var_lluF_si;?>>Si</option>
-                                        <option value="0" <?php echo $var_lluF_no;?>>No</option>
-                                    </select>
+                            <td style="height: 100px; justify-content: center; align-items: center;" colspan=6>
+                                <div class="middle">
+                                    <div class="multi-range-slider">
+                                        <input type="range" class="input-left" min="0" max="100" value="<?php echo $prob_temp_fiebre; ?>">
+                                        <input type="range" class="input-right" min="0" max="100" value="<?php echo 100-$prob_lluvia_fiebre; ?>">
+                                        <div class="slider">
+                                            <div class="l-track"></div>
+                                            <div class="r-track"></div>
+                                            <div class="range"></div>
+                                            <div class="thumb left"></div>
+                                            <div class="thumb right"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td valign="top" align=center width=80& colspan=6 bgcolor="#281E5D">
-                                <h1>
-                                    <font color=white>Dengue</font>
-                                </h1>
-                            </td>
-                        </tr><tr>
-                            <td bgcolor="#EEEEEE" align=center>
-                                <font FACE="arial" SIZE=2 color="#000044">
-                                    <b>Valor Maximo Temperatura:</b>
-                                </font>
-                            </td>
-                            <td bgcolor="#EEEEEE" align=center>
-                                <input type="number" name="temp_max_dengue" value="<?php echo $temp_max_dengue; ?>" required>
-                            </td>
+                          <td bgcolor="#ffa420" valign="center" align=center colspan=2>
+                              <font FACE="arial" SIZE=4>
+                                  <b>Temperatura:</b>
+                                  <span class="l-percent"><?php echo $prob_temp_fiebre; ?>%</span>
+                                  <input type="hidden" name="prob_temp_fiebre" value="<?php echo $prob_temp_fiebre; ?>">
+                              </font>
+                          </td>
+                          <td bgcolor="#008f39" valign="center" align=center colspan=2>
+                              <font FACE="arial" SIZE=4>
+                                  <b>Humedad:</b>
+                                  <span class="m-percent"><?php echo $prob_hum_fiebre; ?>%</span>
+                                  <input type="hidden" name="prob_hum_fiebre" value="<?php echo $prob_hum_fiebre; ?>">
+                              </font>
+                          </td>
+                          <td bgcolor="#ADD8E6" valign="center" align=center colspan=2>
+                              <font FACE="arial" SIZE=4>
+                                  <b>Precipitación:</b>
+                                  <span class="r-percent"><?php echo $prob_lluvia_fiebre; ?>%</span>
+                                  <input type="hidden" name="prob_lluvia_fiebre" value="<?php echo $prob_lluvia_fiebre; ?>">
+                              </font>
+                          </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#EEEEEE" align=center>
-                                <font FACE="arial" SIZE=2 color="#000044">
-                                    <b>Valor Maximo Humedad:</b>
-                                </font>
-                            </td>
-                            <td bgcolor="#EEEEEE" align=center>
-                                <input type="number" name="hum_max_dengue" value="<?php echo $hum_max_dengue; ?>" required>
+                            <td bgcolor="#EEEEEE" align=center colspan=6>
+                                <input type="hidden" name="enviado" value="S_fiebre">
+                                <button style="background-color:#281E5D; color:white" value="Actualizar" type="submit" class="btn btn-lg" name="Actualizar"><i style="background-color:#281E5D; color:white" class="fas fa-sync"></i><span class="pl-3">Actualizar</span></button>
                             </td>
                         </tr>
+                    </form>
+
+                    <tr height=20>
+                    </tr>
+
+                    <tr>
+                        <td valign="top" align=center width=80& colspan=6 bgcolor="#281E5D">
+                            <h1>
+                                <font color=white>Dengue</font>
+                            </h1>
+                        </td>
+                    </tr>
+
+                    <form method=POST action="rangos.php">
                         <tr>
-                            <td bgcolor="#EEEEEE" align=center>
-                                <font FACE="arial" SIZE=2 color="#000044">
-                                    <b>Presencia de lluvia:</b>
-                                </font>
-                            </td>
-                            <td bgcolor="#EEEEEE" align=center>
-                                <div class="dropdown">
-                                    <select class="btn btn-secondary" name="opt_dengue">
-                                        <option value="1" <?php echo $var_lluD_si;?>>Si</option>
-                                        <option value="0" <?php echo $var_lluD_no;?>>No</option>
-                                    </select>
+                            <td style="height: 100px; justify-content: center; align-items: center;" colspan=6>
+                                <div class="middle">
+                                    <div class="multi-range-slider">
+                                        <input type="range" class="input-left" min="0" max="100" value="<?php echo $prob_temp_dengue; ?>">
+                                        <input type="range" class="input-right" min="0" max="100" value="<?php echo 100-$prob_lluvia_dengue; ?>">
+                                        <div class="slider">
+                                            <div class="l-track"></div>
+                                            <div class="r-track"></div>
+                                            <div class="range"></div>
+                                            <div class="thumb left"></div>
+                                            <div class="thumb right"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#EEEEEE" align=center colspan=2>
-                                <input type="hidden" name="enviado" value="S1">
+                          <td bgcolor="#ffa420" valign="center" align=center colspan=2>
+                              <font FACE="arial" SIZE=4>
+                                  <b>Temperatura:</b>
+                                  <span class="l-percent"><?php echo $prob_temp_dengue; ?>%</span>
+                                  <input type="hidden" name="prob_temp_dengue" value="<?php echo $prob_temp_dengue; ?>">
+                              </font>
+                          </td>
+                          <td bgcolor="#008f39" valign="center" align=center colspan=2>
+                              <font FACE="arial" SIZE=4>
+                                  <b>Humedad:</b>
+                                  <span class="m-percent"><?php echo $prob_hum_dengue; ?>%</span>
+                                  <input type="hidden" name="prob_hum_dengue" value="<?php echo $prob_hum_dengue; ?>">
+                              </font>
+                          </td>
+                          <td bgcolor="#ADD8E6" valign="center" align=center colspan=2>
+                              <font FACE="arial" SIZE=4>
+                                  <b>Precipitación:</b>
+                                  <span class="r-percent"><?php echo $prob_lluvia_dengue; ?>%</span>
+                                  <input type="hidden" name="prob_lluvia_dengue" value="<?php echo $prob_lluvia_dengue; ?>">
+                              </font>
+                          </td>
+                        </tr>
+                        <tr>
+                            <td bgcolor="#EEEEEE" align=center colspan=6>
+                                <input type="hidden" name="enviado" value="S_dengue">
                                 <button style="background-color:#281E5D; color:white" value="Actualizar" type="submit" class="btn btn-lg" name="Actualizar"><i style="background-color:#281E5D; color:white" class="fas fa-sync"></i><span class="pl-3">Actualizar</span></button>
                             </td>
                         </tr>
@@ -245,6 +256,7 @@
                 </table>
             </div>
         </div>
+        <script src="/ehealth/static/js/slider.js" type="text/javascript"></script>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

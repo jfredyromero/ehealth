@@ -10,6 +10,7 @@
         <title>eHealth</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="/ehealth/static/css/styles.css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/png" href="/ehealth/static/img/favicon.png">
     </head>
     <body background="/ehealth/static/img/background.jpg">
         <h1 id="home-title">eHealth: Dispositivo IoT</h1>
@@ -57,12 +58,12 @@
             <div id="page-content">
                 <table width="80%" align=center cellpadding=5 border=1>
                     <tr>
-                        <td valign="top" align=center width=80% colspan=6>
+                        <td valign="center" align=center width=80% colspan=6>
                             <img src="/ehealth/static/img/logo.png" width=800 height=250>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="top" align=center width=80% colspan=6 bgcolor="#281E5D">
+                        <td valign="center" align=center width=80% colspan=6 bgcolor="#281E5D">
                             <h1>
                                 <font color=white>Consulta de dispositivos eHealth</font>
                             </h1>
@@ -100,12 +101,12 @@
                         }
                         ?>
                         <form method="GET">
-                            <td style="border: none;" valign="top" align=center colspan=3>
+                            <td style="border: none;" valign="center" align=center colspan=3>
                             </td>
                             <td style="border: none;" valign="center" align=right colspan=1>
                                 <input type="number" class="form-control" name="id_tarjeta" placeholder="ID de la tarjeta..." required>
                             </td>
-                            <td style="border: none;" valign="top" align=center colspan=2>
+                            <td style="border: none;" valign="center" align=center colspan=2>
                                 <button style="background-color:#281E5D; color:white" value="Buscar" type="submit" class="btn btn-lg" name="submit"><i style="background-color:#281E5D; color:white" class="fas fa-search"></i><span class="pl-3">Buscar</span></button>
                             </td>
                         </form>
@@ -178,7 +179,7 @@
                             <td valign="center" align=center>
                                 <?php echo $ubicacion; ?>
                             </td>
-                            <td valign="top" align=center>
+                            <td valign="center" align=center>
                                 <?php
                                 if ($estado == 1) {
                                 ?>
@@ -187,7 +188,6 @@
                                 } else {
                                 ?>
                                     <img src="/ehealth/static/img/cancelar.png" width=32 height=32>
-
                                 <?php
                                 }
                                 ?>
@@ -196,7 +196,7 @@
                                 <?php echo $fecha; ?>
                             </td>
                             <td valign="center" align=center>
-                                <a href="#">
+                                <a class="btn btn-lg btn-block" href="/ehealth/interfaces/consultas/editar.php?id_tarjeta=<?php echo $ID_TARJ; ?>" role="button">
                                     <img src="/ehealth/static/img/dibujar.png" width=32 height=32>
                                 </a>
                             </td>
@@ -204,12 +204,13 @@
                         <tr height=20>
                         </tr>
                         <tr>
-                            <td style="border: none;" valign="top" align=left colspan=4>
-                            <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/consultas/dispositivos.php" role="button">
-                                    <span class="pl-3">Atrás</span>
+                            <td style="border: none;" valign="center" align=left colspan=4>
+                                <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/consultas/dispositivos.php" role="button">
+                                    <i class="fas fa-angle-double-left"></i>
+                                    <span class="pl-3">Volver</span>
                                 </a>
                             </td>
-                            <td style="border: none;" valign="top" align=right colspan=2>
+                            <td style="border: none;" valign="center" align=right colspan=2>
                                 <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/consultas/añadir.php" role="button">
                                     <i class="fas fa-plus-circle"></i>
                                     <span class="pl-3">Nuevo</span>
@@ -242,7 +243,7 @@
                                 <td valign="center" align=center>
                                     <?php echo $ubicacion; ?>
                                 </td>
-                                <td valign="top" align=center>
+                                <td valign="center" align=center>
                                     <?php
                                     if ($estado == 1) {
                                     ?>
@@ -272,9 +273,9 @@
                     <tr height=20>
                     </tr>
                     <tr>
-                        <td style="border: none;" valign="top" colspan=4>
+                        <td style="border: none;" valign="center" colspan=4>
                         </td>
-                        <td style="border: none;" valign="top" align=right colspan=2>
+                        <td style="border: none;" valign="center" align=right colspan=2>
                             <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/consultas/añadir.php" role="button">
                                 <i class="fas fa-plus-circle"></i>
                                 <span class="pl-3">Nuevo</span>

@@ -10,6 +10,7 @@
         <title>eHealth</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="/ehealth/static/css/styles.css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/png" href="/ehealth/static/img/favicon.png">
     </head>
     <body background="/ehealth/static/img/background.jpg">
         <h1 id="home-title">eHealth: Dispositivo IoT</h1>
@@ -148,14 +149,14 @@
                                 if ($lluvia == 1){
                             ?>
 
-                            <img src="/ehealth/static/img/wet.png" width=32 height=32>
+                            <img src="/ehealth/static/img/rainy.png" width=32 height=32>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/ehealth/static/img/dry.png" width=32 height=32>
+                            <img src="/ehealth/static/img/sunny.png" width=32 height=32>
 
                             <?php
                                 }
@@ -169,7 +170,7 @@
                         <tr>
                             <form method=POST action="fechas.php">
                                 <td bgcolor="#EEEEEE" align=center colspan=7>
-                                    <input type="submit" value="Volver" name="Volver">
+                                    <button style="background-color:#281E5D; color:white" value="Volver" type="submit" class="btn btn-lg" name="submit"><i style="background-color:#281E5D; color:white" class="fas fa-angle-double-left"></i><span class="pl-3">Volver</span></button>
                                 </td>
                             </form>
                         </tr>';
@@ -199,7 +200,7 @@
                         <tr>
                             <td bgcolor="#EEEEEE" align=center colspan=7>
                                 <input type="hidden" name="enviado" value="S1">
-                                <input type="submit" value="Consultar" name="Consultar">
+                                <button style="background-color:#281E5D; color:white" value="Consultar" type="submit" class="btn btn-lg" name="submit"><i style="background-color:#281E5D; color:white" class="fas fa-search"></i><span class="pl-3">Consultar</span></button>
                             </td>
                         </tr>
                     </form>
@@ -214,5 +215,6 @@
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.5.0/js/all.js" integrity="sha384-GqVMZRt5Gn7tB9D9q7ONtcp4gtHIUEW/yG7h98J7IpE3kpi+srfFyyB/04OV6pG0" crossorigin="anonymous"></script>
     </body>
 </html>

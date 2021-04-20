@@ -10,6 +10,7 @@
         <title>eHealth</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link href="/ehealth/static/css/styles.css" rel="stylesheet">
+        <link rel="shortcut icon" type="image/png" href="/ehealth/static/img/favicon.png">
         <meta http-equiv="refresh" content="15"/>
     </head>
     <body background="/ehealth/static/img/background.jpg">
@@ -136,14 +137,14 @@
                                 if ($lluvia == 1){
                             ?>
 
-                            <img src="/ehealth/static/img/wet.png" width=32 height=32>
+                            <img src="/ehealth/static/img/rainy.png" width=32 height=32>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/ehealth/static/img/dry.png" width=32 height=32>
+                            <img src="/ehealth/static/img/sunny.png" width=32 height=32>
 
                             <?php
                                 }
