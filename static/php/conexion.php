@@ -1,12 +1,11 @@
 <?php
 
+    $host = "localhost";
 
-$host = "localhost";
+    $user = "root";
 
-$user = "root";
+    $pw = "";
 
-$pw = "";
-
-$db = "proyecto_final";
+    $db = "proyecto_final";
 
 ?>
