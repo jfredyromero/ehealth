@@ -1,8 +1,8 @@
 <?php
-    $root = $_SERVER['DOCUMENT_ROOT']."/ehealth/static/php/conexion.php";
-    include $root;  // Conexi�n tiene la informaci�n sobre la conexi�n de la base de datos.
-    $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
-    session_start();
+    $conexion = $_SERVER['DOCUMENT_ROOT']."/ehealth/procesos/conexion.php";
+    include $conexion;  // Conexi�n tiene la informaci�n sobre la conexi�n de la base de datos.
+    $autenticacion = $_SERVER['DOCUMENT_ROOT']."/ehealth/procesos/autenticacion_sesion.php";
+    include $autenticacion;
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,6 @@
             include $head;
         ?>
 
-        <meta http-equiv="refresh" content="15"/>
     </head>
     <body background="/ehealth/static/img/background.jpg">
         <h1 id="home-title">eHealth: Dispositivo IoT</h1>

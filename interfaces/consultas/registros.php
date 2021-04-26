@@ -1,8 +1,8 @@
 <?php
-    $root = $_SERVER['DOCUMENT_ROOT']."/ehealth/static/php/conexion.php";
-    include $root;  // Conexi�n tiene la informaci�n sobre la conexi�n de la base de datos.
-    $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
-    session_start();
+    $conexion = $_SERVER['DOCUMENT_ROOT']."/ehealth/procesos/conexion.php";
+    include $conexion;  // Conexi�n tiene la informaci�n sobre la conexi�n de la base de datos.
+    $autenticacion = $_SERVER['DOCUMENT_ROOT']."/ehealth/procesos/autenticacion_sesion.php";
+    include $autenticacion;
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +14,6 @@
             include $head;
         ?>
 
-        <meta http-equiv="refresh" content="15"/>
     </head>
     <body background="/ehealth/static/img/background.jpg">
         <h1 id="home-title">eHealth: Dispositivo IoT</h1>
@@ -67,22 +66,18 @@
                     </tr>
 
                     <?php
-                    // la siguiente linea almacena en una variable denominada sql1, la consulta en lenguaje SQL que quiero realizar a la base de datos. Se consultan los datos de la tarjeta 1, porque en la tabla puede haber datos de diferentes tarjetas.
-                    $sql1 = "SELECT * from datos_medidos order by id DESC LIMIT 30"; // Aqu� se ingresa el valor recibido a la base de datos.
-                    // la siguiente l�nea ejecuta la consulta guardada en la variable sql, con ayuda del objeto de conexi�n a la base de datos mysqli
-                    $result1 = $mysqli->query($sql1);
-                    // la siguiente linea es el inicio de un ciclo while, que se ejecuta siempre que la respuesta a la consulta de la base de datos
-                    // tenga alg�n registro resultante. Como la consulta arroja 5 resultados, los �ltimos que tenga la tabla, se ejecutar� 5 veces el siguiente ciclo while.
-                    // el resultado de cada registro de la tabla, se almacena en el arreglo row, row[0] tiene el dato del 1er campo de la tabla, row[1] tiene el dato del 2o campo de la tabla, as� sucesivamente
-                    $contador = 0;
-                    while($row1 = $result1->fetch_array(MYSQLI_NUM)){
-                        $ID_TARJ = $row1[1];
-                        $temp = $row1[2];
-                        $hum = $row1[3];
-                        $fecha = $row1[4];
-                        $hora = $row1[5];
-                        $lluvia = $row1[6];
-                        $contador++;
+                        $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
+                        $sql1 = "SELECT * from datos_medidos order by id DESC LIMIT 30"; // Aqu� se ingresa el valor recibido a la base de datos.
+                        $result1 = $mysqli->query($sql1);
+                        $contador = 0;
+                        while($row1 = $result1->fetch_array(MYSQLI_NUM)){
+                            $ID_TARJ = $row1[1];
+                            $temp = $row1[2];
+                            $hum = $row1[3];
+                            $fecha = $row1[4];
+                            $hora = $row1[5];
+                            $lluvia = $row1[6];
+                            $contador++;
                     ?>
 
                     <tr>
