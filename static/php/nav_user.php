@@ -29,10 +29,18 @@
                 </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><strong>'.$_SESSION["nombre_usuario"].'</strong></a>
+                        <a class="nav-link" href="#">
+                            <strong>
+                                <i class="fas fa-user"></i>
+                                <span class="pl-1">'.$_SESSION["nombre_usuario"].'</span>
+                            </strong>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Salir</a>
+                        <a class="nav-link" href="/ehealth/procesos/cerrar_sesion.php">
+                            <span class="pr-2">Salir</span>
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
                     </li>
                 </ul>
             </div>
