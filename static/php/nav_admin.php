@@ -20,7 +20,7 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="/ehealth/interfaces/consultas/registros.php">Registros</a>
                             <a class="dropdown-item" href="/ehealth/interfaces/consultas/fechas.php">Fechas</a>
-                            <a class="dropdown-item" href="/ehealth/interfaces/consultas/dispositivos.php">Dispositivos</a>
+                            <a class="dropdown-item" href="/ehealth/interfaces/consultas/administradores/dispositivos.php">Dispositivos</a>
                             <a class="dropdown-item" href="/ehealth/interfaces/consultas/usuarios.php">Usuarios</a>
                         </div>
                     </li>
