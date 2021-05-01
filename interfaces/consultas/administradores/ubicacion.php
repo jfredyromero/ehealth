@@ -1,10 +1,10 @@
 <?php
-$conexion = $_SERVER['DOCUMENT_ROOT'] . "/ehealth/procesos/conexion.php";
-include $conexion;  // Conexi�n tiene la informaci�n sobre la conexi�n de la base de datos.
-$autenticacion = $_SERVER['DOCUMENT_ROOT'] . "/ehealth/procesos/autenticacion_sesion.php";
-include $autenticacion;
-$validacion = $_SERVER['DOCUMENT_ROOT'] . "/ehealth/procesos/validar_acceso.php";
-include $validacion;
+    $conexion = $_SERVER['DOCUMENT_ROOT'] . "/ehealth/procesos/conexion.php";
+    include $conexion;  // Conexi�n tiene la informaci�n sobre la conexi�n de la base de datos.
+    $autenticacion = $_SERVER['DOCUMENT_ROOT'] . "/ehealth/procesos/autenticacion_sesion.php";
+    include $autenticacion;
+    $validacion = $_SERVER['DOCUMENT_ROOT'] . "/ehealth/procesos/validar_acceso.php";
+    include $validacion;
 ?>
 
 <!DOCTYPE html>
@@ -13,8 +13,8 @@ include $validacion;
 <head>
 
     <?php
-    $head = $_SERVER['DOCUMENT_ROOT'] . "/ehealth/static/php/head.php";
-    include $head;
+        $head = $_SERVER['DOCUMENT_ROOT'] . "/ehealth/static/php/head.php";
+        include $head;
     ?>
 
 </head>
@@ -24,11 +24,11 @@ include $validacion;
     <div id="home">
 
         <?php
-        if ($_SESSION["tipo_usuario"] == 1)
-            $nav = $_SERVER['DOCUMENT_ROOT'] . "/ehealth/static/php/nav_admin.php";
-        else
-            $nav = $_SERVER['DOCUMENT_ROOT'] . "/ehealth/static/php/nav_user.php";
-        include $nav;
+            if ($_SESSION["tipo_usuario"] == 1)
+                $nav = $_SERVER['DOCUMENT_ROOT'] . "/ehealth/static/php/nav_admin.php";
+            else
+                $nav = $_SERVER['DOCUMENT_ROOT'] . "/ehealth/static/php/nav_user.php";
+            include $nav;
         ?>
 
         <div id="page-content">
@@ -71,7 +71,7 @@ include $validacion;
                     </tr>
                     <tr>
                         <td bgcolor="#EEEEEE" align=center colspan=8>
-                            <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/consultas/dispositivos.php" role="button">
+                            <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/consultas/administradores/dispositivos.php" role="button">
                                 <i class="fas fa-angle-double-left"></i>
                                 <span class="pl-3">Volver</span>
                             </a>
@@ -104,21 +104,21 @@ include $validacion;
                         <tr height=20>
                         </tr>
                         <tr>
-                            <td valign="center" align=center width=80% colspan=8 bgcolor="#281E5D">
+                            <td valign="center" align=center colspan=8 bgcolor="#281E5D">
                                 <h1>
                                     <font color=white>Mapa</font>
                                 </h1>
                             </td>
                         </tr>
                         <tr>
-                            <td valign="center" align=center width=80% colspan=8 bgcolor="#E1E1E1">
+                            <td valign="center" align=center colspan=8 bgcolor="#E1E1E1">
                                 <div id="map" style="height:400px;width:90%;">
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td bgcolor="#EEEEEE" align=center colspan=8>
-                                <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/consultas/dispositivos.php" role="button">
+                                <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/consultas/administradores/dispositivos.php" role="button">
                                     <i class="fas fa-angle-double-left"></i>
                                     <span class="pl-3">Volver</span>
                                 </a>
@@ -154,7 +154,7 @@ include $validacion;
             }
         </script>
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCwrROSJLYv3oz-WQeIyNRa37c1U0GXRPQ&callback=initMap">
-            <!-- Se deben reemplazar las XXXX por la API Key de Google MAPS 
+            <!-- Se deben reemplazar las XXXX por la API Key de Google MAPS
             -->
         </script>
     </div>

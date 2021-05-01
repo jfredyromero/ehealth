@@ -3,6 +3,8 @@
     include $conexion;  // Conexi�n tiene la informaci�n sobre la conexi�n de la base de datos.
     $autenticacion = $_SERVER['DOCUMENT_ROOT']."/ehealth/procesos/autenticacion_sesion.php";
     include $autenticacion;
+    $validacion = $_SERVER['DOCUMENT_ROOT']."/ehealth/procesos/validar_acceso.php";
+    include $validacion;
 ?>
 
 <!DOCTYPE html>
@@ -28,21 +30,23 @@
             ?>
 
             <div id="page-content">
-                <table width="80%" align=center cellpadding=7 border=1>
+                <table width=600px align=center cellpadding=5 border=1>
                     <tr>
-                        <td valign="center" align=center width=80% colspan=7>
+                        <td valign="center" align=center colspan=7>
                             <img src="/ehealth/static/img/logo.png" width=800 height=250>
                         </td>
                     </tr>
                     <tr>
-                        <td valign="center" align=center width=80% colspan=7 bgcolor="#281E5D">
+                        <td valign="center" align=center colspan=7 bgcolor="#281E5D">
                             <h1>
                                 <font color=white>Consulta de dispositivos eHealth</font>
                             </h1>
                         </td>
                     </tr>
-                    <tr height=20>
+                    <tr height=50>
                     </tr>
+                </table>
+                <table width=90% align=center cellpadding=5 border=0>
                     <tr>
                         <?php
                             if (isset($_GET["submit"]) && !empty($_GET["submit"])) {
@@ -73,18 +77,20 @@
                             }
                         ?>
                         <form method="GET">
-                            <td style="border: none;" valign="center" align=center colspan=3>
+                            <td style="border: none;" width=100 colspan=3>
                             </td>
-                            <td style="border: none;" valign="center" align=right colspan=2>
+                            <td style="border: none;" valign="center" align="right" colspan=2>
                                 <input type="number" class="form-control" name="id_tarjeta" placeholder="ID de la tarjeta..." required>
                             </td>
-                            <td style="border: none;" valign="center" align=center colspan=2>
+                            <td style="border: none;" valign="center" align=right colspan=2>
                                 <button style="background-color:#281E5D; color:white" value="Buscar" type="submit" class="btn btn-lg" name="submit"><i style="background-color:#281E5D; color:white" class="fas fa-search"></i><span class="pl-3">Buscar</span></button>
                             </td>
                         </form>
                     </tr>
                     <tr height=20>
                     </tr>
+                </table>
+                <table width=90% align=center cellpadding=5 border=1>
                     <tr height=50>
                         <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>ID</b>
@@ -92,19 +98,19 @@
                         <td valign="center" align=center bgcolor="#E1E1E1">
                             <b>Propietario</b>
                         </td>
-                        <td valign="center" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1" width=120>
                             <b>Ubicación</b>
                         </td>
-                        <td valign="center" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1" width=80>
                             <b>Estado</b>
                         </td>
-                        <td valign="center" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1" width=120>
                             <b>Fecha último registro</b>
                         </td>
-                        <td valign="center" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1" width=120>
                             <b>Hora último registro</b>
                         </td>
-                        <td valign="center" align=center bgcolor="#E1E1E1">
+                        <td valign="center" align=center bgcolor="#E1E1E1" width=40>
                             <b>Editar</b>
                         </td>
                     </tr>
@@ -143,7 +149,7 @@
                             </td>
                             <td valign="center" align=center>
                                 <?php //echo $ubicacion; ?>
-                                <a class="btn btn-lg btn-block" href="/ehealth/interfaces/consultas/ubicacion.php?id_tarjeta=<?php echo $id; ?>" role="button">
+                                <a class="btn btn-lg btn-block" href="/ehealth/interfaces/consultas/administradores/ubicacion.php?id_tarjeta=<?php echo $id; ?>" role="button">
                                 <i class="fas fa-map-marked-alt"></i>
                                 </a>
                             </td>
@@ -174,22 +180,23 @@
                         </tr>
                         <tr height=20>
                         </tr>
+                    </table>
+                    <table width=90% align=center cellpadding=5 border=0>
                         <tr>
-                            <td style="border: none;" valign="center" align=left colspan=6>
-                                <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/consultas/dispositivos.php" role="button">
+                            <td style="border: none;" valign="center" align=left colspan=5>
+                                <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/consultas/administradores/dispositivos.php" role="button">
                                     <i class="fas fa-angle-double-left"></i>
                                     <span class="pl-3">Volver</span>
                                 </a>
                             </td>
-                            <td style="border: none;" valign="center" align=right colspan=4>
+                            <td style="border: none;" valign="center" align=right colspan=2>
                                 <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/dispositivos/añadir.php" role="button">
                                     <i class="fas fa-plus-circle"></i>
                                     <span class="pl-3">Nuevo</span>
                                 </a>
                             </td>
                         </tr>
-                        <tr height=20>
-                        </tr>
+                    </table>
                         <?php
                     } else {
                         $contador = 0;
@@ -216,8 +223,7 @@
                                     <?php echo $propietario; ?>
                                 </td>
                                 <td valign="center" align=center>
-                                    <?php // echo $ubicacion; ?>
-                                    <a class="btn btn-lg btn-block" href="/ehealth/interfaces/consultas/ubicacion.php?id_tarjeta=<?php echo $ID_TARJ; ?>" role="button">
+                                    <a class="btn btn-lg btn-block" href="/ehealth/interfaces/consultas/administradores/ubicacion.php?id_tarjeta=<?php echo $ID_TARJ; ?>" role="button">
                                     <i class="fas fa-map-marked-alt"></i>
                                     </a>
                                 </td>
@@ -250,7 +256,8 @@
                     <?php
                         }
                     ?>
-
+                </table>
+                <table width=90% align=center cellpadding=5 border=0>
                     <tr height=20>
                     </tr>
                     <tr>
@@ -263,13 +270,10 @@
                             </a>
                         </td>
                     </tr>
-                    <tr height=20>
-                    </tr>
 
                     <?php
                     }
                     ?>
-
 
                 </table>
             </div>
