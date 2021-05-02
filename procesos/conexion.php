@@ -2,5 +2,5 @@
     $host = "localhost";
     $user = "root";
     $pw = "";
-    $db = "proyecto_final";
+    $db = "proyecto_final_sprint2";
 ?>

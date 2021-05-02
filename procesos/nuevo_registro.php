@@ -1,11 +1,15 @@
 <?php
-    $conexion = $_SERVER['DOCUMENT_ROOT']."/ehealth/static/php/conexion.php";
-    include $conexion;  // Conexi�n tiene la informaci�n sobre la conexi�n de la base de datos.
+    //$conexion = $_SERVER['DOCUMENT_ROOT']."/ehealth/procesos/conexion.php";
+    include "conexion.php";  // Conexi�n tiene la informaci�n sobre la conexi�n de la base de datos.
 
     $hum = $_GET["humedad"]; // el dato de humedad que se recibe aqu� con GET denominado humedad, es enviado como parametro en la solicitud que realiza la tarjeta microcontrolada
     $temp = $_GET["temperatura"]; // el dato de temperatura que se recibe aqu� con GET denominado temperatura, es enviado como parametro en la solicitud que realiza la tarjeta microcontrolada
     $rain = $_GET["lluvia"];
     $ID_TARJ = $_GET["ID_TARJ"];
+    $lon = $_GET["longitud"];
+    $lat = $_GET["latitud"];
+    $vel = $_GET["velocidad"];
+    $alt = $_GET["altitud"];
 
     $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
 
@@ -15,7 +19,11 @@
     $hora = date("h:i:s");
 
     $sql1 = "INSERT into datos_medidos (id_tarjeta, temperatura, humedad, fecha, hora, lluvia) VALUES ('$ID_TARJ', '$temp', '$hum', '$fecha', '$hora', $rain)"; // Aqu� se ingresa el valor recibido a la base de datos.
+    $sql2 = "INSERT into datos_ubicaciones (id_tarj, latitud, longitud, fecha, hora, velocidad, altitud) VALUES ('$ID_TARJ', '$lat', '$lon', '$fecha', '$hora','$vel','$alt')";
     echo "sql1...".$sql1; // Se imprime la cadena sql enviada a la base de datos, se utiliza para depurar el programa php, en caso de alg�n error.
+    echo "sql2...".$sql2; // Se imprime la cadena sql enviada a la base de datos, se utiliza para depurar el programa php, en caso de alg�n error.
     $result1 = $mysqli->query($sql1);
-    echo "result es...".$result1; // Si result es 1, quiere decir que el ingreso a la base de datos fue correcto.
+    $result2 = $mysqli->query($sql2);
+    echo "result1 es...".$result1; // Si result es 1, quiere decir que el ingreso a la base de datos fue correcto.
+    echo "result2 es...".$result2;
 ?>

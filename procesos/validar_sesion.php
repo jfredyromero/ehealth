@@ -4,7 +4,7 @@
                    
                                                        
 $login = $_POST["user"];
-$passwd = $_POST["passwd1contrasena"];
+$passwd = $_POST["contrasena"];
 
 $passwd_comp = md5($passwd);
 session_start();
@@ -26,26 +26,22 @@ if ($numero_filas > 0)
 
     if ($passwdc == $passwd_comp)
       {
-        $_SESSION["autenticado"]= "SIx3";
+        $_SESSION["autenticado"]= "AUTxxfffxx";
         $tipo_usuario = $row1[6];
         $nombre_usuario = $row1[1];
-
         $_SESSION["tipo_usuario"]= $tipo_usuario;
         $_SESSION["nombre_usuario"]= $nombre_usuario;  
         $_SESSION["id_usuario"]= $row1[0];;  
         
-        if ($tipo_usuario == 1)
-            header("Location: gestion_usuarios.php");
-         else
-            header("Location: consulta_datos_medidos.php");
+        header("Location: /ehealth/interfaces/consultas/registros.php");
       }
     else 
      {
-      header('Location: index.php?mensaje=1');
+      header("Location: /ehealth/procesos/iniciar_sesion.php?mensaje=1");
      }
   }
 else
   {
-    header('Location: index.php?mensaje=2');
+    header("Location: /ehealth/procesos/iniciar_sesion.php?mensaje=2");
  }  
 ?>

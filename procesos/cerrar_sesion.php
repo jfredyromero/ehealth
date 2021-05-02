@@ -5,5 +5,5 @@
     unset($_SESSION["tipo_usuario"]);
     unset($_SESSION["autenticado"]);
     session_destroy();
-    //header('Location: index.php');
+    header('Location: /ehealth/index.php');
 ?>
