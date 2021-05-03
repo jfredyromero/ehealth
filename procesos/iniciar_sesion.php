@@ -66,7 +66,7 @@
 
                 <form method=POST action="validar_sesion.php">
                          <tr>
-                            <td bgcolor="#FFFFFF" align=center colspan=3>
+                            <td bgcolor="#CCEECC" align=center colspan=3>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Usuario:</b></font>
                             </td>
                             <td bgcolor="#EEEEEE" align=center colspan=3>
@@ -74,7 +74,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#FFFFFF" align=center colspan=3>
+                            <td bgcolor="#CCEECC" align=center colspan=3>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Contraseña:</b></font>
                             </td>
                             <td bgcolor="#EEEEEE" align=center colspan=3>
@@ -85,10 +85,11 @@
                             <td bgcolor="#EEEEEE" align=center colspan=6>
                                 <button style="background-color:#281E5D; color:white" value="Registrar" type="submit" class="btn btn-lg" name="Registrar"><i style="background-color:#281E5D; color:white" class="fas fa-user-plus"></i><span class="pl-3">Iniciar sesión</span></button>
                                 <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/index.php" role="button">
-                                    <i class="fas fa-angle-double-left"></i>
+                                    <i class="fas fa-plus-circle"></i>
                                     <span class="pl-3">Volver</span>
                                 </a>
                             </td>
+
                 </form> 
                             
             </table>

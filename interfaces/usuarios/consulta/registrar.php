@@ -115,44 +115,44 @@
 
                 <form method=POST action="registrar.php">
                          <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=1>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Nombre Completo</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=5>
                                 <input type="text" name="nombre" required>
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=1>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Identificacion:</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=5>
                                  <input type="number" name="identificacion"  required>
                             </td>
                         </tr>
 
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
-                                <font FACE="arial" SIZE=2 color="#000044"> <b>Login:</b></font>
+                            <td bgcolor="#CCEECC" align=center colspan=1>
+                                <font FACE="arial" SIZE=2 color="#000044"> <b>Login</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=5>
                                 <input type="text" name="login"  required>
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=1>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Constraseña:</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=5>
                                 <input type="password" name="contrasena" >
 
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=1>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Direccion:</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=5>
                                 <input type="text" name="direccion" required>
                             </td>
                         </tr>
@@ -166,7 +166,7 @@
                                 <input type="hidden" name="enviado" value="S1">
                                 <button style="background-color:#281E5D; color:white" value="Registrar" type="submit" class="btn btn-lg" name="Registrar"><i style="background-color:#281E5D; color:white" class="fas fa-user-plus"></i><span class="pl-3">Guardar</span></button>
                                 <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/procesos/iniciar_sesion.php" role="button">
-                                    <i class="fas fa-angle-double-left"></i>
+                                    <i class="fas fa-plus-circle"></i>
                                     <span class="pl-3">Iniciar Sesion</span>
                                 </a>
                                

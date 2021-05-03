@@ -130,37 +130,37 @@
 
                     <form method=POST action="editar.php">
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=1>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>ID:</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=5>
                                  <input type="number"  value=<?php echo $id_ta; ?> disabled>
                                  <input type="hidden" name="id_tarjeta" value=<?php echo $id_ta; ?> >
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=1>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Propietario</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=5>
                                 <input type="text" name="propietario" value= "<?php echo $propietario; ?>" required>
 
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=1>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Ubicación</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=5>
                                 <input type="text" name="ubicacion" value= <?php echo $ubicacion; ?>  required>
 
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=1>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Estado:</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=5>
                                 <div class="dropdown">
                                     <select class="btn btn-secondary" name="estado" >
                                         <option value="1" <?php echo $estado_si;?> >Activo</option>
@@ -170,9 +170,16 @@
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#EEEEEE" align=center colspan=2>
+                            <td style="border: none;" valign="center" align=center colspan=6>
                                 <input type="hidden" name="enviado" value="S1">
-                                <input type="submit" value="Editar" name="editar">
+                                <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/consultas/dispositivos.php" role="button">
+                                    <i class="fas fa-plus-circle"></i>
+                                    <span class="pl-3">Volver</span>
+                                </a>
+                                <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/dispositivos/añadir.php" role="button">
+                                    <i class="fas fa-plus-circle"></i>
+                                    <span class="pl-3">Editar</span>
+                                </a>
                             </td>
                         </tr>
                     </form>

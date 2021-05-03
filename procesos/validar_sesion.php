@@ -16,7 +16,7 @@ include ("conexion.php");
 
 $mysqli = new mysqli($host, $user, $pw, $db);
        
-$sql = "SELECT * from datos_usuarios where login = '$login' and activo='1'";
+$sql = "SELECT * from datos_usuarios where login = '$login'";
 $result1 = $mysqli->query($sql);
 $row1 = $result1->fetch_array(MYSQLI_NUM);
 $numero_filas = $result1->num_rows;
@@ -27,7 +27,9 @@ if ($numero_filas > 0)
     if ($passwdc == $passwd_comp)
       {
         $_SESSION["autenticado"]= "AUTxxfffxx";
+        $tipo_usuario = $row1[6];
         $nombre_usuario = $row1[1];
+        $_SESSION["tipo_usuario"]= $tipo_usuario;
         $_SESSION["nombre_usuario"]= $nombre_usuario;  
         $_SESSION["id_usuario"]= $row1[0];;  
         
