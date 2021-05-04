@@ -85,7 +85,7 @@
                                 }
 
                                 echo '<tr>
-                                    <td bgcolor="#EEEEFF" align=center colspan=2>
+                                    <td bgcolor="#EEEEFF" align=center colspan=6>
                                     <font FACE="arial" SIZE=2 color="#000044"> <b>'.$mensaje.'</b></font>
                                     </td>
                                     </tr>';
@@ -135,32 +135,32 @@
 
                     <form method=POST action="rangos.php">
                         <tr>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044">
                                     <b>Valor Maximo Temperatura:</b>
                                 </font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=4>
                                 <input type="number" name="temp_max_fiebre" value="<?php echo $temp_max_fiebre; ?>" required>
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044">
                                     <b>Valor Maximo Humedad:</b>
                                 </font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=4>
                                 <input type="number" name="hum_max_fiebre" value="<?php echo $hum_max_fiebre; ?>" required>
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044">
                                     <b>Presencia de lluvia:</b>
                                 </font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=4>
                                 <div class="dropdown">
                                     <select class="btn btn-secondary" name="opt_fiebre">
                                         <option value="1" <?php echo $var_lluF_si;?>>Si</option>
@@ -176,32 +176,32 @@
                                 </h1>
                             </td>
                         </tr><tr>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044">
                                     <b>Valor Maximo Temperatura:</b>
                                 </font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=4>
                                 <input type="number" name="temp_max_dengue" value="<?php echo $temp_max_dengue; ?>" required>
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044">
                                     <b>Valor Maximo Humedad:</b>
                                 </font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=4>
                                 <input type="number" name="hum_max_dengue" value="<?php echo $hum_max_dengue; ?>" required>
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044">
                                     <b>Presencia de lluvia:</b>
                                 </font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=4>
                                 <div class="dropdown">
                                     <select class="btn btn-secondary" name="opt_dengue">
                                         <option value="1" <?php echo $var_lluD_si;?>>Si</option>
@@ -211,7 +211,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#EEEEEE" align=center colspan=2>
+                            <td bgcolor="#EEEEEE" align=center colspan=6>
                                 <input type="hidden" name="enviado" value="S1">
                                 <button style="background-color:#281E5D; color:white" value="Actualizar" type="submit" class="btn btn-lg" name="Actualizar"><i style="background-color:#281E5D; color:white" class="fas fa-sync"></i><span class="pl-3">Actualizar</span></button>
                             </td>

@@ -30,7 +30,7 @@
             $_SESSION["nombre_usuario"]= $nombre_usuario;
             $_SESSION["id_usuario"]= $row1[0];;
 
-            header("Location: /ehealth/interfaces/consultas/registros.php");
+            header("Location: /ehealth/interfaces/estadisticas/probabilidad.php");
           }
         else
          {

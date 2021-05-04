@@ -14,7 +14,7 @@
         ?>
 
     </head>
-    <body background="/eHealth/static/img/background.jpg">
+    <body background="/ehealth/static/img/background.jpg">
         <h1 id="home-title">eHealth: Dispositivo IoT</h1>
         <div id="home">
             <nav class="navbar navbar-expand-xl navbar-dark" style="background-color: #281E5D; height:50px;">
@@ -23,7 +23,7 @@
                 <table width="80%" align=center cellpadding=5 border=1>
                     <tr>
                         <td valign="top" align=center width=80% colspan=6>
-                            <img src="/eHealth/static/img/logo.png" width=800 height=250>
+                            <img src="/ehealth/static/img/logo.png" width=800 height=250>
                         </td>
                     </tr>
                     <tr>
