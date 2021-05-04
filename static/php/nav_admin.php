@@ -52,7 +52,7 @@
                             Crear
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/ehealth/interfaces/usuarios/administrador/añadir.php">Usuario</a>
+                            <a class="dropdown-item" href="/ehealth/interfaces/usuarios/administrador/crear.php">Usuario</a>
                             <a class="dropdown-item" href="/ehealth/interfaces/dispositivos/añadir.php">Dispositivo</a>
                         </div>
                     </li>

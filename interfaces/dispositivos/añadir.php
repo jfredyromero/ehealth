@@ -66,7 +66,7 @@
                                 }
 
                                 echo '<tr>
-                                <td bgcolor="#EEEEFF" align=center colspan=2>
+                                <td bgcolor="#EEEEFF" align=center colspan=6>
                                         <font FACE="arial" SIZE=2 color="#000048"> <b>'.$mensaje.'</b></font>
                                         </td>
                                 </tr>';
@@ -85,35 +85,35 @@
 
                     <form method=POST action="añadir.php">
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>ID:</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=4>
                                 <input type="number" value="<?php echo $id_tarjeta_nueva; ?>" disabled required>
                                 <input type="hidden" name="ID" value="<?php echo $id_tarjeta_nueva; ?>" required>
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Propietario</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=4>
                                 <input type="text" name="Propietario" required>
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Ubicación</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=4>
                                 <input type="text" name="Ubicacion" value="Popayan" required>
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Estado:</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=4>
                                 <div class="dropdown">
                                     <select class="btn btn-secondary" name="Estado">
                                         <option value="1" >Activo</option>
@@ -123,7 +123,7 @@
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#EEEEEE" align=center colspan=2>
+                            <td bgcolor="#EEEEEE" align=center colspan=6>
                                 <input type="hidden" name="enviado" value="S1">
                                 <button style="background-color:#281E5D; color:white" value="Añadir" type="submit" class="btn btn-lg" name="Añadir"><i style="background-color:#281E5D; color:white" class="fas fa-user-plus"></i><span class="pl-3">Añadir</span></button>
                             </td>

@@ -46,6 +46,8 @@
 
                     <?php
                     if ((isset($_POST["enviado"]))){
+                        $santi = $_POST["enviado"];
+                        echo $santi;
                         $id_tarjeta = $_POST['id_tarjeta'];
                         $propietario =$_POST['propietario'];
                         $ubicacion =$_POST['ubicacion'];
@@ -73,7 +75,7 @@
                         }
 
                         echo '<tr>
-                        <td bgcolor="#EEEEFF" align=center colspan=2>
+                        <td bgcolor="#EEEEFF" align=center colspan=6>
                                 <font FACE="arial" SIZE=2 color="#000048"> <b>'.$mensaje.'</b></font>
                                 </td>
                         </tr>';
@@ -130,37 +132,37 @@
 
                     <form method=POST action="editar.php">
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>ID:</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=4>
                                  <input type="number"  value=<?php echo $id_ta; ?> disabled>
                                  <input type="hidden" name="id_tarjeta" value=<?php echo $id_ta; ?> >
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Propietario</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=4>
                                 <input type="text" name="propietario" value= "<?php echo $propietario; ?>" required>
 
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Ubicación</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=4>
                                 <input type="text" name="ubicacion" value= <?php echo $ubicacion; ?>  required>
 
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#CCEECC" align=center>
+                            <td bgcolor="#CCEECC" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044"> <b>Estado:</b></font>
                             </td>
-                            <td bgcolor="#EEEEEE" align=center>
+                            <td bgcolor="#EEEEEE" align=center colspan=4>
                                 <div class="dropdown">
                                     <select class="btn btn-secondary" name="estado" >
                                         <option value="1" <?php echo $estado_si;?> >Activo</option>
@@ -170,9 +172,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <td bgcolor="#EEEEEE" align=center colspan=2>
+                            <td bgcolor="#EEEEEE" align=center colspan=6>
+                                <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/consultas/administradores/dispositivos.php" role="button">
+                                    <i class="fas fa-angle-double-left"></i>
+                                    <span class="pl-3">Volver</span>
+                                </a>
                                 <input type="hidden" name="enviado" value="S1">
-                                <input type="submit" value="Editar" name="editar">
+                                <button style="background-color:#281E5D; color:white" type="submit" class="btn btn-lg"><i style="background-color:#281E5D; color:white" class="fas fa-save"></i><span class="pl-3">Guardar</span></button>
                             </td>
                         </tr>
                     </form>
