@@ -17,9 +17,9 @@
 Adafruit_SSD1306 display(128, 64, &Wire, OLED_RESET);
 
 DHT dht(DHTPIN, DHTTYPE);
-const char* ssid     = "VIM";                             // SSID
-const char* password = "antoniamunoz";                   // Password
-const char* host = "192.168.18.151";                    // Dirección IP local o remota, del Servidor Web
+const char* ssid     = "LAS BELLAS";                             // SSID
+const char* password = "3127828497";                   // Password
+const char* host = "ehealth.gq";                    // Dirección IP local o remota, del Servidor Web
 const int   port = 80;                                 // Puerto, HTTP es 80 por defecto, cambiar si es necesario.
 const int   watchdog = 2000;                          // Frecuencia del Watchdog
 unsigned long previousMillis = millis();
@@ -29,14 +29,14 @@ String dato;
 String cade;
 String line;
 
-static const int RXPin = 12, TXPin = 13;                // Definición de pines del GPS 2 RX y 4 TX
+static const int RXPin = 18, TXPin = 19;                // Definición de pines del GPS 2 RX y 4 TX
 static const uint32_t GPSBaud = 9600;                  // Tasa de transmisión por defecto del Ublox GPS: 9600
 
 TinyGPSPlus gps;                                       // Crea una instancia del objeto TinyGPS++ que se denomina gps
 SoftwareSerial ss(RXPin, TXPin);                      // Determina la conexión serial con el GPS en los pines ya definidos, 2 y 4.
 
 //--------------------------------------IDENTIFICADOR DE TARJETA-----------------------------------------------
-int ID_TARJ = 1;                                    // Este dato identificará cual es la tarjeta que envía los datos, tener en cuenta que se tendrá más de una tarjeta.
+int ID_TARJ = 3;                                    // Este dato identificará cual es la tarjeta que envía los datos, tener en cuenta que se tendrá más de una tarjeta.
 // Se debe cambiar el dato (a 2,3,4...) cuando se grabe el programa en las demás tarjetas.
 
 //--------------------------------------COMIENZA EL CÓDIGO-----------------------------------------------------

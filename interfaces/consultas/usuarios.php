@@ -149,7 +149,7 @@
                             </tr>
                                     <?php
                                         if($identi_buscar!=null){
-                                        $sql5 = "SELECT * from datos_usuarios  WHERE identificacion= $identi_buscar";
+                                        $sql5 = "SELECT * from datos_usuarios WHERE identificacion LIKE '%$identi_buscar%' order by identificacion";
                                         $result5=$mysqli->query($sql5);
                                         $row5 = $result5->fetch_array(MYSQLI_NUM);
                                             if($row5 == NULL){
@@ -159,14 +159,14 @@
                                                 </tr>
                                                  <tr>
                                                     <td valign="center" align=center bgcolor="#E1E1E1" colspan=6>
-                                                        <b>No hay usuarios con este identificador:<?php echo $identi_buscar?></b>
+                                                        <b>No hay usuarios con un identificador similar a:<?php echo $identi_buscar?></b>
                                                     </td>
                                                 </tr>
 
                                     <?php
 
                                             }else{
-                                            $sql1 = "SELECT * from datos_usuarios  WHERE identificacion= $identi_buscar";
+                                            $sql1 = "SELECT * from datos_usuarios WHERE identificacion LIKE '%$identi_buscar%' order by identificacion";
                                             }
                                     }
                                     if($nombre_buscar!=null){
