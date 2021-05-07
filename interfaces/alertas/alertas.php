@@ -67,7 +67,7 @@
                             <b>Alerta Humedad</b>
                         </td>
                         <td valign="center" align=center bgcolor="#E1E1E1" width=120>
-                            <b>Alerta Lluvia</b>
+                            <b>Alerta Clima</b>
                         </td>
                     </tr>
 
@@ -137,14 +137,14 @@
                                 if ($temp_fiebre > $temp_max_fiebre){
                             ?>
 
-                            <img src="/ehealth/static/img/warning_y.png" width=80 height=80>
+                            <img src="/ehealth/static/img/warning_y.png" width=32 height=32>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/ehealth/static/img/comprobado.png" width=80 height=80>
+                            <img src="/ehealth/static/img/comprobado.png" width=32 height=32>
 
                             <?php
                                 }
@@ -157,14 +157,14 @@
                                 if ($hum_fiebre > $hum_max_fiebre){
                             ?>
 
-                            <img src="/ehealth/static/img/warning_r.png" width=80 height=80>
+                            <img src="/ehealth/static/img/warning_r.png" width=32 height=32>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/ehealth/static/img/comprobado.png" width=80 height=80>
+                            <img src="/ehealth/static/img/comprobado.png" width=32 height=32>
 
                             <?php
                                 }
@@ -174,31 +174,22 @@
                         </td>
                         <td valign="center" align=center>
 
-                          <?php
-                              if ($pre_lluv_fiebre==1){
-                                  if ($lluvia_fiebre == 1){
-                          ?>
+                            <?php
+                                if ($pre_lluv_fiebre==$lluvia_fiebre){
+                            ?>
 
-                          <img src="/ehealth/static/img/wet.png" width=80 height=80>
+                            <img src="/ehealth/static/img/warning_b.png" width=32 height=32>
 
-                          <?php
-                                  }
-                                  else{
-                          ?>
+                            <?php
+                                }
+                                else{
+                            ?>
 
-                          <img src="/ehealth/static/img/dry.png" width=80 height=80>
+                            <img src="/ehealth/static/img/comprobado.png" width=32 height=32>
 
-                          <?php
-                                  }
-                              }
-                              else{
-                          ?>
-
-                          <img src="/ehealth/static/img/cancelar.png" width=80 height=80>
-
-                          <?php
-                              }
-                          ?>
+                            <?php
+                                }
+                            ?>
 
                         </td>
                     </tr>
@@ -240,7 +231,7 @@
                             <b>Alerta Humedad</b>
                         </td>
                         <td valign="center" align=center bgcolor="#E1E1E1">
-                            <b>Alerta Lluvia</b>
+                            <b>Alerta Clima</b>
                         </td>
                     </tr>
                     <?php
@@ -309,14 +300,14 @@
                                 if ($temp_dengue > $temp_max_dengue){
                             ?>
 
-                            <img src="/ehealth/static/img/warning_y.png" width=80 height=80>
+                            <img src="/ehealth/static/img/warning_y.png" width=32 height=32>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/ehealth/static/img/comprobado.png" width=80 height=80>
+                            <img src="/ehealth/static/img/comprobado.png" width=32 height=32>
 
                             <?php
                                 }
@@ -329,14 +320,14 @@
                                 if ($hum_dengue > $hum_max_dengue){
                             ?>
 
-                            <img src="/ehealth/static/img/warning_r.png" width=80 height=80>
+                            <img src="/ehealth/static/img/warning_r.png" width=32 height=32>
 
                             <?php
                                 }
                                 else{
                             ?>
 
-                            <img src="/ehealth/static/img/comprobado.png" width=80 height=80>
+                            <img src="/ehealth/static/img/comprobado.png" width=32 height=32>
 
                             <?php
                                 }
@@ -346,26 +337,17 @@
                         <td valign="center" align=center>
 
                             <?php
-                                if ($pre_lluv_dengue==1){
-                                    if ($lluvia_dengue == 1){
+                                if ($pre_lluv_dengue==$lluvia_dengue){
                             ?>
 
-                            <img src="/ehealth/static/img/wet.png" width=80 height=80>
+                            <img src="/ehealth/static/img/warning_b.png" width=32 height=32>
 
                             <?php
-                                    }
-                                    else{
-                            ?>
-
-                            <img src="/ehealth/static/img/dry.png" width=80 height=80>
-
-                            <?php
-                                    }
                                 }
                                 else{
                             ?>
 
-                            <img src="/ehealth/static/img/cancelar.png" width=80 height=80>
+                            <img src="/ehealth/static/img/comprobado.png" width=32 height=32>
 
                             <?php
                                 }

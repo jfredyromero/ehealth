@@ -59,45 +59,45 @@
                     </tr>
                 </table>
                 <div id="tabla_dispositivos">
-                    <table width="80%" align=center cellpadding=5 border=0 colspan=6>
-                        <?php
-                            if (isset($_GET["submit"]) && !empty($_GET["submit"])) {
-                                $id = $_GET["id_tarjeta"];
-                                $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
-                                $sql5 = "SELECT estado from datos_dispositivos WHERE id_tarjeta= $id";
-                                $result5 = $mysqli->query($sql5);
-                                $row5 = $result5->fetch_array(MYSQLI_NUM);
-                                if ($row5 == NULL) {
-                        ?>
-                                    <tr>
-                                        <td valign="center" align=center bgcolor="#E1E1E1" colspan=6>
-                                            <b>El ID solicitado NO existe</b>
-                                        </td>
-                                    </tr>
-                                    <?php
-                                    unset($_GET["submit"]);
-                                }
-                                else{
-                                    ?>
-                                    <tr>
-                                        <td valign="center" align=center bgcolor="#E1E1E1" colspan=6>
-                                            <b>Usted ha consultado el ID: <?php echo $id; ?></b>
-                                        </td>
-                                    </tr>
-                                    <?php
-                                }
-                            }
-                                    ?>
-                        <tr height=20>
-                        </tr>
+                    <table width=90% align=center cellpadding=5 border=0>
                         <tr>
+                            <?php
+                                if (isset($_GET["submit"]) && !empty($_GET["submit"])) {
+                                    $id = $_GET["id_tarjeta"];
+                                    $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
+                                    $sql5 = "SELECT estado from datos_dispositivos WHERE id_tarjeta= $id";
+                                    $result5 = $mysqli->query($sql5);
+                                    $row5 = $result5->fetch_array(MYSQLI_NUM);
+                                    if ($row5 == NULL) {
+                                        ?>
+                                        <tr>
+                                            <td valign="center" align=center bgcolor="#E1E1E1" colspan=7>
+                                                <b>El ID solicitado NO existe</b>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                        unset($_GET["submit"]);
+                                    }
+                                    else{
+                                        ?>
+                                        <tr>
+                                            <td valign="center" align=center bgcolor="#E1E1E1" colspan=7>
+                                                <b>Usted ha consultado el ID: <?php echo $id; ?></b>
+                                            </td>
+                                        </tr>
+                                        <?php
+                                    }
+
+                                }
+                            ?>
+
                             <form method="GET">
-                                <td style="border: none;" colspan=1>
+                                <td style="border: none;" width=100 colspan=3>
                                 </td>
-                                <td style="border: none;" valign="center" align=right colspan=2>
+                                <td style="border: none;" valign="center" align="right" colspan=2>
                                     <input type="number" class="form-control" name="id_tarjeta" placeholder="ID de la tarjeta..." required>
                                 </td>
-                                <td style="border: none;" valign="center" align=center colspan=2>
+                                <td style="border: none;" valign="center" align=right colspan=2>
                                     <button style="background-color:#281E5D; color:white" value="Buscar" type="submit" class="btn btn-lg" name="submit"><i style="background-color:#281E5D; color:white" class="fas fa-search"></i><span class="pl-3">Buscar</span></button>
                                 </td>
                             </form>
@@ -105,136 +105,158 @@
                         <tr height=20>
                         </tr>
                     </table>
-                    <table width="80%" align=center cellpadding=5 border=1>
-                      <tr height=50>
-                          <td valign="center" align=center bgcolor="#E1E1E1">
-                              <b>ID de la Tarjeta</b>
-                          </td>
-                          <td valign="center" align=center bgcolor="#E1E1E1">
-                              <b>Propietario</b>
-                          </td>
-                          <td valign="center" align=center bgcolor="#E1E1E1">
-                              <b>Estado</b>
-                          </td>
-                          <td valign="center" align=center bgcolor="#E1E1E1">
-                              <b>Último registro</b>
-                          </td>
-                          <td valign="center" align=center bgcolor="#E1E1E1">
-                              <b>Símbolo</b>
-                          </td>
-                      </tr>
+                    <table width=90% align=center cellpadding=5 border=1>
+                        <tr height=50>
+                            <td valign="center" align=center bgcolor="#E1E1E1">
+                                <b>ID</b>
+                            </td>
+                            <td valign="center" align=center bgcolor="#E1E1E1">
+                                <b>Propietario</b>
+                            </td>
+                            <td valign="center" align=center bgcolor="#E1E1E1" width=120>
+                                <b>Ubicación</b>
+                            </td>
+                            <td valign="center" align=center bgcolor="#E1E1E1" width=80>
+                                <b>Estado</b>
+                            </td>
+                            <td valign="center" align=center bgcolor="#E1E1E1" width=120>
+                                <b>Fecha último registro</b>
+                            </td>
+                            <td valign="center" align=center bgcolor="#E1E1E1" width=120>
+                                <b>Hora último registro</b>
+                            </td>
+                            <td valign="center" align=center bgcolor="#E1E1E1" width=40>
+                                <b>Símbolo</b>
+                            </td>
+                        </tr>
 
-                      <?php
+                        <?php
 
-                      $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
-                      $sql1 = "SELECT * from datos_dispositivos order by id_tarjeta"; // Aqu� se ingresa el valor recibido a la base de datos.
-                      $result1 = $mysqli->query($sql1);
-                      if (isset($_GET["submit"]) && !empty($_GET["submit"])) {
-                          $sql2 = "SELECT MAX(fecha) from datos_medidos WHERE id_tarjeta= $id";
-                          $result2 = $mysqli->query($sql2);
-                          $row2 = $result2->fetch_array(MYSQLI_NUM);
-                          $fecha = $row2[0];
-                          $sql3 = "SELECT * from datos_dispositivos WHERE id_tarjeta= $id";
-                          $result3 = $mysqli->query($sql3);
-                          while ($row3 = $result3->fetch_array(MYSQLI_NUM)) {
-                              $propietario = $row3[3];
-                              $estado = $row3[1];
-                              $ubicacion = $row3[2];
-                          }
-                      ?>
-                          <tr>
-                              <td valign="center" align=center>
-                                  <?php echo $id; ?>
-                              </td>
-                              <td valign="center" align=center>
-                                  <?php echo $propietario; ?>
-                              </td>
-                              <td valign="center" align=center>
-                                  <?php
-                                  if ($estado == 1) {
-                                  ?>
-                                      <img src="/ehealth/static/img/comprobado.png" width=32 height=32>
-                                  <?php
-                                  } else {
-                                  ?>
-                                      <img src="/ehealth/static/img/cancelar.png" width=32 height=32>
-                                  <?php
-                                  }
-                                  ?>
-                              </td>
-                              <td valign="center" align=center>
-                                  <?php echo $fecha; ?>
-                              </td>
-                              <td valign="center" align=center>
-                                  <img src="/ehealth/static/img/map_icons/icono_<?php echo $id; ?>.png" width=32 height=32>
-                              </td>
-                          </tr>
-                          <tr height=20>
-                          </tr>
-                          <table width="80%" align=center cellpadding=5 border=0>
-                              <tr>
-                                  <td style="border: none;" valign="center" align=left colspan=4>
-                                      <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/consultas/dispositivos.php" role="button">
-                                          <i class="fas fa-angle-double-left"></i>
-                                          <span class="pl-3">Volver</span>
-                                      </a>
-                                  </td>
-                                  <td style="border: none;" valign="center" align=right colspan=2>
-                                      <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/dispositivos/añadir.php" role="button">
-                                          <i class="fas fa-plus-circle"></i>
-                                          <span class="pl-3">Nuevo</span>
-                                      </a>
-                                  </td>
-                              </tr>
-                              <tr height=20>
-                              </tr>
-                          </table>
-                          <?php
-                      } else {
-                          $contador = 0;
-                          while ($row1 = $result1->fetch_array(MYSQLI_NUM)) {
-                              $ID_TARJ = $row1[0];
-                              $propietario = $row1[3];
-                              $estado = $row1[1];
-                              $ubicacion = $row1[2];
-                              $contador++;
-                              $sql2 = "SELECT MAX(fecha) from datos_medidos WHERE id_tarjeta= $contador";
-                              $result2 = $mysqli->query($sql2);
-                              $row2 = $result2->fetch_array(MYSQLI_NUM);
-                              $fecha = $row2[0];
-                          ?>
-                              <tr>
-                                  <td valign="center" align=center>
-                                      <?php echo $ID_TARJ; ?>
-                                  </td>
-                                  <td valign="center" align=center>
-                                      <?php echo $propietario; ?>
-                                  </td>
-                                  <td valign="center" align=center>
-                                      <?php
-                                      if ($estado == 1) {
-                                      ?>
-                                          <img src="/ehealth/static/img/comprobado.png" width=32 height=32>
-                                      <?php
-                                      } else {
-                                      ?>
-                                          <img src="/ehealth/static/img/cancelar.png" width=32 height=32>
-                                      <?php
-                                      }
-                                      ?>
-                                  </td>
-                                  <td valign="center" align=center>
-                                      <?php echo $fecha; ?>
-                                  </td>
-                                  <td valign="center" align=center>
-                                      <img src="/ehealth/static/img/map_icons/icono_<?php echo $ID_TARJ; ?>.png" width=32 height=32>
-                                  </td>
-                              </tr>
+                        $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
+                        $sql1 = "SELECT * from datos_dispositivos order by id_tarjeta"; // Aqu� se ingresa el valor recibido a la base de datos.
+                        $result1 = $mysqli->query($sql1);
+                        if (isset($_GET["submit"]) && !empty($_GET["submit"])) {
+                            //Busca fehca máxima
+                            $sql2 = "SELECT MAX(fecha) from datos_ubicaciones WHERE id_tarj= $id";
+                            $result2 = $mysqli->query($sql2);
+                            $row2 = $result2->fetch_array(MYSQLI_NUM);
+                            $fecha = $row2[0];
+                            //Busca hora máxima
+                            $sql23 = "SELECT MAX(hora) from datos_ubicaciones WHERE id_tarj= $id AND fecha='$fecha'";
+                            $result23 = $mysqli->query($sql23);
+                            $row23 = $result23->fetch_array(MYSQLI_NUM);
+                            $hora = $row23[0];
 
-                      <?php
-                          }
-                      }
-                      ?>
+                            $sql3 = "SELECT * from datos_dispositivos WHERE id_tarjeta= $id";
+                            $result3 = $mysqli->query($sql3);
+                            while ($row3 = $result3->fetch_array(MYSQLI_NUM)) {
+                                $propietario = $row3[3];
+                                $estado = $row3[1];
+                                $ubicacion = $row3[2];
+                            }
+                        ?>
+                            <tr>
+                                <td valign="center" align=center>
+                                    <?php echo $id; ?>
+                                </td>
+                                <td valign="center" align=center>
+                                    <?php echo $propietario; ?>
+                                </td>
+                                <td valign="center" align=center>
+                                    <?php echo $ubicacion; ?>
+                                </td>
+                                <td valign="center" align=center>
+                                    <?php
+                                    if ($estado == 1) {
+                                    ?>
+                                        <img src="/ehealth/static/img/comprobado.png" width=32 height=32>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <img src="/ehealth/static/img/cancelar.png" width=32 height=32>
+                                    <?php
+                                    }
+                                    ?>
+                                </td>
+                                <td valign="center" align=center>
+                                    <?php echo $fecha; ?>
+                                </td>
+                                <td valign="center" align=center>
+                                    <?php echo $hora; ?>
+                                </td>
+                                <td valign="center" align=center>
+                                    <img src="/ehealth/static/img/map_icons/icono_<?php echo $id; ?>.png" width=32 height=32>
+                                </td>
+                            </tr>
+                            <tr height=20>
+                            </tr>
+                        </table>
+                        <table width=90% align=center cellpadding=5 border=0>
+                            <tr>
+                                <td style="border: none;" valign="center" align=left>
+                                    <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/consultas/usuarios/dispositivos.php" role="button">
+                                        <i class="fas fa-angle-double-left"></i>
+                                        <span class="pl-3">Volver</span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                            <?php
+                        } else {
+                            $contador = 0;
+                            while ($row1 = $result1->fetch_array(MYSQLI_NUM)) {
+                                $ID_TARJ = $row1[0];
+                                $propietario = $row1[3];
+                                $estado = $row1[1];
+                                $ubicacion = $row1[2];
+                                $contador++;
+                                $sql2 = "SELECT MAX(fecha) from datos_ubicaciones WHERE id_tarj= $contador";
+                                $result2 = $mysqli->query($sql2);
+                                $row2 = $result2->fetch_array(MYSQLI_NUM);
+                                $fecha = $row2[0];
+                                $sql23 = "SELECT MAX(hora) from datos_ubicaciones WHERE id_tarj= $contador AND fecha='$fecha'";
+                                $result23 = $mysqli->query($sql23);
+                                $row23 = $result23->fetch_array(MYSQLI_NUM);
+                                $hora = $row23[0];
+                            ?>
+                                <tr>
+                                    <td valign="center" align=center>
+                                        <?php echo $ID_TARJ; ?>
+                                    </td>
+                                    <td valign="center" align=center>
+                                        <?php echo $propietario; ?>
+                                    </td>
+                                    <td valign="center" align=center>
+                                        <?php echo $ubicacion; ?>
+                                    </td>
+                                    <td valign="center" align=center>
+                                        <?php
+                                        if ($estado == 1) {
+                                        ?>
+                                            <img src="/ehealth/static/img/comprobado.png" width=32 height=32>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <img src="/ehealth/static/img/cancelar.png" width=32 height=32>
+                                        <?php
+                                        }
+                                        ?>
+                                    </td>
+                                    <td valign="center" align=center>
+                                        <?php echo $fecha; ?>
+                                    </td>
+                                    <td valign="center" align=center>
+                                        <?php echo $hora; ?>
+                                    </td>
+                                    <td valign="center" align=center>
+                                        <img src="/ehealth/static/img/map_icons/icono_<?php echo $ID_TARJ; ?>.png" width=32 height=32>
+                                    </td>
+                                </tr>
+
+                        <?php
+                            }
+                        }
+                        ?>
                     </table>
                 </div>
                 <div id="mapa_dispositivos">
@@ -245,10 +267,10 @@
                           </td>
                         </tr>
                         <tr>
-                          <td valign="center" align=center width=80% colspan=8 bgcolor="#281E5D">
+                          <td valign="center" align=center width=80% colspan=8 bgcolor="#E1E1E1">
                             <?php
                                 $mysqli2 = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
-                                $sqlubi2 = "SELECT * from datos_ubicaciones order by id DESC LIMIT 10"; //CONSULTA LAS ULTIMAS 100 UBICACIONES DE LA TABLA DE LA BASE DE DATOS
+                                $sqlubi2 = "SELECT * FROM datos_ubicaciones WHERE id IN (SELECT MAX(id) FROM datos_ubicaciones GROUP BY id_tarj) ORDER BY id_tarj"; //CONSULTA LAS ULTIMAS 100 UBICACIONES DE LA TABLA DE LA BASE DE DATOS
                                 $resultubi = $mysqli2->query($sqlubi2);
                                 $i=0;
                                 while($rowubi = $resultubi->fetch_array(MYSQLI_NUM))

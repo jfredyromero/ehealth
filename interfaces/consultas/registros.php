@@ -61,7 +61,7 @@
                             <b>Humedad</b>
                         </td>
                         <td valign="center" align=center bgcolor="#E1E1E1">
-                            <b>Presencia de lluvia</b>
+                            <b>Condición Climática</b>
                         </td>
                     </tr>
 

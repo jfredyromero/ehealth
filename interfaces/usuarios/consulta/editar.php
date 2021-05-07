@@ -55,15 +55,7 @@
 
                         $mysqli = new mysqli($host, $user, $pw, $db); // Aqu� se hace la conexi�n a la base de datos.
 
-                        if($contraseña_codific== null){
-                            $sql2="SELECT passwd from datos_usuarios where identificacion = $identificacion_Usuario";
-                            $result10 = $mysqli->query($sql2);
-                            $row1 = $result10->fetch_array(MYSQLI_NUM);
-                            $contraseña_codific=$row1[0];
-                            $sql2 = "UPDATE datos_usuarios set passwd='$contraseña_codific' where identificacion=$identificacion_Usuario";
-                            $result2 = $mysqli->query($sql2);
-
-                        }else{
+                        if($contraseña!= null){
                             $sql2 = "UPDATE datos_usuarios set passwd='$contraseña_codific' where identificacion=$identificacion_Usuario";
                             $result2 = $mysqli->query($sql2);
                         }
@@ -82,7 +74,7 @@
                         $result5 = $mysqli->query($sql5);
 
 
-                        if (($result1 == 1)&&($result3 == 1)&&($result5 == 1)&& ($result4 == 1) && ($result2 == 1)){
+                        if (($result1 == 1)&&($result3 == 1)&&($result5 == 1)&& ($result4 == 1) && ($result1 == 1)){
                             $mensaje = "Datos modificados correctamente";
                         }else{
                             $mensaje = "Inconveniente el editar los datos";
@@ -103,7 +95,7 @@
                         $NombreCompleto=$row1[1];
                         $identificacion_Usuario = $row1[2];
                         $DireccionUsuario = $row1[3];
-                        $loginUsuario =  $row1[4];
+                        $loginUsuario = $row1[4];
                         $TipoUsuario= $row1[6];
 
                         if ($TipoUsuario=='1') {
@@ -131,7 +123,6 @@
                         $identificacion_Usuario = $row1[2];
                         $DireccionUsuario = $row1[3];
                         $loginUsuario =  $row1[4];
-                        $contraseña = $row1[5];
                         $TipoUsuario= $row1[6];
 
 

@@ -16,7 +16,7 @@
     date_default_timezone_set('America/Bogota'); // esta l�nea es importante cuando el servidor es REMOTO y est� ubicado en otros pa�ses como USA o Europa. Fija la hora de Colombia para que grabe correctamente el dato de fecha y hora con CURDATE y CURTIME, en la base de datos.
 
     $fecha = date("Y-m-d");
-    $hora = date("h:i:s");
+    $hora = date("H:i:s");
 
     $sql1 = "INSERT into datos_medidos (id_tarjeta, temperatura, humedad, fecha, hora, lluvia) VALUES ('$ID_TARJ', '$temp', '$hum', '$fecha', '$hora', $rain)"; // Aqu� se ingresa el valor recibido a la base de datos.
     $sql2 = "INSERT into datos_ubicaciones (id_tarj, latitud, longitud, fecha, hora, velocidad, altitud) VALUES ('$ID_TARJ', '$lat', '$lon', '$fecha', '$hora','$vel','$alt')";

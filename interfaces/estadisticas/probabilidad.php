@@ -36,9 +36,9 @@
                     </tr>
                     <tr>
                         <td valign="top" align=center width=80%  bgcolor="#281E5D">
-                            <h3>
+                            <h1>
                                 <font color=white>Probabilidad de contagio en una fecha específica</font>
-                            </h3>
+                            </h1>
                         </td>
                     </tr>
                 </table>
@@ -48,169 +48,242 @@
                     $sql1="SELECT id_tarjeta from datos_dispositivos where estado=1";
                     $result1 = $mysqli->query($sql1);
                     $contador=0;
-                    if(isset($_GET["mensaje"])||isset($_GET["mensaje1"])||isset($_GET["mensaje2"])||isset($_GET["mensaje3"])){
-                        $probabilidad_fa_dia=$_GET["mensaje"];
-                        if($probabilidad_fa_dia<0.5){
-                            $var_nivel_fa_dia=1;
-                            $var_color_fa_dia=0;
-                        }else if ($probabilidad_fa_dia>0.5 && $probabilidad_fa_dia<0.75) {
-                            $var_nivel_fa_dia=2;
-                            $var_color_fa_dia=1;
-                        }else{
-                            $var_nivel_fa_dia=3;
-                            $var_color_fa_dia=2;
-                        }
-                        $probabilidad_dengue_dia=$_GET["mensaje1"];
-                        if($probabilidad_dengue_dia<0.5){
-                            $var_nivel_d_dia=1;
-                            $var_color_d_dia=0;
-                        }else if ($probabilidad_dengue_dia>0.5 && $probabilidad_dengue_dia<0.75) {
-                            $var_nivel_d_dia=2;
-                            $var_color_d_dia=1;
-                        }else{
-                            $var_nivel_d_dia=3;
-                            $var_color_d_dia=2;
-                        }
-                        $probabilidad_fa_noche=$_GET["mensaje2"];
-                        if($probabilidad_fa_noche<0.5){
-                            $var_nivel_fa_noche=1;
-                            $var_color_fa_noche=0;
-                        }else if ($probabilidad_fa_noche>0.5 && $probabilidad_fa_noche<0.75) {
-                            $var_nivel_fa_noche=2;
-                            $var_color_fa_noche=1;
-                        }else{
-                            $var_nivel_fa_noche=3;
-                            $var_color_fa_noche=2;
-                        }
-                        $probabilidad_dengue_noche=$_GET["mensaje3"];
-                        if($probabilidad_dengue_noche<0.5){
-                            $var_nivel_d_noche=1;
-                            $var_color_d_noche=0;
-                        }else if ($probabilidad_dengue_noche>0.5 && $probabilidad_dengue_noche<0.75) {
-                            $var_nivel_d_noche=2;
-                            $var_color_d_noche=1;
-                        }else{
-                            $var_nivel_d_noche=3;
-                            $var_color_d_noche=2;
-                        }
-                        ?>
-                        <div class="container">
-                    <div class="row">
-                        <div class="col-sm-3" align=center><font FACE="arial" SIZE=4 color="#000044"><b>Escoja una de las tarjetas activas:</b></font><br>
-                            <form method=POST action="/ehealth/procesos/calculo_probabilidad.php">
-                                <div class="row-sm-1 justify-content-center">
-                                    <div class="dropdown">
-                                        <select class="btn btn-primary" name="tarj_activa" required>
-                                            <option value="1111">Id</option>
-                                            <?php while ($row2 = $result1->fetch_array(MYSQLI_NUM)) {
-                                                $id_tarj=$row2[0];
-                                                $contador++; ?>
-                                            <option value="<?php echo $id_tarj;?>"><?php echo $id_tarj?></option>
-                                            <?php
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row-sm-1 justify-content-center" >
-                                    <font FACE="arial" SIZE=4 color="#000044"> <b>Fecha Inicial:</b></font><br>
-                                        <input type="date" name="fecha_ini" value="" required>
-                                </div>
-                                <div class="row-sm-1 justify-content-center" >
-                                    <font FACE="arial" SIZE=4 color="#000044"> <b>Fecha Final:</b></font><br>
-                                        <input type="date" name="fecha_fin" value="" required>
-                                </div><br>
-                                <div class="row-sm-1 justify-content-center">
-                                    <input type="hidden" name="enviado" value="graficar">
-                                    <button style="background-color:#281E5D; color:white" value="graficar" type="submit" class="btn btn-lg" name="graficar"><i style="background-color:#281E5D; color:white" class="fas fa-sync"></i><span class="pl-3">Graficar</span></button>
-                                </div> <br>
-                                <div class="row-sm-1 justify-content-center" style="background-color:#281E5D">
-                                    <font FACE="arial" SIZE=4 color="white"> <b>-Datos consultados-</b></font><br>
-                                </div>
-                                <div class="row-sm-1 justify-content-left">
-                                    <font FACE="arial" SIZE=3 color="000044"><u><b>Id:</b></u> <?php echo $_GET["id"]?></font><br>
-                                </div>
-                                <div class="row-sm-1 justify-content-center" >
-                                    <font FACE="arial" SIZE=3 color="000044"><u><b>Propietario:</b></u> <?php echo $_GET["nombre"]?></font><br>
-                                </div>
-                                <div class="row-sm-1 justify-content-center" >
-                                    <font FACE="arial" SIZE=3 color="000044"><u><b>Fecha inicial:</b></u> <?php echo $_GET["fe_ini"]?></font><br>
-                                </div>
-                                <div class="row-sm-1 justify-content-center" >
-                                    <font FACE="arial" SIZE=3 color="000044"><u><b>Fecha final:</b></u> <?php echo $_GET["fe_fin"]?></font><br>
-                                </div>
-                            </form>
-                        </div>
-                        <div class="col-sm-5" >
-                            <div class="row">
-                                <div class="col-sm-10">
-                                    <div id="container" style="width: 350px; height: 303px;"></div>
-                                    <br><hr style="height:2px;border-width:0;color:#000044;background-color:#000044">
-                                </div>
-                                <div class="col-sm-1 justify-content-left">
-                                    <img src="/ehealth/static/img/sunny.png" width=70 height=70>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-sm-10">
-                                    <div id="container2" style="width: 350px; height: 303px;"></div>
-                                    <br><hr style="height:2px;border-width:0;color:#000044;background-color:#000044">
-                                </div>
-                                <div class="col-sm-1 justify-content-left">
-                                    <img src="/ehealth/static/img/moon.png" width=70 height=70>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <?php    }else{ ?>
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-sm-3" align=center><font FACE="arial" SIZE=4 color="#000044"><b>Escoja una de las tarjetas activas:</b></font><br>
-                                    <form method=POST action="/ehealth/procesos/calculo_probabilidad.php">
-                                        <div class="row-sm-1 justify-content-center">
-                                            <div class="dropdown">
-                                                <select class="btn btn-primary" name="tarj_activa" required>
-                                                    <option value="1111">Id</option>
-                                                    <?php while ($row2 = $result1->fetch_array(MYSQLI_NUM)) {
-                                                        $id_tarj=$row2[0];
-                                                        $contador++; ?>
-                                                    <option value="<?php echo $id_tarj;?>"><?php echo $id_tarj?></option>
-                                                    <?php
-                                                        }
-                                                    ?>
-                                                </select>
+                    if(isset($_GET["confir"])){
+                        $confir=$_GET["confir"];
+                        if ($confir==1) {
+                                $probabilidad_fa_dia=$_GET["mensaje"];
+                                if($probabilidad_fa_dia<0.5){
+                                    $var_nivel_fa_dia=1;
+                                    $var_color_fa_dia=0;
+                                }else if ($probabilidad_fa_dia>0.5 && $probabilidad_fa_dia<0.75) {
+                                    $var_nivel_fa_dia=2;
+                                    $var_color_fa_dia=1;
+                                }else{
+                                    $var_nivel_fa_dia=3;
+                                    $var_color_fa_dia=2;
+                                }
+                                $probabilidad_dengue_dia=$_GET["mensaje1"];
+                                if($probabilidad_dengue_dia<0.5){
+                                    $var_nivel_d_dia=1;
+                                    $var_color_d_dia=0;
+                                }else if ($probabilidad_dengue_dia>0.5 && $probabilidad_dengue_dia<0.75) {
+                                    $var_nivel_d_dia=2;
+                                    $var_color_d_dia=1;
+                                }else{
+                                    $var_nivel_d_dia=3;
+                                    $var_color_d_dia=2;
+                                }
+                                $probabilidad_fa_noche=$_GET["mensaje2"];
+                                if($probabilidad_fa_noche<0.5){
+                                    $var_nivel_fa_noche=1;
+                                    $var_color_fa_noche=0;
+                                }else if ($probabilidad_fa_noche>0.5 && $probabilidad_fa_noche<0.75) {
+                                    $var_nivel_fa_noche=2;
+                                    $var_color_fa_noche=1;
+                                }else{
+                                    $var_nivel_fa_noche=3;
+                                    $var_color_fa_noche=2;
+                                }
+                                $probabilidad_dengue_noche=$_GET["mensaje3"];
+                                if($probabilidad_dengue_noche<0.5){
+                                    $var_nivel_d_noche=1;
+                                    $var_color_d_noche=0;
+                                }else if ($probabilidad_dengue_noche>0.5 && $probabilidad_dengue_noche<0.75) {
+                                    $var_nivel_d_noche=2;
+                                    $var_color_d_noche=1;
+                                }else{
+                                    $var_nivel_d_noche=3;
+                                    $var_color_d_noche=2;
+                                }
+                                ?>
+                                <table width="80%" align=center cellpadding=5 border=0>
+                                    <tr height="20"></tr>
+                                    <tr >
+                                    <td style="border: none" valign="center" align=center width=80% colspan=9>
+                                        <div class="container">
+                                            <div class="row">
+                                                <div class="col-sm-5" align=center><font FACE="arial" SIZE=4 color="#000044"><b>Escoja una de las tarjetas activas:</b></font><br>
+                                                    <form method=POST action="/ehealth/procesos/calculo_probabilidad.php">
+                                                        <div class="row-sm-1 justify-content-center">
+                                                            <div class="dropdown">
+                                                                <select class="btn btn-primary" name="tarj_activa" required>
+                                                                    <option value="">Id</option>
+                                                                    <?php while ($row2 = $result1->fetch_array(MYSQLI_NUM)) {
+                                                                        $id_tarj=$row2[0];
+                                                                        $contador++; ?>
+                                                                    <option value="<?php echo $id_tarj;?>"><?php echo $id_tarj?></option>
+                                                                    <?php
+                                                                        }
+                                                                    ?>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row-sm-1 justify-content-center" >
+                                                            <font FACE="arial" SIZE=4 color="#000044"> <b>Fecha Inicial:</b></font><br>
+                                                                <input type="date" name="fecha_ini" value="" required>
+                                                        </div>
+                                                        <div class="row-sm-1 justify-content-center" >
+                                                            <font FACE="arial" SIZE=4 color="#000044"> <b>Fecha Final:</b></font><br>
+                                                                <input type="date" name="fecha_fin" value="" required>
+                                                        </div><br>
+                                                        <div class="row-sm-1 justify-content-center">
+                                                            <input type="hidden" name="enviado" value="graficar">
+                                                            <button style="background-color:#281E5D; color:white" value="graficar" type="submit" class="btn btn-lg" name="graficar"><i style="background-color:#281E5D; color:white" class="fas fa-sync"></i><span class="pl-3">Graficar</span></button>
+                                                        </div> <br>
+                                                        <div class="row-sm-1 justify-content-center" style="background-color:#281E5D">
+                                                            <font FACE="arial" SIZE=4 color="white"> <b>-Datos consultados-</b></font><br>
+                                                        </div>
+                                                        <div class="row-sm-1 justify-content-left" style="background-color:#35287d">
+                                                            <font FACE="arial" SIZE=3 color="white"><u><b>Id:</b></u> <?php echo $_GET["id"]?></font><br>
+                                                        </div>
+                                                        <div class="row-sm-1 justify-content-center" style="background-color:#35287d">
+                                                            <font FACE="arial" SIZE=3 color="white"><u><b>Propietario:</b></u> <?php echo $_GET["nombre"]?></font><br>
+                                                        </div>
+                                                        <div class="row-sm-1 justify-content-center" style="background-color:#35287d">
+                                                            <font FACE="arial" SIZE=3 color="white"><u><b>Fecha inicial:</b></u> <?php echo $_GET["fe_ini"]?></font><br>
+                                                        </div>
+                                                        <div class="row-sm-1 justify-content-center" style="background-color:#35287d">
+                                                            <font FACE="arial" SIZE=3 color="white"><u><b>Fecha final:</b></u> <?php echo $_GET["fe_fin"]?></font><br>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <div class="col-sm-7" >
+                                                    <div class="row">
+                                                        <div class="col-sm-10">
+                                                            <div id="container" style="width: 350px; height: 305px;"></div>
+                                                            <br><br>
+                                                        </div>
+                                                        <div class="col-sm-1 justify-content-left">
+                                                            <img src="/ehealth/static/img/sunny.png" width=70 height=70>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-10">
+                                                            <div id="container2" style="width: 350px; height: 305px;"></div>
+                                                            <br><br>
+                                                        </div>
+                                                        <div class="col-sm-1 justify-content-left">
+                                                            <img src="/ehealth/static/img/moon.png" width=70 height=70>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="row-sm-1 justify-content-center" >
-                                            <font FACE="arial" SIZE=4 color="#000044"> <b>Fecha Inicial:</b></font><br>
-                                                <input type="date" name="fecha_ini" value="" required>
-                                        </div>
-                                        <div class="row-sm-1 justify-content-center" >
-                                            <font FACE="arial" SIZE=4 color="#000044"> <b>Fecha Final:</b></font><br>
-                                                <input type="date" name="fecha_fin" value="" required>
-                                        </div><br>
-                                        <div class="row-sm-1 justify-content-center">
-                                            <input type="hidden" name="enviado" value="graficar">
-                                            <button style="background-color:#281E5D; color:white" value="graficar" type="submit" class="btn btn-lg" name="graficar"><i style="background-color:#281E5D; color:white" class="fas fa-sync"></i><span class="pl-3">Graficar</span></button>
-                                        </div>
-                                    </form>
-                                </div>
-                                <div class="col-sm-5" >
+                                    </td>
+                                    </tr>
+                                </table>
+                    <?php
+                        }else{ ?>
+                            <table width="80%" align=center cellpadding=5 border=0>
+                            <tr height="20"></tr>
+                            <tr>
+                            <td style="border: none"valign="center" align=center width=80% colspan=9>
+                                <div class="container">
                                     <div class="row">
-                                    <img src="/ehealth/static/img/acceso_denegado.png" width=400 height=400>
+                                        <div class="col-sm-5" align=center><font FACE="arial" SIZE=4 color="#000044"><b>Escoja una de las tarjetas activas:</b></font><br>
+                                            <form method=POST action="/ehealth/procesos/calculo_probabilidad.php">
+                                                <div class="row-sm-1 justify-content-center">
+                                                    <div class="dropdown">
+                                                        <select class="btn btn-primary" name="tarj_activa" required>
+                                                            <option value="">Id</option>
+                                                            <?php while ($row2 = $result1->fetch_array(MYSQLI_NUM)) {
+                                                                $id_tarj=$row2[0];
+                                                                $contador++; ?>
+                                                            <option value="<?php echo $id_tarj;?>"><?php echo $id_tarj?></option>
+                                                            <?php
+                                                                }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row-sm-1 justify-content-center" >
+                                                    <font FACE="arial" SIZE=4 color="#000044"> <b>Fecha Inicial:</b></font><br>
+                                                        <input type="date" name="fecha_ini" value="" required>
+                                                </div>
+                                                <div class="row-sm-1 justify-content-center" >
+                                                    <font FACE="arial" SIZE=4 color="#000044"> <b>Fecha Final:</b></font><br>
+                                                        <input type="date" name="fecha_fin" value="" required>
+                                                </div><br>
+                                                <div class="row-sm-1 justify-content-center">
+                                                    <input type="hidden" name="enviado" value="graficar">
+                                                    <button style="background-color:#281E5D; color:white" value="graficar" type="submit" class="btn btn-lg" name="graficar"><i style="background-color:#281E5D; color:white" class="fas fa-sync"></i><span class="pl-3">Graficar</span></button>
+                                                </div><br>
+                                                <div class="row-sm-1 justify-content-center" style="background-color:#a61308">
+                                                    <font FACE="arial" SIZE=4 color="white"> <b>-ERROR-</b></font><br>
+                                                </div>
+                                                <div class="row-sm-1 justify-content-center" style="background-color:#b51f14">
+                                                    <font FACE="arial" SIZE=3 color="white"><b>No hay registros en las fechas seleccionadas:</b></font><br>
+                                                </div>
+                                                <div class="row-sm-1 justify-content-center" style="background-color:#b51f14">
+                                                    <font FACE="arial" SIZE=3 color="white"><u><b>Fecha inicial:</b></u> <?php echo $_GET["fe_ini"]?></font><br>
+                                                </div>
+                                                <div class="row-sm-1 justify-content-center" style="background-color:#b51f14">
+                                                    <font FACE="arial" SIZE=3 color="white"><u><b>Fecha final:</b></u> <?php echo $_GET["fe_fin"]?></font><br>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="col-sm-5" >
+                                            <div class="row">
+                                            <img src="/ehealth/static/img/probabilidad.png" width=450 height=350>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-
-                <?php    }
-
-                ?>
-                <br>
-
+                            </td>
+                            </tr>
+                        </table>
+                <?php }
+                    }else{ ?>
+                        <table width="80%" align=center cellpadding=5 border=0>
+                            <tr height="20"></tr>
+                            <tr>
+                            <td style="border: none"valign="center" align=center width=80% colspan=9>
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-sm-4" align=center><font FACE="arial" SIZE=4 color="#000044"><b>Escoja una de las tarjetas activas:</b></font><br>
+                                            <form method=POST action="/ehealth/procesos/calculo_probabilidad.php">
+                                                <div class="row-sm-1 justify-content-center">
+                                                    <div class="dropdown">
+                                                        <select class="btn btn-primary" name="tarj_activa" required>
+                                                            <option value="">Id</option>
+                                                            <?php while ($row2 = $result1->fetch_array(MYSQLI_NUM)) {
+                                                                $id_tarj=$row2[0];
+                                                                $contador++; ?>
+                                                            <option value="<?php echo $id_tarj;?>"><?php echo $id_tarj?></option>
+                                                            <?php
+                                                                }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row-sm-1 justify-content-center" >
+                                                    <font FACE="arial" SIZE=4 color="#000044"> <b>Fecha Inicial:</b></font><br>
+                                                        <input type="date" name="fecha_ini" value="" required>
+                                                </div>
+                                                <div class="row-sm-1 justify-content-center" >
+                                                    <font FACE="arial" SIZE=4 color="#000044"> <b>Fecha Final:</b></font><br>
+                                                        <input type="date" name="fecha_fin" value="" required>
+                                                </div><br>
+                                                <div class="row-sm-1 justify-content-center">
+                                                    <input type="hidden" name="enviado" value="graficar">
+                                                    <button style="background-color:#281E5D; color:white" value="graficar" type="submit" class="btn btn-lg" name="graficar"><i style="background-color:#281E5D; color:white" class="fas fa-sync"></i><span class="pl-3">Graficar</span></button>
+                                                </div><br>
+                                            </form>
+                                        </div>
+                                        <div class="col-sm-5" >
+                                            <div class="row">
+                                            <img src="/ehealth/static/img/probabilidad.png" width=450 height=350>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                            </tr>
+                        </table>
+                <?php  } ?>
             </div>
         </div>
+
         <div id="jscripts">
             <?php
                 $jscripts = $_SERVER['DOCUMENT_ROOT']."/ehealth/static/php/jscripts.php";
@@ -239,6 +312,10 @@
                             type: 'column'
                         },
                         title: {
+                            style: {
+                                color: '#281E5D',
+                                fontWeight: 'bold'
+                            },
                             text: 'Probabilidad de contraer una enfermedad'
                         },
                         xAxis: {
@@ -246,6 +323,10 @@
                         },
                         yAxis: {
                             title: {
+                                style: {
+                                    color: '#281E5D',
+                                    fontWeight: 'bold'
+                                },
                                 text: 'Probabilidad'
                             },
                             labels:{
@@ -272,6 +353,10 @@
                             type: 'column'
                         },
                         title: {
+                            style: {
+                                color: '#281E5D',
+                                fontWeight: 'bold'
+                            },
                             text: 'Probabilidad de contraer una enfermedad'
                         },
                         xAxis: {
@@ -279,6 +364,10 @@
                         },
                         yAxis: {
                             title: {
+                                style: {
+                                    color: '#281E5D',
+                                    fontWeight: 'bold'
+                                },
                                 text: 'Probabilidad'
                             },
                             labels:{

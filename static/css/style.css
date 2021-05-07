@@ -11,8 +11,8 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 
 /*****----------------------------------------
-     1) font-family: 'Rajdhani', sans-serif;  
-     2) font-family: 'Poppins', sans-serif; 
+     1) font-family: 'Rajdhani', sans-serif;
+     2) font-family: 'Poppins', sans-serif;
 ----------------------------------------*****/
 
 
@@ -453,6 +453,7 @@ a.readmore_bt {
 nav.main-menu {
 	float: right;
 	margin-left: 0;
+	margin-top: 50px;
 }
 
 .menu-area-main li:hover a,
@@ -1632,7 +1633,7 @@ input[type="radio"] .styled:checked+label::after {
 
 
 /*---------------------------------------------------------------------
-    layout new css 
+    layout new css
 ---------------------------------------------------------------------*/
 
 .header {
@@ -1641,7 +1642,7 @@ input[type="radio"] .styled:checked+label::after {
 	display: flex;
 	flex-direction: row;
 	padding: 10px 0px;
-	
+
 }
 
 .logo{
@@ -1652,7 +1653,7 @@ input[type="radio"] .styled:checked+label::after {
 	padding: 0;
 	margin: 0;
 	color: rgb(228, 229, 235);
-	
+
 }
 
 .relative {

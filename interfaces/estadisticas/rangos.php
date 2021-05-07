@@ -157,14 +157,14 @@
                         <tr>
                             <td bgcolor="#EEEEEE" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044">
-                                    <b>Presencia de lluvia:</b>
+                                    <b>Ambiente Propenso:</b>
                                 </font>
                             </td>
                             <td bgcolor="#EEEEEE" align=center colspan=4>
                                 <div class="dropdown">
                                     <select class="btn btn-secondary" name="opt_fiebre">
-                                        <option value="1" <?php echo $var_lluF_si;?>>Si</option>
-                                        <option value="0" <?php echo $var_lluF_no;?>>No</option>
+                                        <option value="1" <?php echo $var_lluF_si;?>>Lluvioso</option> <!-- En la base de datos lluvia=1 -->
+                                        <option value="0" <?php echo $var_lluF_no;?>>Seco</option> <!-- En la base de datos lluvia=0 -->
                                     </select>
                                 </div>
                             </td>
@@ -198,14 +198,14 @@
                         <tr>
                             <td bgcolor="#EEEEEE" align=center colspan=2>
                                 <font FACE="arial" SIZE=2 color="#000044">
-                                    <b>Presencia de lluvia:</b>
+                                    <b>Ambiente Propenso:</b>
                                 </font>
                             </td>
                             <td bgcolor="#EEEEEE" align=center colspan=4>
                                 <div class="dropdown">
                                     <select class="btn btn-secondary" name="opt_dengue">
-                                        <option value="1" <?php echo $var_lluD_si;?>>Si</option>
-                                        <option value="0" <?php echo $var_lluD_no;?>>No</option>
+                                        <option value="1" <?php echo $var_lluD_si;?>>Lluvioso</option> <!-- En la base de datos lluvia=1 -->
+                                        <option value="0" <?php echo $var_lluD_no;?>>Seco</option> <!-- En la base de datos lluvia=0 -->
                                     </select>
                                 </div>
                             </td>
