@@ -127,9 +127,9 @@
 
 
                         if ($TipoUsuario=='1') {
-                            $Tipo_Ad='Administrador';
-                        }else{
-                            $Tipo_Ad='';
+                    ?>
+                    <script> location.replace("/ehealth/static/php/acceso_denegado.php"); </script>
+                    <?php
                         }
 
                         if ($TipoUsuario=='0') {
@@ -167,7 +167,7 @@
                             <td bgcolor="#EEEEEE" align=center colspan=4>
                                 <div class="dropdown">
                                     <select class="btn btn-secondary" name="tipo_usuario" >
-                                        <option value="1" <?php echo $Tipo_Ad;?> >Administrador</option>
+                                        <option value="1">Administrador</option>
                                         <option value="0" <?php echo $Tipo_Con;?> >Consulta</option>
                                     </select>
                                 </div>

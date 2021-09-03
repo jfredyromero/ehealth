@@ -68,7 +68,9 @@
                             if (isset($_POST["submit"])) {
                                 $nombre_buscar=$_POST["nombre_buscar"];
                                 $identi_buscar=$_POST["iden_buscar"];
-                                if ($nombre_buscar==null && $identi_buscar==null) { ?>
+                                if ($nombre_buscar==null && $identi_buscar==null) { 
+                                    // Si los campos estan vacios....
+                        ?>
                                     <tr height=20>
                                     </tr>
                                     <tr>
@@ -142,19 +144,25 @@
                                                     <img src="/ehealth/static/img/dibujar.png" width=32 height=32>
                                                 </a>
 
-                                            <?php } ?>
+                                            <?php 
+                                                } 
+                                            ?>
                                         </td>
-                                <?php } ?>
-                            <?php }else { ?>
+                                <?php 
+                                }
+                            }else{
+                                // Si alguno de los campos tiene texto 
+                                ?>
                             </tr>
                                     <?php
                                         if($identi_buscar!=null){
+                                        // Si se busca por identificacion
                                         $sql5 = "SELECT * from datos_usuarios WHERE identificacion LIKE '%$identi_buscar%' order by identificacion";
                                         $result5=$mysqli->query($sql5);
                                         $row5 = $result5->fetch_array(MYSQLI_NUM);
                                             if($row5 == NULL){
                                                 $sql1 = "SELECT * from datos_usuarios";
-                                                ?>
+                                    ?>
                                                 <tr height=20>
                                                 </tr>
                                                  <tr>
@@ -170,6 +178,7 @@
                                             }
                                     }
                                     if($nombre_buscar!=null){
+                                        // Si se busca por nombre
                                         $sql5 = "SELECT * from datos_usuarios where nombre_completo LIKE '%$nombre_buscar%' order by nombre_completo";
                                         $result5=$mysqli->query($sql5);
                                         $row5 = $result5->fetch_array(MYSQLI_NUM);
