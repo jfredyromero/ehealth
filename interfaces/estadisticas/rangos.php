@@ -141,7 +141,7 @@
                                 </font>
                             </td>
                             <td bgcolor="#EEEEEE" align=center colspan=4>
-                                <input type="number" name="temp_max_fiebre" value="<?php echo $temp_max_fiebre; ?>" required>
+                                <input type="number" name="temp_max_fiebre" min="12" max="27" value="<?php echo $temp_max_fiebre; ?>" required>
                             </td>
                         </tr>
                         <tr>
@@ -151,7 +151,7 @@
                                 </font>
                             </td>
                             <td bgcolor="#EEEEEE" align=center colspan=4>
-                                <input type="number" name="hum_max_fiebre" value="<?php echo $hum_max_fiebre; ?>" required>
+                                <input type="number" name="hum_max_fiebre" min="65" max="90"  value="<?php echo $hum_max_fiebre; ?>" required>
                             </td>
                         </tr>
                         <tr>
@@ -182,7 +182,7 @@
                                 </font>
                             </td>
                             <td bgcolor="#EEEEEE" align=center colspan=4>
-                                <input type="number" name="temp_max_dengue" value="<?php echo $temp_max_dengue; ?>" required>
+                                <input type="number" name="temp_max_dengue"min="12" max="27"  value="<?php echo $temp_max_dengue; ?>" required>
                             </td>
                         </tr>
                         <tr>
@@ -192,7 +192,7 @@
                                 </font>
                             </td>
                             <td bgcolor="#EEEEEE" align=center colspan=4>
-                                <input type="number" name="hum_max_dengue" value="<?php echo $hum_max_dengue; ?>" required>
+                                <input type="number" name="hum_max_dengue" min="65" max="90" value="<?php echo $hum_max_dengue; ?>" required>
                             </td>
                         </tr>
                         <tr>
