@@ -22,6 +22,7 @@
                             <a class="dropdown-item" href="/ehealth/interfaces/consultas/fechas.php">Fechas</a>
                             <a class="dropdown-item" href="/ehealth/interfaces/consultas/administradores/dispositivos.php">Dispositivos</a>
                             <a class="dropdown-item" href="/ehealth/interfaces/consultas/usuarios.php">Usuarios</a>
+                            <a class="dropdown-item" href="/ehealth/interfaces/consultas/consultas.php">Consultas</a>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
