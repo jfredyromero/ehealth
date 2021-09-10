@@ -8,7 +8,11 @@ $mysqli = new mysqli($host, $user, $pw, $db);
 //SELECT round(AVG(temperatura),2) as promedio from datos_medidos where fecha >= '2018-02-15' and fecha <= '2021-03-20' and id_tarjeta='1' and hora>='06:00:00' and hora<='18:00:00'
 //Noche
 //SELECT round(AVG(temperatura),2) as promedio from datos_medidos where fecha >= '2018-02-15' and fecha <= '2021-03-20' and id_tarjeta='1' and NOT(hora>='06:00:00' and hora<='18:00:00')
-$tarjeta_activa = $_POST["tarj_activa"];
+$ubicacion_tarj=$_POST["ubicacion"];
+$sql="SELECT id_tarjeta from datos_dispositivos where ubicacion='$ubicacion_tarj'";
+$result = $mysqli->query($sql);
+$row1 = $result->fetch_array(MYSQLI_NUM);
+$tarjeta_activa = $row1[0];
 $fecha_ini = $_POST["fecha_ini"];
 $fecha_fin = $_POST["fecha_fin"];
 
@@ -214,5 +218,5 @@ if ($row == null) {
     $PROB_FIEBRE_NOCHE = round($proba_temp_fiebre * $PROB_TEMP_NOCHE + $proba_hum_fiebre * $PROB_HUM_NOCHE + $proba_lluvia_fiebre * $PROB_LLUVIA_NOCHE, 4);
     $PROB_DENGUE_NOCHE = round($proba_temp_dengue * $PROB_TEMP_NOCHE + $proba_hum_dengue * $PROB_HUM_NOCHE + $proba_lluvia_dengue * $PROB_LLUVIA_NOCHE, 4);
 
-    header('Location: /ehealth/interfaces/estadisticas/probabilidad.php?confir=' . $confir . '&nombre=' . $nombre . '&id=' . $tarjeta_activa . '&fe_ini=' . $fecha_ini . '&fe_fin=' . $fecha_fin . '&mensaje=' . $PROB_FIEBRE_DIA . '&mensaje1=' . $PROB_DENGUE_DIA . '&mensaje2=' . $PROB_FIEBRE_NOCHE . '&mensaje3=' . $PROB_DENGUE_NOCHE);
+    header('Location: /ehealth/interfaces/estadisticas/probabilidad.php?confir=' . $confir . '&nombre=' . $nombre . '&ubicacion='. $ubicacion_tarj . '&id=' . $tarjeta_activa . '&fe_ini=' . $fecha_ini . '&fe_fin=' . $fecha_fin . '&mensaje=' . $PROB_FIEBRE_DIA . '&mensaje1=' . $PROB_DENGUE_DIA . '&mensaje2=' . $PROB_FIEBRE_NOCHE . '&mensaje3=' . $PROB_DENGUE_NOCHE);
 }

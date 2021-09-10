@@ -45,7 +45,7 @@
 
                 <?php
                     $mysqli = new mysqli($host, $user, $pw, $db);
-                    $sql1="SELECT id_tarjeta from datos_dispositivos where estado=1";
+                    $sql1="SELECT ubicacion from datos_dispositivos where estado=1";
                     $result1 = $mysqli->query($sql1);
                     $contador=0;
                     if(isset($_GET["confir"])){
@@ -102,16 +102,16 @@
                                     <td style="border: none" valign="center" align=center width=80% colspan=9>
                                         <div class="container">
                                             <div class="row">
-                                                <div class="col-sm-5" align=center><font FACE="arial" SIZE=4 color="#000044"><b>Escoja una de las tarjetas activas:</b></font><br>
+                                                <div class="col-sm-5" align=center><font FACE="arial" SIZE=4 color="#000044"><b>Escoja ubicación a consultar:</b></font><br>
                                                     <form method=POST action="/ehealth/procesos/calculo_probabilidad.php">
                                                         <div class="row-sm-1 justify-content-center">
                                                             <div class="dropdown">
-                                                                <select class="btn btn-primary" name="tarj_activa" required>
-                                                                    <option value="">Id</option>
+                                                                <select class="btn btn-primary" name="ubicacion" required>
+                                                                    <option value="">Ubicación</option>
                                                                     <?php while ($row2 = $result1->fetch_array(MYSQLI_NUM)) {
-                                                                        $id_tarj=$row2[0];
+                                                                        $ubicacion_tarj=$row2[0];
                                                                         $contador++; ?>
-                                                                    <option value="<?php echo $id_tarj;?>"><?php echo $id_tarj?></option>
+                                                                    <option value="<?php echo $ubicacion_tarj;?>"><?php echo $ubicacion_tarj?></option>
                                                                     <?php
                                                                         }
                                                                     ?>
@@ -135,6 +135,9 @@
                                                         </div>
                                                         <div class="row-sm-1 justify-content-left" style="background-color:#35287d">
                                                             <font FACE="arial" SIZE=3 color="white"><u><b>Id:</b></u> <?php echo $_GET["id"]?></font><br>
+                                                        </div>
+                                                        <div class="row-sm-1 justify-content-left" style="background-color:#35287d">
+                                                            <font FACE="arial" SIZE=3 color="white"><u><b>Ubicación:</b></u> <?php echo $_GET["ubicacion"]?></font><br>
                                                         </div>
                                                         <div class="row-sm-1 justify-content-center" style="background-color:#35287d">
                                                             <font FACE="arial" SIZE=3 color="white"><u><b>Propietario:</b></u> <?php echo $_GET["nombre"]?></font><br>
@@ -180,16 +183,16 @@
                             <td style="border: none"valign="center" align=center width=80% colspan=9>
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-sm-5" align=center><font FACE="arial" SIZE=4 color="#000044"><b>Escoja una de las tarjetas activas:</b></font><br>
+                                    <div class="col-sm-4" align=center><font FACE="arial" SIZE=4 color="#000044"><b>Escoja ubicación a consultar:</b></font><br>
                                             <form method=POST action="/ehealth/procesos/calculo_probabilidad.php">
                                                 <div class="row-sm-1 justify-content-center">
                                                     <div class="dropdown">
-                                                        <select class="btn btn-primary" name="tarj_activa" required>
-                                                            <option value="">Id</option>
+                                                        <select class="btn btn-primary" name="ubicacion" required>
+                                                            <option value="">Ubicación</option>
                                                             <?php while ($row2 = $result1->fetch_array(MYSQLI_NUM)) {
-                                                                $id_tarj=$row2[0];
+                                                                $ubicacion_tarj=$row2[0];
                                                                 $contador++; ?>
-                                                            <option value="<?php echo $id_tarj;?>"><?php echo $id_tarj?></option>
+                                                            <option value="<?php echo $ubicacion_tarj;?>"><?php echo $ubicacion_tarj?></option>
                                                             <?php
                                                                 }
                                                             ?>
@@ -240,16 +243,16 @@
                             <td style="border: none"valign="center" align=center width=80% colspan=9>
                                 <div class="container">
                                     <div class="row">
-                                        <div class="col-sm-4" align=center><font FACE="arial" SIZE=4 color="#000044"><b>Escoja una de las tarjetas activas:</b></font><br>
+                                        <div class="col-sm-4" align=center><font FACE="arial" SIZE=4 color="#000044"><b>Escoja ubicación a consultar:</b></font><br>
                                             <form method=POST action="/ehealth/procesos/calculo_probabilidad.php">
                                                 <div class="row-sm-1 justify-content-center">
                                                     <div class="dropdown">
-                                                        <select class="btn btn-primary" name="tarj_activa" required>
-                                                            <option value="">Id</option>
+                                                        <select class="btn btn-primary" name="ubicacion" required>
+                                                            <option value="">Ubicación</option>
                                                             <?php while ($row2 = $result1->fetch_array(MYSQLI_NUM)) {
-                                                                $id_tarj=$row2[0];
+                                                                $ubicacion_tarj=$row2[0];
                                                                 $contador++; ?>
-                                                            <option value="<?php echo $id_tarj;?>"><?php echo $id_tarj?></option>
+                                                            <option value="<?php echo $ubicacion_tarj;?>"><?php echo $ubicacion_tarj?></option>
                                                             <?php
                                                                 }
                                                             ?>
