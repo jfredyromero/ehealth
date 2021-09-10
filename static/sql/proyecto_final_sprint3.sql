@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 10, 2021 at 04:36 PM
+-- Generation Time: Sep 10, 2021 at 04:54 PM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.7
 
@@ -62,10 +62,10 @@ CREATE TABLE `datos_dispositivos` (
 --
 
 INSERT INTO `datos_dispositivos` (`id_tarjeta`, `estado`, `ubicacion`, `propietario`) VALUES
-(1, 0, 'PopayÃ¡n', 'Lina'),
-(2, 1, 'Popayan', 'Laura'),
-(3, 1, 'Popayan', 'Nathalia'),
-(4, 1, 'Popayan', 'Ricardo Salazar');
+(1, 0, 'Villa del Viento', 'Lina'),
+(2, 1, 'Rosales de la Hacienda', 'Laura'),
+(3, 1, 'Campo Bello', 'Nathalia'),
+(4, 1, 'Guapi', 'Ricardo Salazar');
 
 -- --------------------------------------------------------
 
