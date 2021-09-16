@@ -95,6 +95,18 @@
                                     $var_nivel_d_noche=3;
                                     $var_color_d_noche=2;
                                 }
+
+                                // $iduser=$_SESSION["id_usuario"];
+                                // date_default_timezone_set('America/Bogota'); // esta l�nea es importante cuando el servidor es REMOTO y est� ubicado en otros pa�ses como USA o Europa. Fija la hora de Colombia para que grabe correctamente el dato de fecha y hora con CURDATE y CURTIME, en la base de datos.
+                                // $fecha_actual = date("Y-m-d");
+                                // $hora_actual = date("H:i:s");
+                                // $fecha_ini_consul=$_GET["fe_ini"];
+                                // $fecha_fin_consul=$_GET["fe_fin"];
+                                // $id_tarj=$_GET["id"];
+
+                                // $sql="INSERT INTO datos_consultas(id, id_usuario, fecha, hora, fecha_inicial_consulta, fecha_final_consulta, id_tarjeta_consulta) VALUES ('$iduser','$fecha_actual','$hora_actual','$fecha_ini_consul','$fecha_fin_consul','$id_tarj')";
+                                // $result1 = $mysqli->query($sql);
+                                // echo "El resultado fue: ".$result1;
                                 ?>
                                 <table width="80%" align=center cellpadding=5 border=0>
                                     <tr height="20"></tr>
@@ -148,6 +160,7 @@
                                                         <div class="row-sm-1 justify-content-center" style="background-color:#35287d">
                                                             <font FACE="arial" SIZE=3 color="white"><u><b>Fecha final:</b></u> <?php echo $_GET["fe_fin"]?></font><br>
                                                         </div>
+                                                        <input type="hidden" name="iduser" value="<?php echo $_SESSION["id_usuario"];?>">
                                                     </form>
                                                 </div>
                                                 <div class="col-sm-7" >
@@ -223,6 +236,7 @@
                                                 <div class="row-sm-1 justify-content-center" style="background-color:#b51f14">
                                                     <font FACE="arial" SIZE=3 color="white"><u><b>Fecha final:</b></u> <?php echo $_GET["fe_fin"]?></font><br>
                                                 </div>
+                                                <input type="hidden" name="iduser" value="<?php echo $_SESSION["id_usuario"];?>">
                                             </form>
                                         </div>
                                         <div class="col-sm-5" >
@@ -271,6 +285,7 @@
                                                     <input type="hidden" name="enviado" value="graficar">
                                                     <button style="background-color:#281E5D; color:white" value="graficar" type="submit" class="btn btn-lg" name="graficar"><i style="background-color:#281E5D; color:white" class="fas fa-sync"></i><span class="pl-3">Graficar</span></button>
                                                 </div><br>
+                                                <input type="hidden" name="iduser" value="<?php echo $_SESSION["id_usuario"];?>">
                                             </form>
                                         </div>
                                         <div class="col-sm-5" >

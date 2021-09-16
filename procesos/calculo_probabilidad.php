@@ -8,6 +8,23 @@ $mysqli = new mysqli($host, $user, $pw, $db);
 //SELECT round(AVG(temperatura),2) as promedio from datos_medidos where fecha >= '2018-02-15' and fecha <= '2021-03-20' and id_tarjeta='1' and hora>='06:00:00' and hora<='18:00:00'
 //Noche
 //SELECT round(AVG(temperatura),2) as promedio from datos_medidos where fecha >= '2018-02-15' and fecha <= '2021-03-20' and id_tarjeta='1' and NOT(hora>='06:00:00' and hora<='18:00:00')
+$iduser=$_POST["iduser"];
+date_default_timezone_set('America/Bogota'); // esta l�nea es importante cuando el servidor es REMOTO y est� ubicado en otros pa�ses como USA o Europa. Fija la hora de Colombia para que grabe correctamente el dato de fecha y hora con CURDATE y CURTIME, en la base de datos.
+$fecha_actual = date("Y-m-d");
+$hora_actual = date("H:i:s");
+$fecha_ini_consul=$_POST["fecha_ini"];
+$fecha_fin_consul=$_POST["fecha_fin"];
+$ubicacion_tarj=$_POST["ubicacion"];
+$sql="SELECT id_tarjeta from datos_dispositivos where ubicacion='$ubicacion_tarj'";
+$result = $mysqli->query($sql);
+$row1 = $result->fetch_array(MYSQLI_NUM);
+$tarjeta_activa = $row1[0];
+echo $tarjeta_activa;
+
+$sql="INSERT INTO datos_consultas(id_usuario, fecha, hora, fecha_inicial_consulta, fecha_final_consulta, id_tarjeta_consulta) VALUES ('$iduser','$fecha_actual','$hora_actual','$fecha_ini_consul','$fecha_fin_consul','$tarjeta_activa')";
+$result1 = $mysqli->query($sql);
+echo "El resultado fue: ".$result1;
+
 $ubicacion_tarj=$_POST["ubicacion"];
 $sql="SELECT id_tarjeta from datos_dispositivos where ubicacion='$ubicacion_tarj'";
 $result = $mysqli->query($sql);

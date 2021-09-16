@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Sep 10, 2021 at 04:54 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.7
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 16-09-2021 a las 18:45:48
+-- Versión del servidor: 10.4.17-MariaDB
+-- Versión de PHP: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `proyecto_final`
+-- Base de datos: `proyecto_final`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `datos_consultas`
+-- Estructura de tabla para la tabla `datos_consultas`
 --
 
 CREATE TABLE `datos_consultas` (
@@ -38,16 +38,20 @@ CREATE TABLE `datos_consultas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `datos_consultas`
+-- Volcado de datos para la tabla `datos_consultas`
 --
 
 INSERT INTO `datos_consultas` (`id`, `id_usuario`, `fecha`, `hora`, `fecha_inicial_consulta`, `fecha_final_consulta`, `id_tarjeta_consulta`) VALUES
-(1, 12301, '2021-09-03', '2:30', '2021-04-06', '2021-09-03', 1);
+(1, 7, '2021-09-16', '11:30:53', '2021-01-01', '2021-09-16', 3),
+(2, 7, '2021-09-16', '11:31:49', '2021-01-02', '2021-09-15', 4),
+(3, 7, '2021-09-16', '11:32:04', '2021-01-02', '2021-09-15', 3),
+(4, 7, '2021-09-16', '11:33:09', '2021-01-02', '2021-09-01', 1),
+(5, 10, '2021-09-16', '11:35:48', '2021-01-05', '2021-09-15', 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `datos_dispositivos`
+-- Estructura de tabla para la tabla `datos_dispositivos`
 --
 
 CREATE TABLE `datos_dispositivos` (
@@ -58,11 +62,11 @@ CREATE TABLE `datos_dispositivos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `datos_dispositivos`
+-- Volcado de datos para la tabla `datos_dispositivos`
 --
 
 INSERT INTO `datos_dispositivos` (`id_tarjeta`, `estado`, `ubicacion`, `propietario`) VALUES
-(1, 0, 'Villa del Viento', 'Lina'),
+(1, 1, 'Villa', 'Lina'),
 (2, 1, 'Rosales de la Hacienda', 'Laura'),
 (3, 1, 'Campo Bello', 'Nathalia'),
 (4, 1, 'Guapi', 'Ricardo Salazar');
@@ -70,7 +74,7 @@ INSERT INTO `datos_dispositivos` (`id_tarjeta`, `estado`, `ubicacion`, `propieta
 -- --------------------------------------------------------
 
 --
--- Table structure for table `datos_maximos`
+-- Estructura de tabla para la tabla `datos_maximos`
 --
 
 CREATE TABLE `datos_maximos` (
@@ -82,7 +86,7 @@ CREATE TABLE `datos_maximos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `datos_maximos`
+-- Volcado de datos para la tabla `datos_maximos`
 --
 
 INSERT INTO `datos_maximos` (`id`, `enfermedad`, `max_temp`, `max_hum`, `pre_lluvia`) VALUES
@@ -92,7 +96,7 @@ INSERT INTO `datos_maximos` (`id`, `enfermedad`, `max_temp`, `max_hum`, `pre_llu
 -- --------------------------------------------------------
 
 --
--- Table structure for table `datos_medidos`
+-- Estructura de tabla para la tabla `datos_medidos`
 --
 
 CREATE TABLE `datos_medidos` (
@@ -106,7 +110,7 @@ CREATE TABLE `datos_medidos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `datos_medidos`
+-- Volcado de datos para la tabla `datos_medidos`
 --
 
 INSERT INTO `datos_medidos` (`id`, `id_tarjeta`, `temperatura`, `humedad`, `fecha`, `hora`, `lluvia`) VALUES
@@ -800,7 +804,7 @@ INSERT INTO `datos_medidos` (`id`, `id_tarjeta`, `temperatura`, `humedad`, `fech
 -- --------------------------------------------------------
 
 --
--- Table structure for table `datos_ponderados`
+-- Estructura de tabla para la tabla `datos_ponderados`
 --
 
 CREATE TABLE `datos_ponderados` (
@@ -812,7 +816,7 @@ CREATE TABLE `datos_ponderados` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `datos_ponderados`
+-- Volcado de datos para la tabla `datos_ponderados`
 --
 
 INSERT INTO `datos_ponderados` (`id`, `enfermedad`, `prob_temp`, `prob_hum`, `prob_lluvia`) VALUES
@@ -822,7 +826,7 @@ INSERT INTO `datos_ponderados` (`id`, `enfermedad`, `prob_temp`, `prob_hum`, `pr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `datos_ubicaciones`
+-- Estructura de tabla para la tabla `datos_ubicaciones`
 --
 
 CREATE TABLE `datos_ubicaciones` (
@@ -837,7 +841,7 @@ CREATE TABLE `datos_ubicaciones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `datos_ubicaciones`
+-- Volcado de datos para la tabla `datos_ubicaciones`
 --
 
 INSERT INTO `datos_ubicaciones` (`id`, `latitud`, `longitud`, `id_tarj`, `fecha`, `hora`, `altitud`, `velocidad`) VALUES
@@ -855,7 +859,7 @@ INSERT INTO `datos_ubicaciones` (`id`, `latitud`, `longitud`, `id_tarj`, `fecha`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `datos_usuarios`
+-- Estructura de tabla para la tabla `datos_usuarios`
 --
 
 CREATE TABLE `datos_usuarios` (
@@ -869,100 +873,101 @@ CREATE TABLE `datos_usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `datos_usuarios`
+-- Volcado de datos para la tabla `datos_usuarios`
 --
 
 INSERT INTO `datos_usuarios` (`id`, `nombre_completo`, `identificacion`, `direccion`, `login`, `passwd`, `tipo_usuario`) VALUES
 (1, 'Santiago Yangana', '22022000', 'Calle 5 #409-100', 'Santiago', 'd41d8cd98f00b204e9800998ecf8427e', 0),
 (2, 'Nathalia Isabel Guerrero', '1061809038', 'Cra 15N #89-40', 'Nathalia', 'd41d8cd98f00b204e9800998ecf8427e', 0),
 (7, 'Jhon Fredy', '1002970732', 'CRA 17#73N43', 'Jfredy', '4c25b32a72699ed712dfa80df77fc582', 1),
-(8, 'Jhon Romero', '1028218', 'CRA', 'Jhoncito', '4c25b32a72699ed712dfa80df77fc582', 1);
+(8, 'Jhon Romero', '1028218', 'CRA', 'Jhoncito', '4c25b32a72699ed712dfa80df77fc582', 1),
+(10, 'johan yanga', '2222', 'sadasda', 'johan', '7fedcb034ecf9df4be8c1ea13362053b', 0);
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `datos_consultas`
+-- Indices de la tabla `datos_consultas`
 --
 ALTER TABLE `datos_consultas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `datos_dispositivos`
+-- Indices de la tabla `datos_dispositivos`
 --
 ALTER TABLE `datos_dispositivos`
   ADD PRIMARY KEY (`id_tarjeta`);
 
 --
--- Indexes for table `datos_maximos`
+-- Indices de la tabla `datos_maximos`
 --
 ALTER TABLE `datos_maximos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `datos_medidos`
+-- Indices de la tabla `datos_medidos`
 --
 ALTER TABLE `datos_medidos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `datos_ponderados`
+-- Indices de la tabla `datos_ponderados`
 --
 ALTER TABLE `datos_ponderados`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `datos_ubicaciones`
+-- Indices de la tabla `datos_ubicaciones`
 --
 ALTER TABLE `datos_ubicaciones`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `datos_usuarios`
+-- Indices de la tabla `datos_usuarios`
 --
 ALTER TABLE `datos_usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `datos_consultas`
+-- AUTO_INCREMENT de la tabla `datos_consultas`
 --
 ALTER TABLE `datos_consultas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `datos_maximos`
+-- AUTO_INCREMENT de la tabla `datos_maximos`
 --
 ALTER TABLE `datos_maximos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `datos_medidos`
+-- AUTO_INCREMENT de la tabla `datos_medidos`
 --
 ALTER TABLE `datos_medidos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=995;
 
 --
--- AUTO_INCREMENT for table `datos_ponderados`
+-- AUTO_INCREMENT de la tabla `datos_ponderados`
 --
 ALTER TABLE `datos_ponderados`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `datos_ubicaciones`
+-- AUTO_INCREMENT de la tabla `datos_ubicaciones`
 --
 ALTER TABLE `datos_ubicaciones`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
 
 --
--- AUTO_INCREMENT for table `datos_usuarios`
+-- AUTO_INCREMENT de la tabla `datos_usuarios`
 --
 ALTER TABLE `datos_usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
