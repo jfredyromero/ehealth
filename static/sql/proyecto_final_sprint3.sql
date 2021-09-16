@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 16-09-2021 a las 18:45:48
--- Versión del servidor: 10.4.17-MariaDB
--- Versión de PHP: 8.0.2
+-- Host: 127.0.0.1
+-- Generation Time: Sep 16, 2021 at 09:35 PM
+-- Server version: 10.4.19-MariaDB
+-- PHP Version: 8.0.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `proyecto_final`
+-- Database: `proyecto_final`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `datos_consultas`
+-- Table structure for table `datos_consultas`
 --
 
 CREATE TABLE `datos_consultas` (
@@ -38,20 +38,19 @@ CREATE TABLE `datos_consultas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `datos_consultas`
+-- Dumping data for table `datos_consultas`
 --
 
 INSERT INTO `datos_consultas` (`id`, `id_usuario`, `fecha`, `hora`, `fecha_inicial_consulta`, `fecha_final_consulta`, `id_tarjeta_consulta`) VALUES
-(1, 7, '2021-09-16', '11:30:53', '2021-01-01', '2021-09-16', 3),
-(2, 7, '2021-09-16', '11:31:49', '2021-01-02', '2021-09-15', 4),
-(3, 7, '2021-09-16', '11:32:04', '2021-01-02', '2021-09-15', 3),
-(4, 7, '2021-09-16', '11:33:09', '2021-01-02', '2021-09-01', 1),
-(5, 10, '2021-09-16', '11:35:48', '2021-01-05', '2021-09-15', 3);
+(1, 1, '2021-09-10', '15:17:15', '2021-09-05', '2021-09-07', 3),
+(14, 7, '2021-09-02', '15:04:02', '2021-09-05', '2021-09-07', 4),
+(15, 7, '2021-09-16', '14:24:37', '2021-09-09', '2021-09-17', 2),
+(16, 7, '2021-09-16', '14:25:19', '2020-01-01', '2021-09-16', 2);
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `datos_dispositivos`
+-- Table structure for table `datos_dispositivos`
 --
 
 CREATE TABLE `datos_dispositivos` (
@@ -62,11 +61,11 @@ CREATE TABLE `datos_dispositivos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `datos_dispositivos`
+-- Dumping data for table `datos_dispositivos`
 --
 
 INSERT INTO `datos_dispositivos` (`id_tarjeta`, `estado`, `ubicacion`, `propietario`) VALUES
-(1, 1, 'Villa', 'Lina'),
+(1, 0, 'Villa del Viento', 'Lina'),
 (2, 1, 'Rosales de la Hacienda', 'Laura'),
 (3, 1, 'Campo Bello', 'Nathalia'),
 (4, 1, 'Guapi', 'Ricardo Salazar');
@@ -74,7 +73,7 @@ INSERT INTO `datos_dispositivos` (`id_tarjeta`, `estado`, `ubicacion`, `propieta
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `datos_maximos`
+-- Table structure for table `datos_maximos`
 --
 
 CREATE TABLE `datos_maximos` (
@@ -86,7 +85,7 @@ CREATE TABLE `datos_maximos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `datos_maximos`
+-- Dumping data for table `datos_maximos`
 --
 
 INSERT INTO `datos_maximos` (`id`, `enfermedad`, `max_temp`, `max_hum`, `pre_lluvia`) VALUES
@@ -96,7 +95,7 @@ INSERT INTO `datos_maximos` (`id`, `enfermedad`, `max_temp`, `max_hum`, `pre_llu
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `datos_medidos`
+-- Table structure for table `datos_medidos`
 --
 
 CREATE TABLE `datos_medidos` (
@@ -110,7 +109,7 @@ CREATE TABLE `datos_medidos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `datos_medidos`
+-- Dumping data for table `datos_medidos`
 --
 
 INSERT INTO `datos_medidos` (`id`, `id_tarjeta`, `temperatura`, `humedad`, `fecha`, `hora`, `lluvia`) VALUES
@@ -804,7 +803,7 @@ INSERT INTO `datos_medidos` (`id`, `id_tarjeta`, `temperatura`, `humedad`, `fech
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `datos_ponderados`
+-- Table structure for table `datos_ponderados`
 --
 
 CREATE TABLE `datos_ponderados` (
@@ -816,7 +815,7 @@ CREATE TABLE `datos_ponderados` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `datos_ponderados`
+-- Dumping data for table `datos_ponderados`
 --
 
 INSERT INTO `datos_ponderados` (`id`, `enfermedad`, `prob_temp`, `prob_hum`, `prob_lluvia`) VALUES
@@ -826,7 +825,7 @@ INSERT INTO `datos_ponderados` (`id`, `enfermedad`, `prob_temp`, `prob_hum`, `pr
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `datos_ubicaciones`
+-- Table structure for table `datos_ubicaciones`
 --
 
 CREATE TABLE `datos_ubicaciones` (
@@ -841,7 +840,7 @@ CREATE TABLE `datos_ubicaciones` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Volcado de datos para la tabla `datos_ubicaciones`
+-- Dumping data for table `datos_ubicaciones`
 --
 
 INSERT INTO `datos_ubicaciones` (`id`, `latitud`, `longitud`, `id_tarj`, `fecha`, `hora`, `altitud`, `velocidad`) VALUES
@@ -859,7 +858,7 @@ INSERT INTO `datos_ubicaciones` (`id`, `latitud`, `longitud`, `id_tarj`, `fecha`
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `datos_usuarios`
+-- Table structure for table `datos_usuarios`
 --
 
 CREATE TABLE `datos_usuarios` (
@@ -873,101 +872,113 @@ CREATE TABLE `datos_usuarios` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Volcado de datos para la tabla `datos_usuarios`
+-- Dumping data for table `datos_usuarios`
 --
 
 INSERT INTO `datos_usuarios` (`id`, `nombre_completo`, `identificacion`, `direccion`, `login`, `passwd`, `tipo_usuario`) VALUES
 (1, 'Santiago Yangana', '22022000', 'Calle 5 #409-100', 'Santiago', 'd41d8cd98f00b204e9800998ecf8427e', 0),
 (2, 'Nathalia Isabel Guerrero', '1061809038', 'Cra 15N #89-40', 'Nathalia', 'd41d8cd98f00b204e9800998ecf8427e', 0),
 (7, 'Jhon Fredy', '1002970732', 'CRA 17#73N43', 'Jfredy', '4c25b32a72699ed712dfa80df77fc582', 1),
-(8, 'Jhon Romero', '1028218', 'CRA', 'Jhoncito', '4c25b32a72699ed712dfa80df77fc582', 1),
-(10, 'johan yanga', '2222', 'sadasda', 'johan', '7fedcb034ecf9df4be8c1ea13362053b', 0);
+(8, 'Jhon Romero', '1028218', 'CRA', 'Jhoncito', '4c25b32a72699ed712dfa80df77fc582', 1);
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `datos_consultas`
+-- Indexes for table `datos_consultas`
 --
 ALTER TABLE `datos_consultas`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_usuario` (`id_usuario`),
+  ADD KEY `id_tarjeta_consulta` (`id_tarjeta_consulta`);
 
 --
--- Indices de la tabla `datos_dispositivos`
+-- Indexes for table `datos_dispositivos`
 --
 ALTER TABLE `datos_dispositivos`
   ADD PRIMARY KEY (`id_tarjeta`);
 
 --
--- Indices de la tabla `datos_maximos`
+-- Indexes for table `datos_maximos`
 --
 ALTER TABLE `datos_maximos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `datos_medidos`
+-- Indexes for table `datos_medidos`
 --
 ALTER TABLE `datos_medidos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `datos_ponderados`
+-- Indexes for table `datos_ponderados`
 --
 ALTER TABLE `datos_ponderados`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `datos_ubicaciones`
+-- Indexes for table `datos_ubicaciones`
 --
 ALTER TABLE `datos_ubicaciones`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `datos_usuarios`
+-- Indexes for table `datos_usuarios`
 --
 ALTER TABLE `datos_usuarios`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `datos_consultas`
+-- AUTO_INCREMENT for table `datos_consultas`
 --
 ALTER TABLE `datos_consultas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
--- AUTO_INCREMENT de la tabla `datos_maximos`
+-- AUTO_INCREMENT for table `datos_maximos`
 --
 ALTER TABLE `datos_maximos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `datos_medidos`
+-- AUTO_INCREMENT for table `datos_medidos`
 --
 ALTER TABLE `datos_medidos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=995;
 
 --
--- AUTO_INCREMENT de la tabla `datos_ponderados`
+-- AUTO_INCREMENT for table `datos_ponderados`
 --
 ALTER TABLE `datos_ponderados`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `datos_ubicaciones`
+-- AUTO_INCREMENT for table `datos_ubicaciones`
 --
 ALTER TABLE `datos_ubicaciones`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=187;
 
 --
--- AUTO_INCREMENT de la tabla `datos_usuarios`
+-- AUTO_INCREMENT for table `datos_usuarios`
 --
 ALTER TABLE `datos_usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `datos_consultas`
+--
+ALTER TABLE `datos_consultas`
+  ADD CONSTRAINT `datos_consultas_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `datos_usuarios` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `datos_consultas_ibfk_2` FOREIGN KEY (`id_tarjeta_consulta`) REFERENCES `datos_dispositivos` (`id_tarjeta`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

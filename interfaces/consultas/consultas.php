@@ -92,10 +92,10 @@
                                         <td valign="center" align=center bgcolor="#E1E1E1">
                                             <b>Fecha</b>
                                         </td>
-                                        <td valign="center" align=center bgcolor="#E1E1E1" width=140>
+                                        <td valign="center" align=center bgcolor="#E1E1E1">
                                             <b>Hora</b>
                                         </td>
-                                        <td valign="center" align=center bgcolor="#E1E1E1" width=80>
+                                        <td valign="center" align=center bgcolor="#E1E1E1" width=300>
                                             <b>Consulta</b>
                                         </td>
                                 <?php
@@ -192,10 +192,10 @@
                                         <td valign="center" align=center bgcolor="#E1E1E1">
                                             <b>Fecha</b>
                                         </td>
-                                        <td valign="center" align=center bgcolor="#E1E1E1" width=140>
+                                        <td valign="center" align=center bgcolor="#E1E1E1">
                                             <b>Hora</b>
                                         </td>
-                                        <td valign="center" align=center bgcolor="#E1E1E1" width=80>
+                                        <td valign="center" align=center bgcolor="#E1E1E1" width=300>
                                             <b>Consulta</b>
                                         </td>
                                     <?php
@@ -231,7 +231,7 @@
                             <table width="90%" align=center cellpadding=5 border=0>
                                 <tr>
                                     <td style="border: none;" valign="center" align=left colspan=3>
-                                        <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/consultas/usuarios.php" role="button">
+                                        <a class="btn btn-lg" style="background-color:#281E5D; color:white" href="/ehealth/interfaces/consultas/consultas.php" role="button">
                                             <i class="fas fa-angle-double-left"></i>
                                             <span class="pl-3">Volver</span>
                                         </a>
@@ -252,10 +252,10 @@
                                 <td valign="center" align=center bgcolor="#E1E1E1">
                                     <b>Fecha</b>
                                 </td>
-                                <td valign="center" align=center bgcolor="#E1E1E1" width=140>
+                                <td valign="center" align=center bgcolor="#E1E1E1">
                                     <b>Hora</b>
                                 </td>
-                                <td valign="center" align=center bgcolor="#E1E1E1" width=80>
+                                <td valign="center" align=center bgcolor="#E1E1E1" width=300>
                                     <b>Consulta</b>
                                 </td>
                         <?php

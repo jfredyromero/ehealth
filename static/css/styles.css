@@ -1,5 +1,6 @@
 body{
     background-color: #281E5D;
+    background-attachment: fixed;
 }
 table td {
 	border: 1px solid #000;
