@@ -17,13 +17,22 @@
 
     $fecha = date("Y-m-d");
     $hora = date("H:i:s");
-
-    $sql1 = "INSERT into datos_medidos (id_tarjeta, temperatura, humedad, fecha, hora, lluvia) VALUES ('$ID_TARJ', '$temp', '$hum', '$fecha', '$hora', $rain)"; // Aqu� se ingresa el valor recibido a la base de datos.
-    $sql2 = "INSERT into datos_ubicaciones (id_tarj, latitud, longitud, fecha, hora, velocidad, altitud) VALUES ('$ID_TARJ', '$lat', '$lon', '$fecha', '$hora','$vel','$alt')";
-    echo "sql1...".$sql1; // Se imprime la cadena sql enviada a la base de datos, se utiliza para depurar el programa php, en caso de alg�n error.
-    echo "sql2...".$sql2; // Se imprime la cadena sql enviada a la base de datos, se utiliza para depurar el programa php, en caso de alg�n error.
-    $result1 = $mysqli->query($sql1);
-    $result2 = $mysqli->query($sql2);
-    echo "result1 es...".$result1; // Si result es 1, quiere decir que el ingreso a la base de datos fue correcto.
-    echo "result2 es...".$result2;
+    
+    if($temp!=0 || $hum!=0){
+        $sql1 = "INSERT into datos_medidos (id_tarjeta, temperatura, humedad, fecha, hora, lluvia) VALUES ('$ID_TARJ', '$temp', '$hum', '$fecha', '$hora', $rain)"; // Aqu� se ingresa el valor recibido a la base de datos.
+        $sql2 = "INSERT into datos_ubicaciones (id_tarj, latitud, longitud, fecha, hora, velocidad, altitud) VALUES ('$ID_TARJ', '$lat', '$lon', '$fecha', '$hora','$vel','$alt')";
+        $sql3 = "INSERT into datos_validos (id_tarjeta, fecha, hora, estado) VALUES ('$ID_TARJ', '$fecha', '$hora', 1)";
+        $result1 = $mysqli->query($sql1);
+        $result2 = $mysqli->query($sql2);
+        $result3 = $mysqli->query($sql3);
+        echo "Los datos fueron validos\n";
+        echo "La sentencia ".$sql1." fue ".$result1."\n"; // Si result es 1, quiere decir que el ingreso a la base de datos fue correcto.
+        echo "La sentencia ".$sql2." fue ".$result2."\n"; // Si result es 1, quiere decir que el ingreso a la base de datos fue correcto.
+        echo "La sentencia ".$sql3." fue ".$result3."\n"; // Si result es 1, quiere decir que el ingreso a la base de datos fue correcto.
+    }else{
+        $sql1 = "INSERT into datos_validos (id_tarjeta, fecha, hora, estado) VALUES ('$ID_TARJ', '$fecha', '$hora', 0)";
+        $result1 = $mysqli->query($sql1);
+        echo "Los datos fueron invalidos\n";
+        echo "La sentencia ".$sql1." fue ".$result1."\n"; // Si result es 1, quiere decir que el ingreso a la base de datos fue correcto.
+    } 
 ?>
